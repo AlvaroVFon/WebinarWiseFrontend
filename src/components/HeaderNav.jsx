@@ -1,4 +1,4 @@
-import UserPofile from './UserProfile'
+import UserAvatar from './UserProfile'
 import Link from 'next/link'
 
 function HeaderNav() {
@@ -17,7 +17,7 @@ function HeaderNav() {
         Sign up
       </Link>
       <Link href=''>
-        <UserPofile />
+        <UserAvatar />
       </Link>
     </nav>
   )

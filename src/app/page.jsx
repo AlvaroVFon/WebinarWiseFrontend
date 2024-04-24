@@ -13,7 +13,7 @@ function Page() {
         <Typewriter />
         <Link
           href='/home/cursos'
-          className='bg-[#354398] p-3 rounded-full font-semibold text-lg text-center w-56 hover:bg-[#4462cc] -ml-52 '
+          className='bg-[#354398] p-3 rounded-full font-semibold text-lg text-center w-56 hover:bg-[#4462cc] -ml-52 mt-6 '
         >
           Explore our courses
         </Link>

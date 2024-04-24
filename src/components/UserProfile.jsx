@@ -1,5 +1,5 @@
 import Image from 'next/image'
-function UserPofile() {
+function UserAvatar() {
   return (
     <Image
       alt='avatar'
@@ -10,4 +10,4 @@ function UserPofile() {
     />
   )
 }
-export default UserPofile
+export default UserAvatar
