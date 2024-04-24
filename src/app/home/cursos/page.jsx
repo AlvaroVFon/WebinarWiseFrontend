@@ -1,4 +1,4 @@
 function CursosPage() {
-  return <h1>Detalles de curso</h1>
+  return <h1>Página de cursos</h1>
 }
 export default CursosPage

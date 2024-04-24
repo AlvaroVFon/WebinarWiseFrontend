@@ -1,8 +1,11 @@
+import Link from 'next/link'
 function LandingNav() {
   return (
     <nav className='flex gap-8 text-xl p-3 font-semibold'>
-      <a href='/login'>Log in</a>
-      <a href='/signup'>Sign up</a>
+      <Link href='/login' className='hover:'>
+        Log in
+      </Link>
+      <Link href='/signup'>Sign up</Link>
     </nav>
   )
 }
