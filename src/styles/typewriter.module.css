@@ -1,0 +1,284 @@
+.typewriter {
+  font-size: 70px;
+  position: relative;
+}
+.typewriter:after {
+  content: '';
+  position: absolute;
+  margin-left: 15px;
+  color: white;
+  animation: write 20s linear infinite, blink 1s step-end infinite;
+  border-right: 2px solid transparent;
+  animation-fill-mode: forwards;
+  color: #354398;
+}
+
+@keyframes blink {
+  50% {
+    border-right: 2px solid white;
+  }
+}
+@keyframes write {
+  1% {
+    content: 'C';
+  }
+  2% {
+    content: 'Co';
+  }
+  3% {
+    content: 'Cod';
+  }
+  4% {
+    content: 'Code';
+  }
+  5% {
+    content: 'Cod';
+  }
+  6% {
+    content: 'Co';
+  }
+  7% {
+    content: 'C';
+  }
+  8% {
+    content: '';
+  }
+
+  14% {
+    content: 'D';
+  }
+  14.5% {
+    content: 'De';
+  }
+  15% {
+    content: 'Des';
+  }
+  15.5% {
+    content: 'Desi';
+  }
+  16% {
+    content: 'Desin';
+  }
+  16.5% {
+    content: 'Desing';
+  }
+  17% {
+    content: 'Desin';
+  }
+  17.5% {
+    content: 'Des';
+  }
+  18% {
+    content: 'De';
+  }
+
+  20% {
+    content: 'D';
+  }
+  21% {
+    content: ' ';
+  }
+  22% {
+    content: 'Dev';
+  }
+  23% {
+    content: 'Deve';
+  }
+  24% {
+    content: 'Devel';
+  }
+  25% {
+    content: 'Develo';
+  }
+  26% {
+    content: 'Develop';
+  }
+  27% {
+    content: 'Develope';
+  }
+  28% {
+    content: 'Develop';
+  }
+
+  34% {
+    content: 'Develo';
+  }
+  35.5% {
+    content: 'Deve';
+  }
+  36% {
+    content: 'Dev';
+  }
+  36.5% {
+    content: 'De';
+  }
+  37% {
+    content: 'D';
+  }
+  37.5% {
+    content: '';
+  }
+  38% {
+    content: 'C';
+  }
+  38.5% {
+    content: 'Cr';
+  }
+  39% {
+    content: 'Cre';
+  }
+  39.5% {
+    content: 'Crea';
+  }
+
+  42% {
+    content: 'Create';
+  }
+  43% {
+    content: 'Creat';
+  }
+  44% {
+    content: 'Crea';
+  }
+  45% {
+    content: 'Cre';
+  }
+  46% {
+    content: 'Cr';
+  }
+  47% {
+    content: 'C';
+  }
+  50% {
+    content: 'I';
+  }
+  51% {
+    content: 'In';
+  }
+  52% {
+    content: 'Inc';
+  }
+  54% {
+    content: 'Incr';
+  }
+  55% {
+    content: 'Incre';
+  }
+  56% {
+    content: 'Increa';
+  }
+  57% {
+    content: 'Increas';
+  }
+  58% {
+    content: 'Increase';
+  }
+  60% {
+    content: 'Increas';
+  }
+  61% {
+    content: 'Increa';
+  }
+  62% {
+    content: 'Incre';
+  }
+  63% {
+    content: 'Incr';
+  }
+  64% {
+    content: 'Inc';
+  }
+  65% {
+    content: 'In';
+  }
+  66% {
+    content: 'I';
+  }
+  67% {
+    content: '';
+  }
+  68% {
+    content: 'I';
+  }
+  69% {
+    content: 'Im';
+  }
+  70% {
+    content: 'Imp';
+  }
+  71% {
+    content: 'Impr';
+  }
+  72% {
+    content: 'Impro';
+  }
+  73% {
+    content: 'Improv';
+  }
+  74% {
+    content: 'Improve';
+  }
+  75% {
+    content: 'Improv';
+  }
+  76% {
+    content: 'Impro';
+  }
+  77% {
+    content: 'Impr';
+  }
+  78% {
+    content: 'Imp';
+  }
+  80% {
+    content: 'Im';
+  }
+  81% {
+    content: 'I';
+  }
+  82% {
+    content: '';
+  }
+  83% {
+    content: 'I';
+  }
+  84% {
+    content: 'In';
+  }
+  85% {
+    content: 'Ins';
+  }
+  86% {
+    content: 'Insp';
+  }
+  87% {
+    content: 'Inspi';
+  }
+  88% {
+    content: 'Inspir';
+  }
+  89% {
+    content: 'Inspire';
+  }
+  90% {
+    content: 'Inspir';
+  }
+  91% {
+    content: 'Inspi';
+  }
+  92% {
+    content: 'Insp';
+  }
+  94% {
+    content: 'Ins';
+  }
+  96% {
+    content: 'In';
+  }
+  98% {
+    content: 'I';
+  }
+  100% {
+    content: '';
+  }
+}
