@@ -1,7 +1,8 @@
+import CourseCard from '@/components/CourseCard'
 function CursosPage() {
   return (
-    <div className='flex h-screen items-center justify-center'>
-      <h1>Página de cursos</h1>
+    <div className='grid place-items-center min-h-screen '>
+      <CourseCard />
     </div>
   )
 }

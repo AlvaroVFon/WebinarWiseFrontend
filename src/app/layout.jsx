@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${varelaRound.className} bg-[#0E0E11] text-white`}>
+      <body className={`${varelaRound.className} bg-[#0E1217] text-white`}>
         {children}
       </body>
     </html>
