@@ -7,10 +7,30 @@ class WebinarWiseApi {
     })
   }
   async login(email, password) {
-    const response = await this.axiosInstance.post('/auth/login', {
-      email,
-      password,
-    })
+    const response = await this.axiosInstance
+      .post('/auth/login', { email, password })
+      .catch((error) => {
+        console.log(error)
+        return error
+      })
+
+    console.log(response) //aqui tengo que rescatar el token
+    return response.data
+  }
+
+  async register(name, email, password) {
+    const response = await this.axiosInstance
+      .post('/auth/register', {
+        name,
+        email,
+        password,
+      })
+      .catch((error) => {
+        console.log(error)
+        return error
+      })
+
+    console.log(response)
     return response.data
   }
 }
