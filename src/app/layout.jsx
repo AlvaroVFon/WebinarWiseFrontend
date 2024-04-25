@@ -1,7 +1,7 @@
-import { Inter } from 'next/font/google'
+import { Varela_Round } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const varelaRound = Varela_Round({ subsets: ['latin'], weight: '400' })
 
 export const metadata = {
   title: 'WebinarWise',
@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} bg-[#0E0E11] text-white`}>
+      <body className={`${varelaRound.className} bg-[#0E0E11] text-white`}>
         {children}
       </body>
     </html>

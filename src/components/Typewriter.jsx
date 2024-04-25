@@ -1,12 +1,10 @@
 import styles from '@/styles/typewriter.module.css'
 function Typewriter() {
   return (
-    <div className=''>
-      <p className='text-[70px] flex p-3'>
-        Learn how to
-        <span className={`${styles.typewriter} ${styles.line}`}></span>
-      </p>
-    </div>
+    <p className='text-3xl md:text-[50px]'>
+      Learn how to
+      <span className={`${styles.typewriter} ${styles.line}`}></span>
+    </p>
   )
 }
 export default Typewriter

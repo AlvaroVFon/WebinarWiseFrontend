@@ -1,5 +1,4 @@
 .typewriter {
-  font-size: 70px;
   position: relative;
 }
 .typewriter:after {
@@ -60,10 +59,10 @@
     content: 'Desin';
   }
   16.5% {
-    content: 'Desing';
+    content: 'Design';
   }
   17% {
-    content: 'Desin';
+    content: 'Desig';
   }
   17.5% {
     content: 'Des';

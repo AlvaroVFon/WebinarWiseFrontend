@@ -10,7 +10,7 @@ function HeaderNav() {
       <Link href='/home/categorias' className='p-3'>
         Categories
       </Link>
-      <Link href='/home/login' className='p-3'>
+      <Link href='/login' className='p-3'>
         Log in
       </Link>
       <Link href='' className='p-3'>
