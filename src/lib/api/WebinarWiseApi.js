@@ -16,12 +16,9 @@ class WebinarWiseApi {
       console.log(token)
       const userInfo = await this.getUserInfo(token)
         .then((data) => {
-          console.log(data)
           return data
         })
-        .catch((error) => {
-          console.log(error)
-        })
+        .catch((error) => error)
     }
   }
   async register(name, email, password) {
@@ -32,7 +29,6 @@ class WebinarWiseApi {
         password,
       })
       .catch((error) => {
-        console.log(error)
         return error
       })
 

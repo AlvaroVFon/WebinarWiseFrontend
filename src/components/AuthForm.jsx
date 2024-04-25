@@ -2,7 +2,7 @@
 import styles from '@/styles/form.module.css'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { loginHandler, signupHandler } from '@/lib/api/handlers/formHandler'
+import { loginHandler, signupHandler } from '@/lib/handlers/formHandler'
 function LoginForm({ formType }) {
   const {
     register,
@@ -25,7 +25,7 @@ function LoginForm({ formType }) {
             type='text'
             placeholder='name'
             name='name'
-            className='bg-[#525866] p-3 rounded-md hover:bg-zinc-800 animation duration-300'
+            className='bg-zinc-950 p-3 rounded-md hover:bg-zinc-900 animation duration-300'
             {...register('name', {
               required: 'This is a required field',
               minLength: {
@@ -49,7 +49,7 @@ function LoginForm({ formType }) {
           placeholder='example@email.com'
           name='email'
           pattern='/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g'
-          className='bg-[#525866] p-3 rounded-md hover:bg-zinc-800 animation duration-300 w-full'
+          className='bg-zinc-950 p-3 rounded-md hover:bg-zinc-900 animation duration-300 w-full'
           {...register('email', {
             required: 'This is a required field',
             pattern: {
@@ -67,7 +67,7 @@ function LoginForm({ formType }) {
           type='password'
           placeholder='password'
           name='password'
-          className='bg-[#525866] p-3 rounded-md hover:bg-zinc-800 animation duration-300 w-full'
+          className='bg-zinc-950 p-3 rounded-md hover:bg-zinc-900 animation duration-300 w-full'
           {...register('password', {
             required: 'This is a required field',
             pattern: {
