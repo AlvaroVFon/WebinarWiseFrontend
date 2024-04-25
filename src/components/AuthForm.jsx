@@ -10,7 +10,10 @@ function LoginForm({ formType }) {
     formState: { errors },
   } = useForm()
   const onLogin = async (e) => {
-    api.login(e.email, e.password).then((res) => console.log(res))
+    api.login(e.email, e.password).catch((error) => {
+      alert('Invalid email or password')
+      console.log(error)
+    })
   }
   const onSignup = async (e) => {
     api.register(e.name, e.email, e.password)
@@ -66,7 +69,7 @@ function LoginForm({ formType }) {
         )}
       </div>
       <div className='grid'>
-        <div className=''>
+        <div className='relative'>
           <input
             type='password'
             placeholder='password'
@@ -81,18 +84,6 @@ function LoginForm({ formType }) {
               },
             })}
           />
-        </div>
-        {errors.password && (
-          <p className='text-red-400  font-thin p-2'>
-            {errors.password.message}
-          </p>
-        )}
-      </div>
-      <div className='flex flex-col relative'>
-        <div className='grid items-center'>
-          <button className={`${styles.btn} mt-5`}>
-            {formType === 'login' ? 'Login' : 'Sign up'}
-          </button>
           <span className={styles.tooltip}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -100,7 +91,7 @@ function LoginForm({ formType }) {
               height='20'
               viewBox='0 0 24 24'
             >
-              <g fill='none' stroke='#ffffff' strokeLinejoin='round'>
+              <g fill='none' stroke='#85929a' strokeLinejoin='round'>
                 <circle
                   cx='12'
                   cy='12'
@@ -109,10 +100,23 @@ function LoginForm({ formType }) {
                   strokeWidth='1.5'
                 />
                 <path strokeWidth='2.25' d='M12 8h.01v.01H12z' />
-                <path strokeLinecap='round' stroke-width='1.5' d='M12 12v4' />
+                <path strokeLinecap='round' strokeWidth='1.5' d='M12 12v4' />
               </g>
             </svg>
           </span>
+        </div>
+
+        {errors.password && (
+          <p className='text-red-400  font-thin p-2'>
+            {errors.password.message}
+          </p>
+        )}
+      </div>
+      <div className='flex flex-col'>
+        <div className='grid items-center'>
+          <button className={`${styles.btn} mt-5`}>
+            {formType === 'login' ? 'Login' : 'Sign up'}
+          </button>
         </div>
         {formType === 'login' && (
           <p className='mt-3'>
