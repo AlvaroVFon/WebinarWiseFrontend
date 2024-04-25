@@ -1,9 +1,10 @@
 import styles from '@/styles/button.module.css'
 import Link from 'next/link'
+import { login } from '@/lib/serverActions/login'
 function LoginForm() {
   return (
     <form
-      action=''
+      action={login}
       className='flex flex-col gap-3 border-t md:border-l md:border-t-0 p-10'
     >
       <input
@@ -14,7 +15,7 @@ function LoginForm() {
       />
       <input
         type='password'
-        placeholder='Password'
+        placeholder='password'
         name='password'
         className='bg-transparent bg-[#18181B] p-3 rounded-md hover:bg-zinc-800 animation duration-300'
       />
