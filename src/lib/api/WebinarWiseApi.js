@@ -25,7 +25,6 @@ class WebinarWiseApi {
     }
   }
   async register(name, email, password) {
-    ç
     const response = await this.axiosInstance
       .post('/auth/register', {
         name,

@@ -1,28 +1,22 @@
 'use client'
 import styles from '@/styles/form.module.css'
 import Link from 'next/link'
-import api from '@/lib/api/WebinarWiseApi'
 import { useForm } from 'react-hook-form'
+import { loginHandler, signupHandler } from '@/lib/api/handlers/formHandler'
 function LoginForm({ formType }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onLogin = async (e) => {
-    api.login(e.email, e.password).catch((error) => {
-      alert('Invalid email or password')
-      console.log(error)
-    })
-  }
-  const onSignup = async (e) => {
-    api.register(e.name, e.email, e.password)
-  }
+
   return (
     <form
       className='flex flex-col gap-3 border-t md:border-l md:border-t-0 p-10'
       onSubmit={
-        formType === 'login' ? handleSubmit(onLogin) : handleSubmit(onSignup)
+        formType === 'login'
+          ? handleSubmit(loginHandler)
+          : handleSubmit(signupHandler)
       }
     >
       <div className='grid'>
@@ -31,7 +25,7 @@ function LoginForm({ formType }) {
             type='text'
             placeholder='name'
             name='name'
-            className='bg-[#353943] p-3 rounded-md hover:bg-zinc-800 animation duration-300'
+            className='bg-[#525866] p-3 rounded-md hover:bg-zinc-800 animation duration-300'
             {...register('name', {
               required: 'This is a required field',
               minLength: {
@@ -55,7 +49,7 @@ function LoginForm({ formType }) {
           placeholder='example@email.com'
           name='email'
           pattern='/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g'
-          className='bg-[#353943] p-3 rounded-md hover:bg-zinc-800 animation duration-300 w-full'
+          className='bg-[#525866] p-3 rounded-md hover:bg-zinc-800 animation duration-300 w-full'
           {...register('email', {
             required: 'This is a required field',
             pattern: {
@@ -73,7 +67,7 @@ function LoginForm({ formType }) {
           type='password'
           placeholder='password'
           name='password'
-          className='bg-[#353943] p-3 rounded-md hover:bg-zinc-800 animation duration-300 w-full'
+          className='bg-[#525866] p-3 rounded-md hover:bg-zinc-800 animation duration-300 w-full'
           {...register('password', {
             required: 'This is a required field',
             pattern: {
