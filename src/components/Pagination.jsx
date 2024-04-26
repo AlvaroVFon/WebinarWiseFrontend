@@ -1,4 +1,6 @@
 'use client'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 function Pagination({ currentPage = 1, totalPages = 12 }) {
@@ -18,7 +20,20 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
 
   return (
     <div className='flex flex-col gap-1 pb-3'>
-      <div className='flex gap-6'>
+      <p className='text-xs text-center p-2 text-[#525866]'>
+        Page <span className='text-[#707789]'>{currentPage}</span> of{' '}
+        <span className='text-[#707789]'>{totalPages}</span>
+      </p>
+      <div className='flex gap-6 items-center'>
+        <Link
+          href={`${pathname}?${createQueryString(
+            'page',
+            totalPages - (totalPages - 1)
+          )}`}
+          className='hover:scale-110 duration-100'
+        >
+          <Image src='/firstPage.svg' width={25} height={25} />
+        </Link>
         <button
           onClick={() =>
             router.push(
@@ -41,6 +56,12 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
         >
           Siguiente
         </button>
+        <Link
+          href={`${pathname}?${createQueryString('page', totalPages)}`}
+          className='hover:scale-110 duration-100'
+        >
+          <Image src='/lastPage.svg' width={25} height={25} />
+        </Link>
       </div>
     </div>
   )

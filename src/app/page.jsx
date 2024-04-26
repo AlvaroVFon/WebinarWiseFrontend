@@ -19,8 +19,8 @@ function Page() {
         />
         <Typewriter />
         <Link
-          href='/home/courses'
-          className='bg-[#354398] p-1 md:p-2 rounded-full text-lg text-center w-56 hover:bg-[#4462cc] mt-4 '
+          href='/home/courses?page=1'
+          className='bg-[#3649a8] p-1 md:p-2 rounded-lg text-lg text-[#a8b3cf] text-center  hover:bg-[#4462cc]'
         >
           Explore our courses
         </Link>

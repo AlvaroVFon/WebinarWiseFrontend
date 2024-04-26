@@ -5,7 +5,7 @@ import Image from 'next/image'
 function HeaderNav() {
   return (
     <nav className='flex gap-3 justify-end text-[#a8b3cf]'>
-      <Link href='/home/courses' className='p-3'>
+      <Link href='/home/courses?page=1' className='p-3'>
         <Image
           src='/courses.svg'
           alt='courses'
