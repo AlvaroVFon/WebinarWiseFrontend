@@ -5,7 +5,7 @@ import CourseCardHeader from './CourseCardHeader'
 
 function CourseCard() {
   return (
-    <article className='bg-[#1C1F26] rounded-xl w-[285px] h-[414px] p-4 border border-[#525866] hover:border-[#a8b3cf] flex flex-col justify-between'>
+    <article className='bg-[#1C1F26] rounded-xl w-[285px] h-[414px] p-4 border border-[#525866] hover:border-[#a8b3cf] flex flex-col justify-between hover:scale-105 duration-300'>
       <CourseCardHeader />
       <div className='flex flex-col gap-2'>
         <CourseCardsCategories />
@@ -15,7 +15,7 @@ function CourseCard() {
           alt='Curso de React'
           width={300}
           height={160}
-          className='w-[300px] h-[160px] object-cover rounded-xl'
+          className='rounded-xl'
         />
       </div>
       <CourseCardButtons />

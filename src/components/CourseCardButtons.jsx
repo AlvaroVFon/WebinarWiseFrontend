@@ -29,7 +29,7 @@ function CourseCardButtons({
       <Link
         href=''
         className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
-        onClick={(e) => {
+        onClick={() => {
           {
             navigator.clipboard.writeText(
               `http://localhost:3000/course/${courseId}`
@@ -38,7 +38,13 @@ function CourseCardButtons({
           }
         }}
       >
-        <Image src='/link.svg' alt='downvote' width={25} height={25} />
+        <Image src='/link.svg' alt='link' width={25} height={25} />
+      </Link>
+      <Link
+        href=''
+        className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
+      >
+        <Image src='/purchase.svg' alt='purchase' width={25} height={25} />
       </Link>
     </div>
   )
