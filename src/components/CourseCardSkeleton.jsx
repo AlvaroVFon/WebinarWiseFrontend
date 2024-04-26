@@ -7,7 +7,6 @@ function CourseCardSkeleton() {
       <div className='flex gap-1 justify-end'>
         <div className='bg-[#747c90] w-16 h-6 rounded-md'></div>
         <div className='bg-[#747c90] w-16 h-6 rounded-md'></div>
-        <div className='bg-[#747c90] w-16 h-6 rounded-md'></div>
       </div>
       <div className='h-2 w-1/3 bg-[#747c90] rounded-lg mt-2'></div>
       <div className='w-full h-[160px] bg-[#747c90] rounded-xl'></div>
