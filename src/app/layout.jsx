@@ -1,6 +1,6 @@
 import { Varela_Round } from 'next/font/google'
 import './globals.css'
-
+import TanstackProvider from '@/lib/providers/TanstackProvider'
 const varelaRound = Varela_Round({ subsets: ['latin'], weight: '400' })
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={`${varelaRound.className} bg-[#0E1217] text-white`}>
-        {children}
+        <TanstackProvider>{children}</TanstackProvider>
       </body>
     </html>
   )
