@@ -15,6 +15,7 @@ function Page() {
           height={50}
           alt='logo'
           className='w-64 md:w-[450px]'
+          priority
         />
         <Typewriter />
         <Link
