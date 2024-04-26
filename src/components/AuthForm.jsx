@@ -114,7 +114,7 @@ function LoginForm({ formType }) {
         </div>
         {formType === 'login' && (
           <p className='mt-3'>
-            Don&apos;t have an account?{' '}
+            Don &apos; t have an account?{' '}
             <Link
               href='/signup'
               className='text-[#597dd8] hover:text-[#4462cc]'
