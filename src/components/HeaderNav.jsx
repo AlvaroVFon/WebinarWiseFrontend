@@ -1,21 +1,38 @@
 // import UserAvatar from './UserProfile'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function HeaderNav() {
   return (
-    <nav className='flex gap-3'>
-      <Link href='/home/cursos' className='p-3'>
-        Courses
+    <nav className='flex gap-3 justify-end text-[#a8b3cf]'>
+      <Link href='/home/courses' className='p-3'>
+        <Image
+          src='/courses.svg'
+          alt='courses'
+          width={25}
+          height={25}
+          className='hover:scale-110 transition-transform duration-300 ease-in-out'
+        />
       </Link>
-      <Link href='/home/categorias' className='p-3'>
-        Categories
+      <Link href='/home/categories' className='p-3'>
+        <Image
+          src='/category.svg'
+          alt='category'
+          width={25}
+          height={25}
+          className='hover:scale-110 transition-transform duration-300 ease-in-out'
+        />
       </Link>
       <Link href='/login' className='p-3'>
-        Log in
+        <Image
+          src='/login.svg'
+          alt='login'
+          width={25}
+          height={25}
+          className='hover:scale-110 transition-transform duration-300 ease-in-out'
+        />
       </Link>
-      <Link href='' className='p-3'>
-        Sign up
-      </Link>
+
       {/* <Link href=''>
         <UserAvatar />
       </Link> */}

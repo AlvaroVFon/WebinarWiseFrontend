@@ -19,7 +19,7 @@ function Page() {
         />
         <Typewriter />
         <Link
-          href='/home/cursos'
+          href='/home/courses'
           className='bg-[#354398] p-1 md:p-2 rounded-full text-lg text-center w-56 hover:bg-[#4462cc] mt-4 '
         >
           Explore our courses
