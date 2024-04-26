@@ -20,9 +20,22 @@ function Page() {
         <Typewriter />
         <Link
           href='/home/courses?page=1'
-          className='bg-[#3649a8] p-1 md:p-2 rounded-lg text-lg text-[#a8b3cf] text-center  hover:bg-[#4462cc]'
+          className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-[#7c83af] hover:text-[#696e99] border border-[#7c83af] hover:border-[#696e99] text-center'
         >
-          Explore our courses
+          Explore our courses{' '}
+          <span className='animate-bounce'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='20'
+              height='20'
+              viewBox='0 0 24 24'
+            >
+              <path
+                fill='#696e99'
+                d='m14.475 12l-7.35-7.35q-.375-.375-.363-.888t.388-.887q.375-.375.888-.375t.887.375l7.675 7.7q.3.3.45.675t.15.75q0 .375-.15.75t-.45.675l-7.7 7.7q-.375.375-.875.363T7.15 21.1q-.375-.375-.375-.888t.375-.887z'
+              />
+            </svg>
+          </span>
         </Link>
       </div>
     </div>

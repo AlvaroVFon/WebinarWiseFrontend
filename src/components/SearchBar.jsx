@@ -1,6 +1,6 @@
 async function SearchBar() {
   return (
-    <form action=''>
+    <form action='' className=''>
       <input
         type='search'
         placeholder='Search...'

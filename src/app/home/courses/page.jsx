@@ -16,7 +16,6 @@ async function CursosPage({ searchParams }) {
         <CourseCard />
         <CourseCard />
         <CourseCard />
-        <CourseCardSkeleton />
       </div>
       <div className='flex justify-center'>
         <Pagination currentPage={page} />
