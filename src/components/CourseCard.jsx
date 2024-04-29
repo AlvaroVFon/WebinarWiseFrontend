@@ -3,7 +3,7 @@ import CourseCardButtons from './CourseCardButtons'
 import CourseCardsCategories from './CourseCardCategories'
 import CourseCardHeader from './CourseCardHeader'
 
-function CourseCard() {
+function CourseCard({ courseID = 1 }) {
   return (
     <article className='bg-[#1C1F26] rounded-xl w-[285px] h-[414px] p-4 border border-[#525866] hover:border-[#a8b3cf] flex flex-col justify-between hover:scale-105 duration-300'>
       <CourseCardHeader />
