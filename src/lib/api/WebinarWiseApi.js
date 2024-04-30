@@ -16,7 +16,6 @@ class WebinarWiseApi {
       const userInfo = await this.getUserInfo({ token })
         .then((data) => {
           sessionStorage.setItem('session', JSON.stringify(data, token))
-
           return data
         })
         .catch((error) => console.log(error))
