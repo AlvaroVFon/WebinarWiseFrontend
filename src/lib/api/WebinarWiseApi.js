@@ -41,7 +41,7 @@ class WebinarWiseApi {
       .get(url)
       .then((res) => {
         if (res.status === 200) {
-          return res.data.results
+          return res.data
         }
       })
       .catch((error) => error)
