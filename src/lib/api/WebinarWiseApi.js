@@ -16,6 +16,7 @@ class WebinarWiseApi {
       const userInfo = await this.getUserInfo({ token })
         .then((data) => {
           sessionStorage.setItem('session', JSON.stringify(data, token))
+
           return data
         })
         .catch((error) => console.log(error))
@@ -33,23 +34,21 @@ class WebinarWiseApi {
         return error
       })
 
-    console.log(response)
-    return response
+    return response.data
   }
   async getUserInfo(token) {
     const response = await this.axiosInstance.post('/auth/info', token)
     return response.data
   }
-  async getCourses() {
+  async getCourses(url) {
     const response = await this.axiosInstance
-      .get('/courses')
+      .get(url)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res)
           return res.data
         }
       })
-      .catch((error) => console.log(error))
+      .catch((error) => error)
     return response
   }
 }

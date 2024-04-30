@@ -1,11 +1,8 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-function CourseCardButtons({
-  numberOfComments = 12,
-  numberOfLikes = 43,
-  courseId = 1,
-}) {
+function CourseCardButtons({ numberOfComments = 12, course }) {
+  const { id: courseId, likes = 12 } = course
   return (
     <div className='flex items-center justify-evenly'>
       <Link
@@ -23,7 +20,7 @@ function CourseCardButtons({
         className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
       >
         <Image src='/upvote.svg' alt='upvote' width={25} height={25} />
-        <p className='text-sm text-[#a8b3cf] cursor-pointer'>{numberOfLikes}</p>
+        <p className='text-sm text-[#a8b3cf] cursor-pointer'>{likes}</p>
       </Link>
 
       <Link
