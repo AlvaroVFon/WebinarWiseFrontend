@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className={`${varelaRound.className}`}>
-      <body className='light bg-bgPrimary text-primary'>
+      <body className='dark bg-bgPrimary text-primary'>
         <SessionProvider>
           <TanstackProvider>{children}</TanstackProvider>
         </SessionProvider>
