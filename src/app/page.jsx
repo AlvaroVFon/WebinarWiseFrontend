@@ -1,8 +1,12 @@
+'use client'
 import Typewriter from '@/components/Typewriter'
 import LandingNav from '@/components/LandingNav'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTheme } from '@/contexts/ThemeProvider'
 function Page() {
+  const { theme, toggleTheme } = useTheme()
+  console.log(theme)
   return (
     <div className='h-screen flex flex-col'>
       <div className='flex justify-end'>

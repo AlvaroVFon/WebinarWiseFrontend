@@ -1,5 +1,4 @@
 import Header from '@/components/Header'
-
 function HomeLayout({ children }) {
   return (
     <div className='min-h-screen'>
