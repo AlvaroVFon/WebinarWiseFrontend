@@ -56,7 +56,7 @@ function LoginForm({ formType }) {
             type='text'
             placeholder='name'
             name='name'
-            className='bg-zinc-950 p-3 rounded-md hover:bg-zinc-900 animation duration-300'
+            className='bg-bgTertiary p-3 rounded-md hover:bg-bgTertiary animation duration-300'
             {...register('name', {
               required: 'This is a required field',
               minLength: {

@@ -10,7 +10,7 @@ function Page() {
       </div>
       <div className='flex flex-col items-start m-auto gap-3 md:gap-10'>
         <Image
-          src='/logo-dark.svg'
+          src='/logo.svg'
           width={500}
           height={50}
           alt='logo'
