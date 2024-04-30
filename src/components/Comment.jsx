@@ -12,18 +12,18 @@ Ratione velit itaque modi ex temporibus consequatur a! Totam, hic`,
   commentDate = '2021-09-01',
 }) {
   return (
-    <div className='lg:w-[920px] min-h-[100px] p-5 bg-[#212328] rounded-lg'>
+    <div className='lg:w-[920px] min-h-[100px] p-5 bg-bgSecondary rounded-lg'>
       <div className='flex justify-between'>
         <h3 className='font-semibold'>
           @{username} - <span className='font-thin italic'>#{userRole}</span>
         </h3>
-        <p className='text-sm text-[#525866]'>
+        <p className='text-sm text-muted'>
           {commentDate.split('-').reverse().join('-')}
         </p>
       </div>
       <p className='p-3'>{comment}</p>
       <div className='flex items-center justify-end gap-3'>
-        <button className='flex gap-1 items-center hover:bg-[#32353b] p-1 rounded-md'>
+        <button className='flex gap-1 items-center hover:bg-bgTertiary p-1 rounded-md duration-300'>
           <Image src='/upvote.svg' width={25} height={25} alt='upvote' />
           <p>5</p>
         </button>

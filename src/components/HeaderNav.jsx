@@ -7,7 +7,7 @@ function HeaderNav() {
   const { user, signOut } = useSession()
   console.log(user)
   return (
-    <nav className='flex gap-3 justify-end text-[#a8b3cf] items-center'>
+    <nav className='flex gap-3 justify-end text-accent items-center'>
       <Link href='/home/courses?page=1' className='p-3'>
         <Image
           src='/courses.svg'

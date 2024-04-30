@@ -6,15 +6,17 @@ function CourseCardHeader({ course }) {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex justify-between items-center'>
-        <span className='text-[#525866]'>#{id}</span>
+        <span className='text-muted'>#{id}</span>
         <Link
           href={`/home/courses/${id}`}
-          className='text-sm text-[#525866] hover:text-[#a8b3cf] duration-300'
+          className='text-sm text-muted hover:text-accent duration-300'
         >
           View course
         </Link>
       </div>
-      <h2 className={`${roboto.className} font-extrabold text-xl`}>{name}</h2>
+      <h2 className={`${roboto.className} font-extrabold text-xl text-primary`}>
+        {name}
+      </h2>
     </div>
   )
 }

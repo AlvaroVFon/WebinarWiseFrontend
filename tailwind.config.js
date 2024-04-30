@@ -7,11 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      dropShadow: {
-        glow: [
-          '0 0px 20px rgba(255,255, 255, 0.35)',
-          '0 0px 65px rgba(255, 255,255, 0.2)',
-        ],
+      colors: {
+        bgPrimary: 'var(--bg-primary)',
+        bgSecondary: 'var(--bg-secondary)',
+        bgTertiary: 'var(--bg-tertiary)',
+        bgCuaternary: 'var(--bg-cuaternary)',
+        primary: 'var(--primary)',
+        accent: 'var(--accent)',
+        accentDarker: 'var(--accent-darker)',
+        muted: 'var(--muted)',
       },
     },
   },

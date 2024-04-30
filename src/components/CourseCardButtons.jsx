@@ -7,25 +7,23 @@ function CourseCardButtons({ numberOfComments = 12, course }) {
     <div className='flex items-center justify-evenly'>
       <Link
         href=''
-        className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
+        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
       >
         <Image src='/comment.svg' alt='comments' width={25} height={25} />
-        <p className='text-sm text-[#a8b3cf] cursor-pointer'>
-          {numberOfComments}
-        </p>
+        <p className='text-sm text-accent cursor-pointer'>{numberOfComments}</p>
       </Link>
 
       <Link
         href=''
-        className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
+        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
       >
         <Image src='/upvote.svg' alt='upvote' width={25} height={25} />
-        <p className='text-sm text-[#a8b3cf] cursor-pointer'>{likes}</p>
+        <p className='text-sm text-accent cursor-pointer'>{likes}</p>
       </Link>
 
       <Link
         href=''
-        className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
+        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
         onClick={() => {
           {
             navigator.clipboard.writeText(
@@ -39,7 +37,7 @@ function CourseCardButtons({ numberOfComments = 12, course }) {
       </Link>
       <Link
         href=''
-        className='flex items-center gap-1 hover:bg-[#32353b] rounded-md p-1 duration-300'
+        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
       >
         <Image src='/purchase.svg' alt='purchase' width={25} height={25} />
       </Link>
