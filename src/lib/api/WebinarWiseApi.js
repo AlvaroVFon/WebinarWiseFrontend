@@ -13,14 +13,14 @@ class WebinarWiseApi {
     })
     if (response.status === 200) {
       const { token } = response.data
-      console.log(token)
-      const userInfo = await this.getUserInfo(token)
+      const userInfo = await this.getUserInfo({ token })
         .then((data) => {
-          console.log(data)
+          sessionStorage.setItem('session', JSON.stringify(data, token))
           return data
         })
         .catch((error) => console.log(error))
     }
+    return response
   }
   async signup(name, email, password) {
     const response = await this.axiosInstance
@@ -34,7 +34,7 @@ class WebinarWiseApi {
       })
 
     console.log(response)
-    return response.data
+    return response
   }
   async getUserInfo(token) {
     const response = await this.axiosInstance.post('/auth/info', token)

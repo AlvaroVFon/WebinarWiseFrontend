@@ -2,23 +2,52 @@
 import styles from '@/styles/form.module.css'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { loginHandler, signupHandler } from '@/lib/handlers/formHandler'
+import { useRouter } from 'next/navigation'
 import { useSession } from '@/contexts/SessionProvider'
+import api from '@/lib/api/WebinarWiseApi'
 function LoginForm({ formType }) {
+  const { user, signIn } = useSession()
+  const router = useRouter()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const { getSession, signIn } = useSession()
-  console.log(getSession())
+  const onLoginSubmit = async (data) => {
+    const response = await api
+      .login(data.email, data.password)
+      .catch((error) => {
+        alert('Invalid email or password. Please try again.')
+        return error
+      })
+    if (response.status === 200) {
+      signIn(response.data)
+      router.push('/home/courses')
+    }
+    console.log(response)
+  }
+  const onSignupSubmit = async (data) => {
+    const response = await api
+      .signup(data.name, data.email, data.password)
+      .then((res) => {
+        if (res.status === 200) {
+          alert('Account created successfully. Please login to continue.')
+          router.push('/login')
+        }
+      })
+      .catch((error) => {
+        alert('Something went wrong. Please try again later.')
+        return error
+      })
+    return response
+  }
   return (
     <form
       className='flex flex-col gap-3 border-t md:border-l md:border-t-0 p-10'
       onSubmit={
         formType === 'login'
-          ? handleSubmit(loginHandler)
-          : handleSubmit(signupHandler)
+          ? handleSubmit(onLoginSubmit)
+          : handleSubmit(onSignupSubmit)
       }
     >
       <div className='grid'>

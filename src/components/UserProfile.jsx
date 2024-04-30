@@ -3,7 +3,7 @@ function UserAvatar() {
   return (
     <Image
       alt='avatar'
-      src='/11.jpg'
+      src='/avatar.png'
       width={40}
       height={40}
       className='rounded-full'

@@ -32,7 +32,7 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
           )}`}
           className='hover:scale-110 duration-100'
         >
-          <Image src='/firstPage.svg' width={25} height={25} />
+          <Image src='/firstPage.svg' width={25} height={25} alt='first page' />
         </Link>
         <button
           onClick={() =>
@@ -60,7 +60,7 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
           href={`${pathname}?${createQueryString('page', totalPages)}`}
           className='hover:scale-110 duration-100'
         >
-          <Image src='/lastPage.svg' width={25} height={25} />
+          <Image src='/lastPage.svg' width={25} height={25} alt='last page' />
         </Link>
       </div>
     </div>

@@ -1,5 +1,5 @@
 'use client'
-import { useContext, createContext } from 'react'
+import { useContext, createContext, useState, useEffect } from 'react'
 const SessionContext = createContext({
   user: {},
   signIn: () => {},
@@ -8,22 +8,26 @@ const SessionContext = createContext({
 })
 
 function SessionProvider({ children }) {
-  const getUser = () => {
-    const user = sessionStorage.getItem('session')
-    return user ? JSON.parse(user) : null
-  }
+  const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    const session = sessionStorage.getItem('session')
+    if (session) {
+      setUser(JSON.parse(session))
+    }
+  }, [])
   const signIn = (user) => {
     sessionStorage.setItem('session', JSON.stringify(user))
+    setUser(user)
   }
   const signOut = () => {
     sessionStorage.removeItem('session')
+    setUser(null)
+    window.location.reload()
   }
-  const getSession = () => {
-    return getUser() ? true : false
-  }
+
   return (
-    <SessionContext.Provider value={{ signIn, signOut, getUser, getSession }}>
+    <SessionContext.Provider value={{ user, signIn, signOut }}>
       {children}
     </SessionContext.Provider>
   )
