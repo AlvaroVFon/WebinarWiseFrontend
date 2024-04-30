@@ -1,4 +1,5 @@
-import { useContext, createContext, useState, useEffect } from 'react'
+'use client'
+import { useContext, createContext } from 'react'
 const SessionContext = createContext({
   user: {},
   signIn: () => {},
@@ -15,10 +16,10 @@ function SessionProvider({ children }) {
   const signIn = (user) => {
     sessionStorage.setItem('session', JSON.stringify(user))
   }
-  signOut = () => {
+  const signOut = () => {
     sessionStorage.removeItem('session')
   }
-  getSession = () => {
+  const getSession = () => {
     return getUser() ? true : false
   }
   return (

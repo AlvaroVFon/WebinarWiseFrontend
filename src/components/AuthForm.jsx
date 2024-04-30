@@ -3,13 +3,15 @@ import styles from '@/styles/form.module.css'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { loginHandler, signupHandler } from '@/lib/handlers/formHandler'
+import { useSession } from '@/contexts/SessionProvider'
 function LoginForm({ formType }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-
+  const { getSession, signIn } = useSession()
+  console.log(getSession())
   return (
     <form
       className='flex flex-col gap-3 border-t md:border-l md:border-t-0 p-10'
