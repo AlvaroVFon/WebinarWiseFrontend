@@ -8,6 +8,7 @@ async function CursosPage({ searchParams }) {
   const { page } = await searchParams
   const url = `/courses?page=${page}&perPage=12`
   const courses = await api.getCourses(url).catch((error) => console.log(error))
+  console.log(courses.totalPages)
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
@@ -18,7 +19,7 @@ async function CursosPage({ searchParams }) {
         ))}
       </div>
       <div className='flex justify-center'>
-        <Pagination currentPage={page} />
+        <Pagination currentPage={page} totalPages={courses.totalPages} />
       </div>
     </div>
   )
