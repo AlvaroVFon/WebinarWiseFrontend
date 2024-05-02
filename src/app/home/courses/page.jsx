@@ -7,7 +7,7 @@ import api from '@/lib/api/WebinarWiseApi'
 async function CursosPage({ searchParams }) {
   const { page } = await searchParams
   const url = `/courses?page=${page}&perPage=12`
-  const courses = await api.getCourses(url).catch((error) => console.log(error))
+  const courses = await api.getCourses(url).catch((error) => error)
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>

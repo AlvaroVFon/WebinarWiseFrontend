@@ -7,14 +7,13 @@ async function CursosPage({ params }) {
   const course = await axios
     .get(`https://webinarwise-api.onrender.com/api/courses/${courseId}`)
     .then((res) => res.data)
-    .catch((err) => console.log(err))
+    .catch((err) => err)
   const category = await axios
     .get(
       `https://webinarwise-api.onrender.com/api/courses/${courseId}/category`
     )
     .then((res) => res.data)
-    .catch((err) => console.log(err))
-  console.log(category)
+    .catch((err) => err)
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>

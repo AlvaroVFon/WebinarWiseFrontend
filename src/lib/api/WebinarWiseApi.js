@@ -18,7 +18,7 @@ class WebinarWiseApi {
           sessionStorage.setItem('session', JSON.stringify(data, token))
           return data
         })
-        .catch((error) => console.log(error))
+        .catch((error) => error)
     }
     return response
   }

@@ -24,7 +24,6 @@ function LoginForm({ formType }) {
       signIn(response.data)
       router.push('/home/courses')
     }
-    console.log(response)
   }
   const onSignupSubmit = async (data) => {
     const response = await api

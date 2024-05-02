@@ -4,7 +4,6 @@ function AddComment() {
   const [counter, setCounter] = useState(140)
   const handleChange = (e) => {
     setCounter(140 - e.target.value.length)
-    console.log(e.target.value.length)
   }
   return (
     <form action='' className='flex flex-col items-end gap-3'>
