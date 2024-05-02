@@ -9,7 +9,7 @@ function CourseCardsCategories({
         <Link
           key={index}
           href=''
-          className='text-xs text-[#525866] border p-1 rounded-lg border-[#525866] hover:bg-[#32353b] duration-300 hover:text-[#a8b3cf]'
+          className='text-xs text-muted border p-1 rounded-lg border-muted hover:bg-bgTertiary duration-300 hover:text-accent'
         >
           #{category}
         </Link>

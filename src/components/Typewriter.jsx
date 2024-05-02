@@ -1,9 +1,11 @@
 import styles from '@/styles/typewriter.module.css'
 function Typewriter() {
   return (
-    <p className='text-3xl md:text-[50px] text-[#a8b3cf]'>
+    <p className='text-3xl md:text-[50px] text-accent'>
       Learn how to
-      <span className={`${styles.typewriter} ${styles.line}`}></span>
+      <span
+        className={`${styles.typewriter} ${styles.line} text-accent`}
+      ></span>
     </p>
   )
 }

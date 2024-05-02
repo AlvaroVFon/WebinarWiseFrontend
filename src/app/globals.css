@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .dark {
+    --bg-primary: #0e1217;
+    --bg-secondary: #1c1f26;
+    --bg-tertiary: #32353b;
+    --bg-cuaternary: #2b2e34;
+    --primary: #fff;
+    --accent: #a8b3cf;
+    --accent-darker: #707789;
+    --muted: #525866;
+  }
+  .light {
+    --bg-primary: #ffffff; /* Blanco para el fondo principal */
+    --bg-secondary: #f5f5f5; /* Gris claro para el fondo secundario */
+    --bg-tertiary: #e0e0e0; /* Gris medio para el fondo terciario */
+    --bg-cuaternary: #cccccc; /* Gris medio para el fondo cuaternario */
+    --primary: #007bff; /* Azul brillante para el color primario */
+    --accent: #2a7fff; /* Azul más oscuro para resaltar */
+    --accent-darker: #0044cc; /* Azul oscuro para resaltar aún más */
+    --muted: #6c757d; /* Gris suave paris suave para texto secundario o  /* Gris suave para texto secundar/* Gris suave para texto secundario o elementos menos importantes */
+  }
+}
