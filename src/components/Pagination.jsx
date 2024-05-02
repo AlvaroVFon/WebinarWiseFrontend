@@ -40,7 +40,7 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
               `${pathname}?${createQueryString('page', Number(page) - 1)}`
             )
           }
-          className='p-2 border border-accent rounded-lg text-sm text-accent hover:text-muted duration-300'
+          className='p-2 border border-accentDarker rounded-lg text-sm text-accentDarker hover:text-accent hover:border-accent duration-300'
           disabled={page <= 1}
         >
           Previous
@@ -51,7 +51,7 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
               `${pathname}?${createQueryString('page', Number(page) + 1)}`
             )
           }}
-          className='p-2 border border-accent rounded-lg text-sm text-accent hover:text-muted duration-300'
+          className='p-2 border border-accentDarker rounded-lg text-sm text-accentDarker hover:text-accent hover:border-accent duration-300'
           disabled={page >= totalPages}
         >
           Siguiente

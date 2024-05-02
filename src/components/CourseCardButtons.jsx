@@ -29,7 +29,7 @@ function CourseCardButtons({ numberOfComments = 12, course }) {
             navigator.clipboard.writeText(
               `http://localhost:3000/course/${courseId}`
             )
-            alert('Link copied to clipboard')
+            alert('Link copied to clipboard') // cambiar por pop-up
           }
         }}
       >

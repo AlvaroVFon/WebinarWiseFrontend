@@ -3,7 +3,6 @@ import Typewriter from '@/components/Typewriter'
 import LandingNav from '@/components/LandingNav'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTheme } from '@/contexts/ThemeProvider'
 function Page() {
   return (
     <div className='h-screen flex flex-col'>
@@ -22,7 +21,7 @@ function Page() {
         <Typewriter />
         <Link
           href='/home/courses?page=1'
-          className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-accent hover:text-muted border border-accent hover:border-muted text-center duration-300'
+          className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-accentDarker hover:text-accent border border-accentDarker hover:border-accent text-center duration-300'
         >
           Explore our courses{' '}
           <span className='animate-bounce text-muted'>{'>'}</span>

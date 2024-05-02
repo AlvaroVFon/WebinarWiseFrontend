@@ -1,4 +1,3 @@
-'use client'
 import CourseCard from '@/components/CourseCard'
 import CourseCardSkeleton from '@/components/CourseCardSkeleton'
 import Pagination from '@/components/Pagination'

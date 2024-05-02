@@ -7,7 +7,7 @@ async function CursosPage({ params }) {
   const course = await axios
     .get(`https://webinarwise-api.onrender.com/api/courses/${courseId}`)
     .then((res) => res.data)
-    .catch((err) => err)
+
   const category = await axios
     .get(
       `https://webinarwise-api.onrender.com/api/courses/${courseId}/category`
