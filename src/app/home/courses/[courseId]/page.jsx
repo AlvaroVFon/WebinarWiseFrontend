@@ -1,19 +1,11 @@
 import AddComment from '@/components/AddComment'
 import Comment from '@/components/Comment'
 import Image from 'next/image'
-import axios from 'axios'
+import api from '@/lib/api/WebinarWiseApi'
 async function CursosPage({ params }) {
   const { courseId } = await params
-  const course = await axios
-    .get(`https://webinarwise-api.onrender.com/api/courses/${courseId}`)
-    .then((res) => res.data)
-
-  const category = await axios
-    .get(
-      `https://webinarwise-api.onrender.com/api/courses/${courseId}/category`
-    )
-    .then((res) => res.data)
-    .catch((err) => err)
+  const course = await api.getCoursesById(courseId)
+  const category = await api.getCourseCategoryById(courseId)
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>

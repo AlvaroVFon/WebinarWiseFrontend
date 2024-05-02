@@ -50,6 +50,28 @@ class WebinarWiseApi {
       .catch((error) => error)
     return response
   }
+  async getCoursesById(id) {
+    const response = await this.axiosInstance
+      .get(`/courses/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.data
+        }
+      })
+      .catch((error) => error)
+    return response
+  }
+  async getCourseCategoryById(id) {
+    const response = await this.axiosInstance
+      .get(`/courses/${id}/category`)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.data
+        }
+      })
+
+    return response
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api
