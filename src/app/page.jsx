@@ -5,8 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from '@/contexts/ThemeProvider'
 function Page() {
-  const { theme, toggleTheme } = useTheme()
-  console.log(theme)
   return (
     <div className='h-screen flex flex-col'>
       <div className='flex justify-end'>
@@ -27,19 +25,7 @@ function Page() {
           className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-accent hover:text-muted border border-accent hover:border-muted text-center duration-300'
         >
           Explore our courses{' '}
-          <span className='animate-bounce'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='20'
-              height='20'
-              viewBox='0 0 24 24'
-            >
-              <path
-                fill='#696e99'
-                d='m14.475 12l-7.35-7.35q-.375-.375-.363-.888t.388-.887q.375-.375.888-.375t.887.375l7.675 7.7q.3.3.45.675t.15.75q0 .375-.15.75t-.45.675l-7.7 7.7q-.375.375-.875.363T7.15 21.1q-.375-.375-.375-.888t.375-.887z'
-              />
-            </svg>
-          </span>
+          <span className='animate-bounce text-muted'>{'>'}</span>
         </Link>
       </div>
     </div>
