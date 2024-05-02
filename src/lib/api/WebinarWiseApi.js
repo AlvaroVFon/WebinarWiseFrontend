@@ -14,8 +14,9 @@ class WebinarWiseApi {
     if (response.status === 200) {
       const { token } = response.data
       const userInfo = await this.getUserInfo({ token })
-        .then((data) => {
-          sessionStorage.setItem('session', JSON.stringify(data, token))
+        .then((info) => {
+          const user = { ...info, token }
+          sessionStorage.setItem('session', JSON.stringify(user))
           return data
         })
         .catch((error) => error)
@@ -61,7 +62,7 @@ class WebinarWiseApi {
       .catch((error) => error)
     return response
   }
-  async getCourseCategoryById(id) {
+  async getCategoryByCourseId(id) {
     const response = await this.axiosInstance
       .get(`/courses/${id}/category`)
       .then((res) => {
@@ -72,6 +73,7 @@ class WebinarWiseApi {
 
     return response
   }
+  async getCommentsByCourseId(id) {}
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api

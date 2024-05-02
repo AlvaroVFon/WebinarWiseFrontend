@@ -5,7 +5,8 @@ import api from '@/lib/api/WebinarWiseApi'
 async function CursosPage({ params }) {
   const { courseId } = await params
   const course = await api.getCoursesById(courseId)
-  const category = await api.getCourseCategoryById(courseId)
+  const category = await api.getCategoryByCourseId(courseId)
+  const comments = await api.getCommentsByCourseId(courseId)
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>
@@ -36,6 +37,13 @@ async function CursosPage({ params }) {
         username='FinanceWhiz123'
         comment='"No me gustó el curso, no lo recomendaría a nadie."'
       />
+      {comments?.map((comment) => (
+        <Comment
+          key={comment?.id}
+          username={comment?.username}
+          comment={comment?.comment}
+        />
+      ))}
     </div>
   )
 }

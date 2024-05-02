@@ -1,13 +1,13 @@
 'use client'
 import styles from '@/styles/form.module.css'
 import Link from 'next/link'
-import { useForm } from 'react-hook-form'
+import { get, useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { useSession } from '@/contexts/SessionProvider'
 import api from '@/lib/api/WebinarWiseApi'
 function LoginForm({ formType }) {
-  const { user, signIn } = useSession()
   const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -16,14 +16,14 @@ function LoginForm({ formType }) {
   const onLoginSubmit = async (data) => {
     const response = await api
       .login(data.email, data.password)
+      .then((res) => {
+        if (res.status === 200) {
+          router.push('/home/courses?page=1')
+        }
+      })
       .catch((error) => {
         alert('Invalid email or password. Please try again.')
-        return error
       })
-    if (response.status === 200) {
-      signIn(response.data)
-      router.push('/home/courses')
-    }
   }
   const onSignupSubmit = async (data) => {
     const response = await api

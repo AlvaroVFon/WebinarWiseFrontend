@@ -2,9 +2,7 @@
 import { useContext, createContext, useState, useEffect } from 'react'
 const SessionContext = createContext({
   user: {},
-  signIn: () => {},
   signOut: () => {},
-  getSession: () => {},
 })
 
 function SessionProvider({ children }) {
@@ -16,10 +14,7 @@ function SessionProvider({ children }) {
       setUser(JSON.parse(session))
     }
   }, [])
-  const signIn = (user) => {
-    sessionStorage.setItem('session', JSON.stringify(user))
-    setUser(user)
-  }
+
   const signOut = () => {
     sessionStorage.removeItem('session')
     setUser(null)
@@ -27,7 +22,7 @@ function SessionProvider({ children }) {
   }
 
   return (
-    <SessionContext.Provider value={{ user, signIn, signOut }}>
+    <SessionContext.Provider value={{ user, signOut }}>
       {children}
     </SessionContext.Provider>
   )

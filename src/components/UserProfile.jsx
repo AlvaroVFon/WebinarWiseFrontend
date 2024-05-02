@@ -1,13 +1,18 @@
 import Image from 'next/image'
-function UserAvatar() {
+import Link from 'next/link'
+function UserAvatar({ user }) {
   return (
-    <Image
-      alt='avatar'
-      src='/avatar.png'
-      width={40}
-      height={40}
-      className='rounded-full'
-    />
+    user && (
+      <Link href='/profile'>
+        <Image
+          alt='avatar'
+          src={user.profile_pic ?? '/avatar.png'}
+          width={40}
+          height={40}
+          className='rounded-full'
+        />
+      </Link>
+    )
   )
 }
 export default UserAvatar

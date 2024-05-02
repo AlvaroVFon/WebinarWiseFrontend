@@ -66,7 +66,7 @@ function HeaderNav() {
       )}
       {user && (
         <Link href=''>
-          <UserAvatar />
+          <UserAvatar user={user} />
         </Link>
       )}
     </nav>
