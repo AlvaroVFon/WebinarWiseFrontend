@@ -1,4 +1,4 @@
-function CategoriesPage() {
+async function CategoriesPage() {
   return (
     <div className='grid place-items-center min-h-screen'>
       <div className=''>

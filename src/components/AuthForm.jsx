@@ -56,7 +56,7 @@ function LoginForm({ formType }) {
             type='text'
             placeholder='name'
             name='name'
-            className='bg-bgTertiary p-3 rounded-md hover:bg-bgTertiary animation duration-300'
+            className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300'
             {...register('name', {
               required: 'This is a required field',
               minLength: {
@@ -80,7 +80,7 @@ function LoginForm({ formType }) {
           placeholder='example@email.com'
           name='email'
           pattern='/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g'
-          className='bg-zinc-950 p-3 rounded-md hover:bg-zinc-900 animation duration-300 w-full'
+          className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full'
           {...register('email', {
             required: 'This is a required field',
             pattern: {
@@ -98,7 +98,7 @@ function LoginForm({ formType }) {
           type='password'
           placeholder='password'
           name='password'
-          className='bg-zinc-950 p-3 rounded-md hover:bg-zinc-900 animation duration-300 w-full'
+          className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full'
           {...register('password', {
             required: 'This is a required field',
             pattern: {

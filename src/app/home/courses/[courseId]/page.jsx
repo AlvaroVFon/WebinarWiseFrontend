@@ -4,19 +4,20 @@ import Image from 'next/image'
 import axios from 'axios'
 async function CursosPage({ params }) {
   const { courseId } = await params
-  const course = await axios.get(
-    `https://webinarwise-api.onrender.com/api/courses/${courseId}`
+  const course = await axios
+    .get(`https://webinarwise-api.onrender.com/api/courses/${courseId}`)
+    .then((res) => res.data)
+    .catch((err) => console.log(err))
+  const category = await axios(
+    `https://webinarwise-api.onrender.com/api/courses/${courseId}/category`
   )
-  console.log(course)
+  console.log(course, category)
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>
         <div className=''>
-          <h1 className='text-2xl font-bold my-10'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit, repellat!
-          </h1>
-          <p>Categoría</p>
+          <h1 className='text-2xl font-bold my-10'>{course.name}</h1>
+          <p>{category}</p>
         </div>
         <Image
           src='https://placehold.jp/27272A/ffffff/920x600.png'
