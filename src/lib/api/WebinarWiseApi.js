@@ -73,7 +73,17 @@ class WebinarWiseApi {
 
     return response
   }
-  async getCommentsByCourseId(id) {}
+  async getCommentsByCourseId(id) {
+    const response = await this.axiosInstance
+      .get(`/courses/${id}/comments`)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.data
+        }
+      })
+      .catch((error) => console.log(error))
+    return response
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api

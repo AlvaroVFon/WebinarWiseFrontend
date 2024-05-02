@@ -6,8 +6,10 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useSession } from '@/contexts/SessionProvider'
 import { changeTheme } from '@/lib/utils/changeTheme'
+
 function HeaderNav() {
   const { user, signOut } = useSession()
+  const pathname = usePathname()
   const [theme, setTheme] = useState('dark')
   return (
     <nav className='flex gap-3 justify-end text-accent items-center'>
@@ -25,7 +27,14 @@ function HeaderNav() {
           <Image src='/dark.svg' width={25} height={25} alt='dark' />
         )}
       </a>
-      <Link href='/home/courses?page=1' className='p-3'>
+      <Link
+        href='/home/courses?page=1'
+        className={
+          pathname === '/home/courses'
+            ? 'p-3 bg-accentDarker rounded-md'
+            : 'p-3'
+        }
+      >
         <Image
           src='/courses.svg'
           alt='courses'
@@ -34,13 +43,20 @@ function HeaderNav() {
           className='hover:scale-110  duration-300 ease-in-out'
         />
       </Link>
-      <Link href='/home/categories' className='p-3'>
+      <Link
+        href='/home/categories'
+        className={
+          pathname === '/home/categories'
+            ? 'p-3 bg-accentDarker rounded-md'
+            : 'p-3'
+        }
+      >
         <Image
           src='/category.svg'
           alt='category'
           width={25}
           height={25}
-          className='hover:scale-110 transition-transform duration-300 ease-in-out'
+          className='hover:scale-110 duration-300 ease-in-out'
         />
       </Link>
       {user === null ? (
@@ -50,7 +66,7 @@ function HeaderNav() {
             alt='login'
             width={25}
             height={25}
-            className='hover:scale-110 transition-transform duration-300 ease-in-out'
+            className='hover:scale-110 duration-300 ease-in-out'
           />
         </Link>
       ) : (
@@ -60,13 +76,13 @@ function HeaderNav() {
             alt='register'
             width={25}
             height={25}
-            className='hover:scale-110 transition-transform duration-300 ease-in-out'
+            className='hover:scale-110 duration-300 ease-in-out'
           />
         </Link>
       )}
       {user && (
         <Link href=''>
-          <UserAvatar user={user} />
+          <UserAvatar />
         </Link>
       )}
     </nav>
