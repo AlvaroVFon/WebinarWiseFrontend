@@ -3,6 +3,7 @@ import UserAvatar from './UserProfile'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { useSession } from '@/contexts/SessionProvider'
 import { changeTheme } from '@/lib/utils/changeTheme'
 function HeaderNav() {
