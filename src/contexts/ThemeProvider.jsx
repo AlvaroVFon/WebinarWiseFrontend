@@ -6,17 +6,6 @@ const ThemeContext = createContext({
   toggleTheme: () => {},
 })
 function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('dark')
-  useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme')
-    if (localTheme) {
-      setTheme(localTheme)
-    }
-  }, [theme])
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
-    window.localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark')
-  }
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

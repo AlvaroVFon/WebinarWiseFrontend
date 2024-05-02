@@ -14,7 +14,7 @@ function Page() {
       </div>
       <div className='flex flex-col items-start m-auto gap-3 md:gap-10'>
         <Image
-          src='/logo-dark.svg'
+          src='/logo.svg'
           width={500}
           height={50}
           alt='logo'
@@ -24,7 +24,7 @@ function Page() {
         <Typewriter />
         <Link
           href='/home/courses?page=1'
-          className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-[#7c83af] hover:text-[#696e99] border border-[#7c83af] hover:border-[#696e99] text-center'
+          className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-accent hover:text-muted border border-accent hover:border-muted text-center duration-300'
         >
           Explore our courses{' '}
           <span className='animate-bounce'>

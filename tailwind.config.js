@@ -6,7 +6,18 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bgPrimary: 'var(--bg-primary)',
+        bgSecondary: 'var(--bg-secondary)',
+        bgTertiary: 'var(--bg-tertiary)',
+        bgCuaternary: 'var(--bg-cuaternary)',
+        primary: 'var(--primary)',
+        accent: 'var(--accent)',
+        accentDarker: 'var(--accent-darker)',
+        muted: 'var(--muted)',
+      },
+    },
   },
   plugins: [],
 }
