@@ -85,7 +85,7 @@ function HeaderNav() {
       ) : (
         <a
           onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
-          className='p-3'
+          className='p-3 cursor-pointer'
         >
           <Image
             src='/logout.svg'
