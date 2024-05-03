@@ -37,8 +37,7 @@ const handler = NextAuth({
           .catch((error) => error)
         if (response) {
           const userInfo = await api.getUserInfo(response.data.token)
-
-          return {
+          const user = {
             id: userInfo.data.id,
             name: userInfo.data.name,
             email: userInfo.data.email,
@@ -46,12 +45,25 @@ const handler = NextAuth({
             role: userInfo.data.role,
             token: response.data.token,
           }
+          return user
         }
         return new Error('Invalid credentials')
       },
     }),
   ],
-  callbacks: {},
+
+  callbacks: {
+    async jwt(token, user) {
+      if (user) {
+        token = { ...token, ...user }
+      }
+      return token
+    },
+    async session(session, token) {
+      session.user = token
+      return session
+    },
+  },
 })
 
 export { handler as GET, handler as POST }
