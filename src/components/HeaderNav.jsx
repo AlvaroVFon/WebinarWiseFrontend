@@ -1,12 +1,14 @@
 'use client'
-import UserAvatar from './UserProfile'
+import UserAvatar from './UserAvatar'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { changeTheme } from '@/lib/utils/changeTheme'
+import { useSession, signOut } from 'next-auth/react'
 
 function HeaderNav() {
+  const { status } = useSession()
   const pathname = usePathname()
   const [theme, setTheme] = useState('dark')
   return (
@@ -67,7 +69,7 @@ function HeaderNav() {
           className='hover:scale-110 duration-300 ease-in-out'
         />
       </Link>
-      {user !== null ? (
+      {status !== 'authenticated' ? (
         <Link
           href='/login'
           className='p-3'
@@ -81,9 +83,8 @@ function HeaderNav() {
           />
         </Link>
       ) : (
-        <Link
-          href='/home/courses'
-          onClick={signOut}
+        <a
+          onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
           className='p-3'
         >
           <Image
@@ -93,10 +94,10 @@ function HeaderNav() {
             height={25}
             className='hover:scale-110 duration-300 ease-in-out'
           />
-        </Link>
+        </a>
       )}
-      {user && (
-        <Link href=''>
+      {status === 'authenticated' && (
+        <Link href='/profile'>
           <UserAvatar />
         </Link>
       )}

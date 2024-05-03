@@ -11,7 +11,6 @@ class WebinarWiseApi {
       email,
       password,
     })
-
     return response
   }
 
@@ -29,17 +28,11 @@ class WebinarWiseApi {
     return response.data
   }
   async getUserInfo(token) {
-    const response = await this.axiosInstance
-      .post('/auth/info', token)
-      .then((res) => {
-        if (res.status === 200) {
-          return res.data
-        } else if (res.status === 401) {
-          throw new Error({ message: 'Unauthorized' })
-        } else if (res.status === 404) {
-          throw new Error({ message: 'Not found' })
-        }
-      })
+    const response = await this.axiosInstance.get('/auth/info', {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
     return response
   }
   async getCourses(url) {
@@ -83,7 +76,7 @@ class WebinarWiseApi {
           return res.data
         }
       })
-      .catch((error) => console.log(error))
+      .catch((error) => error)
     return response
   }
 }
