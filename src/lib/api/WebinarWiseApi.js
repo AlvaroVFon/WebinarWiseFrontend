@@ -11,18 +11,10 @@ class WebinarWiseApi {
       email,
       password,
     })
-    if (response.status === 200) {
-      const { token } = response.data
-      const userInfo = await this.getUserInfo({ token })
-        .then((info) => {
-          const user = { ...info, token }
-          sessionStorage.setItem('session', JSON.stringify(user))
-          return data
-        })
-        .catch((error) => error)
-    }
+
     return response
   }
+
   async signup(name, email, password) {
     const response = await this.axiosInstance
       .post('/auth/register', {
@@ -37,8 +29,18 @@ class WebinarWiseApi {
     return response.data
   }
   async getUserInfo(token) {
-    const response = await this.axiosInstance.post('/auth/info', token)
-    return response.data
+    const response = await this.axiosInstance
+      .post('/auth/info', token)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.data
+        } else if (res.status === 401) {
+          throw new Error({ message: 'Unauthorized' })
+        } else if (res.status === 404) {
+          throw new Error({ message: 'Not found' })
+        }
+      })
+    return response
   }
   async getCourses(url) {
     const response = await this.axiosInstance

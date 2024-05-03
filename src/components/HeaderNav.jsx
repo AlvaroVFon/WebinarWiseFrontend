@@ -4,11 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { useSession } from '@/contexts/SessionProvider'
 import { changeTheme } from '@/lib/utils/changeTheme'
 
 function HeaderNav() {
-  const { user, signOut } = useSession()
   const pathname = usePathname()
   const [theme, setTheme] = useState('dark')
   return (
@@ -22,9 +20,19 @@ function HeaderNav() {
         className='hover:scale-110 duration-300 p-3'
       >
         {theme === 'dark' ? (
-          <Image src='/light.svg' width={25} height={25} alt='light' />
+          <Image
+            src='/light.svg'
+            width={25}
+            height={25}
+            alt='light'
+          />
         ) : (
-          <Image src='/dark.svg' width={25} height={25} alt='dark' />
+          <Image
+            src='/dark.svg'
+            width={25}
+            height={25}
+            alt='dark'
+          />
         )}
       </a>
       <Link
@@ -59,8 +67,11 @@ function HeaderNav() {
           className='hover:scale-110 duration-300 ease-in-out'
         />
       </Link>
-      {user === null ? (
-        <Link href='/login' className='p-3'>
+      {user !== null ? (
+        <Link
+          href='/login'
+          className='p-3'
+        >
           <Image
             src='/login.svg'
             alt='login'
@@ -70,7 +81,11 @@ function HeaderNav() {
           />
         </Link>
       ) : (
-        <Link href='/home/courses' onClick={signOut} className='p-3'>
+        <Link
+          href='/home/courses'
+          onClick={signOut}
+          className='p-3'
+        >
           <Image
             src='/logout.svg'
             alt='register'

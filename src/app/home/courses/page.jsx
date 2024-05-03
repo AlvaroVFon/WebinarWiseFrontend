@@ -10,7 +10,7 @@ async function CursosPage({ searchParams }) {
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
-        {courses.results.map((course, index) => (
+        {courses.results?.map((course, index) => (
           <Suspense key={index} fallback={<CourseCardSkeleton />}>
             <CourseCard key={index} course={course} />
           </Suspense>

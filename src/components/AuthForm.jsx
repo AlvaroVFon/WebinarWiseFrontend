@@ -1,10 +1,10 @@
 'use client'
 import styles from '@/styles/form.module.css'
 import Link from 'next/link'
-import { get, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
-import { useSession } from '@/contexts/SessionProvider'
 import api from '@/lib/api/WebinarWiseApi'
+import { signIn } from 'next-auth/react'
 function LoginForm({ formType }) {
   const router = useRouter()
 
@@ -14,16 +14,7 @@ function LoginForm({ formType }) {
     formState: { errors },
   } = useForm()
   const onLoginSubmit = async (data) => {
-    const response = await api
-      .login(data.email, data.password)
-      .then((res) => {
-        if (res.status === 200) {
-          router.push('/home/courses?page=1')
-        }
-      })
-      .catch((error) => {
-        alert('Invalid email or password. Please try again.')
-      })
+    await signIn('credentials', data)
   }
   const onSignupSubmit = async (data) => {
     const response = await api
@@ -120,7 +111,11 @@ function LoginForm({ formType }) {
                 height='20'
                 viewBox='0 0 24 24'
               >
-                <g fill='none' stroke='#85929a' strokeLinejoin='round'>
+                <g
+                  fill='none'
+                  stroke='#85929a'
+                  strokeLinejoin='round'
+                >
                   <circle
                     cx='12'
                     cy='12'
@@ -128,8 +123,15 @@ function LoginForm({ formType }) {
                     strokeLinecap='round'
                     strokeWidth='1.5'
                   />
-                  <path strokeWidth='2.25' d='M12 8h.01v.01H12z' />
-                  <path strokeLinecap='round' strokeWidth='1.5' d='M12 12v4' />
+                  <path
+                    strokeWidth='2.25'
+                    d='M12 8h.01v.01H12z'
+                  />
+                  <path
+                    strokeLinecap='round'
+                    strokeWidth='1.5'
+                    d='M12 12v4'
+                  />
                 </g>
               </svg>
             </span>
