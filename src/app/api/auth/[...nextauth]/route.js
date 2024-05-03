@@ -32,7 +32,6 @@ const handler = NextAuth({
       async authorize(credentials) {
         if (!credentials) return { error: 'Invalid credentials' }
         const { email, password } = credentials
-        console.log(credentials)
         const response = await api
           .login(email, password)
           .catch((error) => error)
