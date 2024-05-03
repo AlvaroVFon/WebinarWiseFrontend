@@ -30,6 +30,7 @@ const handler = NextAuth({
           .catch((error) => error)
         if (response.status === 200) {
           const userInfo = await api.getUserInfo(response.data)
+          console.log(userInfo)
           return userInfo
         } else if (response.status === 401) {
           return null
