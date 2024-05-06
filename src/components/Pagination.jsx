@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import { useCallback } from 'react'
 function Pagination({ currentPage = 1, totalPages = 12 }) {
   const router = useRouter()
   const searchParams = useSearchParams()
