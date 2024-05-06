@@ -8,8 +8,8 @@ function SearchBar() {
   const page = searchParams.get('page') || 1
 
   const handleChange = (e) => {
-    const title = e.target.value
-    router.push(`${pathname}?page=${page}&title=${title}`)
+    const search = e.target.value
+    router.push(`${pathname}?page=${page}&search=${search}`)
   }
   return (
     <input

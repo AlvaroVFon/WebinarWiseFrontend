@@ -4,17 +4,15 @@ import Pagination from '@/components/Pagination'
 import { Suspense } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 async function CursosPage({ searchParams }) {
-  const { page, title } = await searchParams
-  const url = `/courses?page=${page}&perPage=12`
+  const { page, search = '' } = await searchParams
+  const url = `/courses?page=${page}&perPage=12&search=${search}`
   const courses = await api.getCourses(url).catch((error) => error)
-  const filteredCourses = courses.results.filter((course) =>
-    course.name.toLowerCase().includes(title.toLowerCase())
-  )
+  console.log(courses)
 
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
-        {filteredCourses?.map((course, index) => (
+        {courses?.results?.map((course, index) => (
           <Suspense
             key={index}
             fallback={<CourseCardSkeleton />}
