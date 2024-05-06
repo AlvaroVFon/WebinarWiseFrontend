@@ -7,7 +7,6 @@ async function CursosPage({ searchParams }) {
   const { page, search = '' } = await searchParams
   const url = `/courses?page=${page}&perPage=12&search=${search}`
   const courses = await api.getCourses(url).catch((error) => error)
-  console.log(courses)
 
   return (
     <div className=''>
