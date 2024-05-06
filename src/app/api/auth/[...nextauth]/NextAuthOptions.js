@@ -36,7 +36,6 @@ const NextAuthOptions = {
 
         if (token) {
           const user = await api.getUserInfo(token).then((res) => res.data)
-          console.log(user, token)
           return {
             userId: user.id,
             name: user.name,
