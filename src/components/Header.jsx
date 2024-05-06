@@ -4,6 +4,7 @@ import Link from 'next/link'
 import SearchBar from './SearchBar'
 import HeaderNav from './HeaderNav'
 import { usePathname, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 function Header() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
