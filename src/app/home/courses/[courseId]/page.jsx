@@ -6,7 +6,6 @@ async function CursosPage({ params }) {
   const { courseId } = await params
   const course = await api.getCoursesById(courseId)
   const category = await api.getCategoryByCourseId(courseId)
-  const comments = await api.getCommentsByCourseId(courseId)
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>

@@ -8,7 +8,7 @@ import { changeTheme } from '@/lib/utils/changeTheme'
 import { useSession, signOut } from 'next-auth/react'
 
 function HeaderNav() {
-  const { data, status } = useSession()
+  const { status } = useSession()
   const pathname = usePathname()
   const [theme, setTheme] = useState('dark')
   return (
