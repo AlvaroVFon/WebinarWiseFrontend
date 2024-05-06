@@ -79,6 +79,12 @@ class WebinarWiseApi {
       .catch((error) => error)
     return response
   }
+  async getCategories() {
+    const response = await this.axiosInstance
+      .get('/category')
+      .catch((error) => error)
+    return response.data
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api

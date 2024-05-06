@@ -4,10 +4,10 @@ import Pagination from '@/components/Pagination'
 import { Suspense } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 async function CursosPage({ searchParams }) {
-  const { page, search = '' } = await searchParams
-  const url = `/courses?page=${page}&perPage=12&search=${search}`
+  const { page, search = '', category = '' } = await searchParams
+  const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
+  console.log(url)
   const courses = await api.getCourses(url).catch((error) => error)
-
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
@@ -23,12 +23,14 @@ async function CursosPage({ searchParams }) {
           </Suspense>
         ))}
       </div>
-      <div className='flex justify-center'>
-        <Pagination
-          currentPage={page}
-          totalPages={courses.totalPages}
-        />
-      </div>
+      {courses?.totalPages > 1 && (
+        <div className='flex justify-center'>
+          <Pagination
+            currentPage={page}
+            totalPages={courses.totalPages}
+          />
+        </div>
+      )}
     </div>
   )
 }
