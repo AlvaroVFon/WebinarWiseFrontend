@@ -6,7 +6,10 @@ function AddComment() {
     setCounter(140 - e.target.value.length)
   }
   return (
-    <form action='' className='flex flex-col items-end gap-3'>
+    <form
+      action=''
+      className='flex flex-col items-end gap-3'
+    >
       <textarea
         name='addComment'
         id='addComment'
