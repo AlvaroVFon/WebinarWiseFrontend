@@ -25,10 +25,12 @@ async function CursosPage({ searchParams }) {
       </div>
       {courses?.totalPages > 1 && (
         <div className='flex justify-center'>
-          <Pagination
-            currentPage={page}
-            totalPages={courses.totalPages}
-          />
+          <Suspense>
+            <Pagination
+              currentPage={page}
+              totalPages={courses.totalPages}
+            />
+          </Suspense>
         </div>
       )}
     </div>

@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 function Pagination({ currentPage = 1, totalPages = 12 }) {
   const router = useRouter()
@@ -32,7 +31,12 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
           )}`}
           className='hover:scale-110 duration-100'
         >
-          <Image src='/firstPage.svg' width={25} height={25} alt='first page' />
+          <Image
+            src='/firstPage.svg'
+            width={25}
+            height={25}
+            alt='first page'
+          />
         </Link>
         <button
           onClick={() =>
@@ -60,7 +64,12 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
           href={`${pathname}?${createQueryString('page', totalPages)}`}
           className='hover:scale-110 duration-100'
         >
-          <Image src='/lastPage.svg' width={25} height={25} alt='last page' />
+          <Image
+            src='/lastPage.svg'
+            width={25}
+            height={25}
+            alt='last page'
+          />
         </Link>
       </div>
     </div>
