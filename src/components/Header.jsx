@@ -22,7 +22,9 @@ function Header() {
           height={50}
         />
       </Link>
-      {pathname === '/home/courses' && category === '' && <SearchBar />}
+      <Suspense>
+        {pathname === '/home/courses' && category === '' && <SearchBar />}
+      </Suspense>
       <HeaderNav />
     </header>
   )
