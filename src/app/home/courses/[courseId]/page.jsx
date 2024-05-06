@@ -9,9 +9,11 @@ async function CursosPage({ params }) {
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>
-        <div className=''>
-          <h1 className='text-2xl font-bold my-10'>{course.name}</h1>
-          <p>{category.name}</p>
+        <div className='flex flex-col items-start mb-3'>
+          <h1 className='text-4xl font-bold my-10'>{course.name}</h1>
+          <p className='border p-1 rounded text-accent border-muted'>
+            #{category.name}
+          </p>
         </div>
         <Image
           src='https://placehold.jp/27272A/ffffff/920x600.png'
@@ -21,7 +23,7 @@ async function CursosPage({ params }) {
           className='rounded-xl'
           layout='responsive'
         />
-        <div className='flex justify-end items-center gap-3'>
+        <div className='flex justify-end items-center gap-3 text-muted p-3'>
           <p>Duration: 1500 h.</p>
           <p> Upvotes: 18</p>
         </div>
