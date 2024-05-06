@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Popup from '@/components/Popup'
-import axios from 'axios'
 function CourseCardButtons({ course }) {
   const { id: courseId, likes = 12, comments } = course
   const [showPopup, setShowPopup] = useState(false)
@@ -17,16 +16,6 @@ function CourseCardButtons({ course }) {
   }
   const handlePurchase = (e) => {
     e.preventDefault()
-    axios
-      .get(
-        `https://webinarwise-api.onrender.com/api/library/${courseId}/checkout`,
-        {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        }
-      )
-      .then((res) => console.log(res))
   }
   return (
     <div className='flex items-center justify-evenly'>

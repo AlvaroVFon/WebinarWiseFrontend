@@ -28,22 +28,22 @@ const NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        if (!credentials) return { error: 'Invalid credentials' }
+        if (!credentials) return null
         const { email, password } = credentials
-        const response = await api
+        const token = await api
           .login(email, password)
-          .catch((error) => error)
-        if (response) {
-          const userInfo = await api.getUserInfo(response.data.token)
-          const user = {
-            id: userInfo.data.id,
-            name: userInfo.data.name,
-            email: userInfo.data.email,
-            profile_pic: userInfo.data.profile_pic,
-            role: userInfo.data.role,
-            token: response.data.token,
+          .then((res) => res.data.token)
+
+        if (token) {
+          const user = await api.getUserInfo(token).then((res) => res.data)
+          console.log(user, token)
+          return {
+            userId: user.id,
+            name: user.name,
+            email: user.email,
+            roleName: user.role,
+            accessToken: token,
           }
-          return user
         }
         return new Error('Invalid credentials')
       },
@@ -51,14 +51,27 @@ const NextAuthOptions = {
   ],
 
   callbacks: {
-    async jwt(token, user) {
-      if (user) {
-        token = { ...token, ...user }
+    async jwt({ token, account, user }) {
+      if (account && user) {
+        ;(token.name = user.name),
+          (token.email = user.email),
+          (token.userId = user.userId),
+          (token.roleName = user.roleName),
+          (token.accessToken = user.accessToken)
       }
       return token
     },
-    async session(session, token) {
-      session.user = token
+    async session({ session, token }) {
+      session = {
+        ...session,
+        user: {
+          name: token?.name,
+          email: token?.email,
+          id: token?.userId,
+          roleName: token?.roleName,
+          accessToken: token.accessToken,
+        },
+      }
       return session
     },
   },

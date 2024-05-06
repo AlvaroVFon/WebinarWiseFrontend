@@ -6,9 +6,9 @@ import api from '@/lib/api/WebinarWiseApi'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 async function CursosPage({ searchParams }) {
+  const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
   const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
-  console.log(url)
   const courses = await api.getCourses(url).catch((error) => error)
 
   return (
