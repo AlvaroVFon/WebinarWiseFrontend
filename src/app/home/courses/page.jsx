@@ -6,11 +6,11 @@ import api from '@/lib/api/WebinarWiseApi'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 async function CursosPage({ searchParams }) {
-  const { page, search = '' } = await searchParams
-  const url = `/courses?page=${page}&perPage=12&search=${search}`
+  const { page, search = '', category = '' } = await searchParams
+  const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
+  console.log(url)
   const courses = await api.getCourses(url).catch((error) => error)
-  const session = await getServerSession(NextAuthOptions)
-  console.log(session)
+
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
@@ -26,12 +26,16 @@ async function CursosPage({ searchParams }) {
           </Suspense>
         ))}
       </div>
-      <div className='flex justify-center'>
-        <Pagination
-          currentPage={page}
-          totalPages={courses.totalPages}
-        />
-      </div>
+      {courses?.totalPages > 1 && (
+        <div className='flex justify-center'>
+          <Suspense>
+            <Pagination
+              currentPage={page}
+              totalPages={courses.totalPages}
+            />
+          </Suspense>
+        </div>
+      )}
     </div>
   )
 }
