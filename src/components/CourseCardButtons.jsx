@@ -34,7 +34,11 @@ function CourseCardButtons({ course }) {
     }
     console.log(courseId, user?.accessToken)
     const response = await api.startPurchase(courseId, user?.accessToken)
-    console.log(response)
+    if (response.status === 200) {
+      console.log('Purchase successful')
+    } else {
+      console.log('Purchase failed')
+    }
   }
   return (
     <div className='flex items-center justify-evenly'>
