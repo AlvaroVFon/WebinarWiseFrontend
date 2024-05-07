@@ -8,7 +8,9 @@ function CourseCardButtons({ course }) {
   const [showPopup, setShowPopup] = useState(false)
   const handleCopyLink = (e) => {
     e.preventDefault()
-    navigator.clipboard.writeText(`http://localhost:3000/course/${courseId}`)
+    navigator.clipboard.writeText(
+      `http://localhost:3000/home/courses/${courseId}`
+    )
     setShowPopup(true)
     setTimeout(() => {
       setShowPopup(false)
