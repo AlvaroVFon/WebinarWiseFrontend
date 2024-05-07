@@ -97,7 +97,7 @@ function HeaderNav() {
         </a>
       )}
       {status === 'authenticated' && (
-        <Link href='/profile'>
+        <Link href='/home/profile'>
           <UserAvatar />
         </Link>
       )}

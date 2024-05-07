@@ -101,7 +101,7 @@ class WebinarWiseApi {
     return response
   }
   async startPurchase(token, courseId) {
-    const response = this.axiosInstance.post(`library/${courseId}/checkout`, {
+    const response = this.axiosInstance.get(`/library/${courseId}/checkout`, {
       headers: {
         Authorization: `${token}`,
       },

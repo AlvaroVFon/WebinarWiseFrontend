@@ -36,11 +36,6 @@ function CourseCardButtons({ course }) {
     }
     console.log(courseId, user?.accessToken)
     const response = await api.startPurchase(courseId, user?.accessToken)
-    if (response.status === 200) {
-      console.log('Purchase successful')
-    } else {
-      console.log('Purchase failed')
-    }
   }
   return (
     <div className='flex items-center justify-evenly'>
@@ -103,7 +98,7 @@ function CourseCardButtons({ course }) {
           </button>
           <Popup
             showPopup={showPurhcasePopup}
-            message='Login to purchase a course'
+            message='Log in to purchase a course'
             className='absolute'
           />
         </div>
