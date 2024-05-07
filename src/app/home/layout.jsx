@@ -6,7 +6,7 @@ function HomeLayout({ children }) {
       <Suspense fallback={<div>Loading...</div>}>
         <Header />
       </Suspense>
-      <div className='mt-28 z-0'>{children}</div>
+      <div>{children}</div>
     </div>
   )
 }
