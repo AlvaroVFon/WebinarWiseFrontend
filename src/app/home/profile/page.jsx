@@ -4,9 +4,7 @@ import { getServerSession } from 'next-auth'
 async function ProfilePage() {
   const session = await getServerSession(NextAuthOptions)
   const user = session.user
-  console.log(user)
   const purchasedCourses = await api.getLibrary(user?.accessToken)
-  console.log(purchasedCourses.data)
 
   return (
     <div>

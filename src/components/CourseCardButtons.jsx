@@ -14,6 +14,7 @@ function CourseCardButtons({ course }) {
   const [userLike, setUserLikes] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
   const { data: session } = useSession()
+  const [error, setError] = useState('')
   useEffect(() => {
     if (session) {
       setUser(session.user)
@@ -49,7 +50,21 @@ function CourseCardButtons({ course }) {
     }
     const response = await api
       .startPurchase(courseId, user?.accessToken)
-      .catch((error) => error)
+      .catch((error) => {
+        console.log(error.response)
+        if (error.response.status === 500) {
+          setError('Unexpected error, please try again later')
+        }
+        setError(error.response.data.msg)
+        return error.response
+      })
+
+    if (response.status === 401) {
+      setShowPurchasePopup(true)
+      setTimeout(() => {
+        setShowPurchasePopup(false)
+      }, 2000)
+    }
     if (response.data?.url) {
       window.location.href = `${response.data.url}`
     }
@@ -67,7 +82,11 @@ function CourseCardButtons({ course }) {
         }
         return res
       })
-      .catch((error) => error.response)
+      .catch((error) => {
+        setError(error.response.data.msg)
+        return error.response
+      })
+    console.log(response)
     if (response.status === 401) {
       setShowLikePopup(true)
       setTimeout(() => {
@@ -110,7 +129,7 @@ function CourseCardButtons({ course }) {
           </Link>
           <Popup
             showPopup={showLikePopup}
-            message='You have not purchased this course'
+            message={error}
             className='absolute'
           />
         </div>
@@ -149,7 +168,7 @@ function CourseCardButtons({ course }) {
           </button>
           <Popup
             showPopup={showPurhcasePopup}
-            message='Login to purchase a course'
+            message={error}
             className='absolute'
           />
         </div>
