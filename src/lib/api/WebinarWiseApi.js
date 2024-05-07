@@ -128,6 +128,14 @@ class WebinarWiseApi {
     )
     return response
   }
+  async getLikedCourses(token, courseId) {
+    const response = this.axiosInstance.get(`/courses/${courseId}/like`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
+    return response
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api
