@@ -14,6 +14,7 @@ function CourseCardButtons({ course }) {
   const [userLike, setUserLikes] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
   const { data: session } = useSession()
+  const [purchasedCourse, setPurchasedCourse] = useState(false)
   const [error, setError] = useState('')
   useEffect(() => {
     if (session) {
