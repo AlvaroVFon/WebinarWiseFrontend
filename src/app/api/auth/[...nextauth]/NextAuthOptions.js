@@ -10,8 +10,8 @@ const NextAuthOptions = {
     strategy: 'jwt',
     maxAge: 4 * 60 * 60,
   },
-  secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
-  url: process.env.NEXT_PUBLIC_AUTH_URL,
+  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
+  url: process.env.NEXT_PUBLIC_NEXTAUTH_URL,
   providers: [
     CredentialsProvider({
       name: 'Credentials',
