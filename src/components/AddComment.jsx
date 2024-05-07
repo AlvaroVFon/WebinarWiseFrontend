@@ -1,9 +1,14 @@
 'use client'
 import { useState } from 'react'
+import api from '@/lib/api/WebinarWiseApi'
 function AddComment() {
   const [counter, setCounter] = useState(140)
   const handleChange = (e) => {
     setCounter(140 - e.target.value.length)
+  }
+  const handleComment = async (e) => {
+    e.preventDefault()
+    const response = await api.postComment(courseId, user?.accessToken, comment)
   }
   return (
     <form

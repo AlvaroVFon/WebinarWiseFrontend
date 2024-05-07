@@ -18,9 +18,7 @@ function CourseCardButtons({ course }) {
   }, [session])
   const handleCopyLink = (e) => {
     e.preventDefault()
-    navigator.clipboard.writeText(
-      `http://localhost:3000/home/courses/${courseId}`
-    )
+    navigator.clipboard.writeText(`http://localhost:3000/courses/${courseId}`)
     setShowPopup(true)
     setTimeout(() => {
       setShowPopup(false)
@@ -34,8 +32,18 @@ function CourseCardButtons({ course }) {
         setShowPurchasePopup(false)
       }, 2000)
     }
-    console.log(courseId, user?.accessToken)
-    const response = await api.startPurchase(courseId, user?.accessToken)
+    const response = await api
+      .startPurchase(courseId, user?.accessToken)
+      .catch((error) => error)
+    if (response.data.url) {
+      window.location.href = `${response.data.url}`
+    }
+  }
+  const handleLike = async (e) => {
+    e.preventDefault()
+    const response = await api
+      .toggleLike(user?.accessToken, courseId)
+      .catch((error) => error)
   }
   return (
     <div className='flex items-center justify-evenly'>
@@ -55,6 +63,7 @@ function CourseCardButtons({ course }) {
       <Link
         href=''
         className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
+        onClick={handleLike}
       >
         <Image
           src='/upvote.svg'
@@ -98,7 +107,7 @@ function CourseCardButtons({ course }) {
           </button>
           <Popup
             showPopup={showPurhcasePopup}
-            message='Log in to purchase a course'
+            message='Login to purchase a course'
             className='absolute'
           />
         </div>

@@ -100,12 +100,32 @@ class WebinarWiseApi {
 
     return response
   }
-  async startPurchase(token, courseId) {
+  async startPurchase(courseId, token) {
     const response = this.axiosInstance.get(`/library/${courseId}/checkout`, {
       headers: {
         Authorization: `${token}`,
       },
     })
+    return response
+  }
+  async getLibrary(token) {
+    const response = await this.axiosInstance.get('/library', {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
+    return response
+  }
+  async toggleLike(token, courseId) {
+    const response = this.axiosInstance.post(
+      `/courses/${courseId}/like`,
+      null,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    )
     return response
   }
 }
