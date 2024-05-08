@@ -35,7 +35,8 @@ function LoginForm({ formType }) {
     const response = await api
       .signup(data.name, data.email, data.password)
       .then((res) => {
-        if (res.status === 200) {
+        res.registered
+        if (res) {
           alert('Account created successfully. Please login to continue.')
           router.push('/login')
         }

@@ -9,7 +9,6 @@ async function CursosPage({ params }) {
   const user = session?.user
   const { courseId } = await params
   const course = await api.getCoursesById(courseId)
-  console.log(course)
   const category = await api.getCategoryByCourseId(courseId)
   const comments = await api
     .getCommentsByCourseId(courseId)
@@ -48,15 +47,16 @@ async function CursosPage({ params }) {
       {user === undefined
         ? null
         : isPurchached && <AddComment course={course} />}
-      {comments &&
-        comments.map((comment) => (
+      {comments.length > 0 &&
+        comments?.map((comment) => (
           <Comment
             key={comment.id}
-            username={comment.user_id}
+            username={comment.user.name}
             comment={comment.text}
+            userRole={comment.user.role}
+            commentDate={comment.creation_date.split('T')[0]}
           />
         ))}
-      <Comment />
     </div>
   )
 }

@@ -14,7 +14,8 @@ Ratione velit itaque modi ex temporibus consequatur a! Totam, hic`,
     <div className='lg:w-[920px] min-h-[100px] p-5 bg-bgSecondary rounded-lg'>
       <div className='flex justify-between'>
         <h3 className='font-semibold'>
-          @{username} - <span className='font-thin italic'>#{userRole}</span>
+          @{username} -{' '}
+          <span className='font-thin italic'>#{userRole.split('_')[1]}</span>
         </h3>
         <p className='text-sm text-muted'>
           {commentDate.split('-').reverse().join('-')}

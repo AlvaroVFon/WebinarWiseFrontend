@@ -21,7 +21,7 @@ function ProfileCoursesPage() {
       return response
     }
     getLibrary(user?.accessToken).then((response) => {
-      console.log(response)
+      console.log(response.library)
       setCourses(response.library)
     })
   }, [user])
