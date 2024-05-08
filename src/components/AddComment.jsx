@@ -20,7 +20,7 @@ function AddComment({ course }) {
     e.preventDefault()
     const response = await api
       .postComment(course.id, user?.accessToken, comment)
-      .then((res) => console.log(res.data.msg))
+      .then((res) => window.location.reload())
   }
   return (
     <form
