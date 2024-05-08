@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
-function CourseCardButtons({ course }) {
+function CourseCardButtons({ course, purchasedCourses }) {
   const { data: session } = useSession()
   const { id: courseId, likes = 12, comments } = course
   const [user, setUser] = useState(null)
@@ -22,33 +22,21 @@ function CourseCardButtons({ course }) {
       setUser(session.user)
     }
   }, [session])
+
   useEffect(() => {
-    const getLibrary = async (token) => {
-      const response = await api
-        .getLibrary(token)
-        .catch((error) => error)
-        .then((res) => res.data?.library?.map((course) => course.id))
-      return response
-    }
-    getLibrary(user?.accessToken).then((response) => {
-      const purchased = response?.includes(courseId)
-      if (purchased) {
+    purchasedCourses?.forEach((course) => {
+      if (course.id === courseId) {
+        setUserLikes(true)
+      }
+    })
+  }, [userLike, user])
+  useEffect(() => {
+    purchasedCourses?.forEach((course) => {
+      if (course.id === courseId) {
         setIsPurchased(true)
       }
     })
-  }, [user])
-  useEffect(() => {
-    const getCoursesLike = async (token, courseId) => {
-      const response = await api
-        .getLikedCourses(token, courseId)
-        .catch((error) => error)
-      return response
-    }
-    getCoursesLike(user?.accessToken, courseId).then((response) => {
-      setUserLikes(response.data?.likes)
-    })
-  }, [userLike, user])
-
+  }, [])
   const handleCopyLink = (e) => {
     e.preventDefault()
     navigator.clipboard.writeText(`http://localhost:3000/courses/${courseId}`)
@@ -89,22 +77,18 @@ function CourseCardButtons({ course }) {
   }
   const handleLike = async (e) => {
     e.preventDefault()
-    const response = await api
-      .toggleLike(user?.accessToken, courseId)
-      .then((res) => {
-        setUserLikes(res.data.likes)
-        if (res.data.likes) {
-          setLikeCount((likeCount) => Number(likeCount) + 1)
-        } else if (!res.data.likes) {
-          setLikeCount((likeCount) => Number(likeCount) - 1)
-        }
-        return res
-      })
-      .catch((error) => {
-        setError(error.response.data.msg)
-        return error.response
-      })
+    const response = await api.toggleLike(user?.accessToken, courseId)
+    if (response.status === 200) {
+      console.log(response.data.likes)
+      if (response.data.likes) {
+        setLikeCount(response.data.likes)
+        setLikeCount(Number(likeCount) + 1)
+      } else if (!response.data.likes) {
+        setLikeCount(Number(likeCount) - 1)
+      }
+    }
     if (response.status === 401) {
+      setError(response.data.msg)
       setShowLikePopup(true)
       setTimeout(() => {
         setShowLikePopup(false)
