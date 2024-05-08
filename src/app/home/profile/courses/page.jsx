@@ -6,7 +6,6 @@ async function ProfileCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
   const user = session?.user
   const courses = await api.getLibrary(user?.accessToken)
-  console.log(courses)
   return (
     <div className=''>
       {courses?.map((course) => (
