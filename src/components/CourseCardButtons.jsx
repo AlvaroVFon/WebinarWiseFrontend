@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
+import { set } from 'react-hook-form'
 function CourseCardButtons({ course, purchasedCourses }) {
   const { data: session } = useSession()
   const { id: courseId, likes = 12, comments } = course
@@ -12,7 +13,7 @@ function CourseCardButtons({ course, purchasedCourses }) {
   const [showPopup, setShowPopup] = useState(false)
   const [showPurhcasePopup, setShowPurchasePopup] = useState(false)
   const [showLikePopup, setShowLikePopup] = useState(false)
-  const [userLike, setUserLikes] = useState(false)
+  const [userLike, setUserLike] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
   const [error, setError] = useState('')
   const [isPurchased, setIsPurchased] = useState(false)
@@ -24,12 +25,8 @@ function CourseCardButtons({ course, purchasedCourses }) {
   }, [session])
 
   useEffect(() => {
-    purchasedCourses?.forEach((course) => {
-      if (course.id === courseId) {
-        setUserLikes(true)
-      }
-    })
-  }, [userLike, user])
+    //falta la lógica para saber si el curso tiene like del usuario (para el botón de like)
+  }, [user])
   useEffect(() => {
     purchasedCourses?.forEach((course) => {
       if (course.id === courseId) {
@@ -77,10 +74,11 @@ function CourseCardButtons({ course, purchasedCourses }) {
   }
   const handleLike = async (e) => {
     e.preventDefault()
+
     const response = await api.toggleLike(user?.accessToken, courseId)
     if (response.status === 200) {
       if (response.data.likes) {
-        setLikeCount(response.data.likes)
+        setUserLike(true)
         setLikeCount(Number(likeCount) + 1)
       } else if (!response.data.likes) {
         setLikeCount(Number(likeCount) - 1)
