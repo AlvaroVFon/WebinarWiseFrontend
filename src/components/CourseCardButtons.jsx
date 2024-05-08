@@ -32,7 +32,6 @@ function CourseCardButtons({ course }) {
     }
     getLibrary(user?.accessToken).then((response) => {
       const purchased = response?.includes(courseId)
-      console.log(purchased)
       if (purchased) {
         setIsPurchased(true)
       }
@@ -171,38 +170,35 @@ function CourseCardButtons({ course }) {
           message='Link copied to clipboard!'
         />
       </div>
-      <Link
-        href=''
-        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
-      >
-        <div className='relative'>
-          <button
-            onClick={handlePurchase}
-            disabled={isPurchased}
-          >
-            {!isPurchased ? (
-              <Image
-                src='/purchase.svg'
-                alt='purchase'
-                width={25}
-                height={25}
-              />
-            ) : (
-              <Image
-                src='/purchased.svg'
-                alt='purchased'
-                width={25}
-                height={25}
-              />
-            )}
-          </button>
-          <Popup
-            showPopup={showPurhcasePopup}
-            message={error}
-            className='absolute'
-          />
-        </div>
-      </Link>
+
+      <div className='relative'>
+        <button
+          onClick={handlePurchase}
+          disabled={isPurchased}
+          className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
+        >
+          {!isPurchased ? (
+            <Image
+              src='/purchase.svg'
+              alt='purchase'
+              width={25}
+              height={25}
+            />
+          ) : (
+            <Image
+              src='/purchased.svg'
+              alt='purchased'
+              width={25}
+              height={25}
+            />
+          )}
+        </button>
+        <Popup
+          showPopup={showPurhcasePopup}
+          message={error}
+          className='absolute'
+        />
+      </div>
     </div>
   )
 }
