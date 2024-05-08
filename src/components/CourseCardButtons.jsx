@@ -6,22 +6,21 @@ import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
 function CourseCardButtons({ course }) {
+  const { data: session } = useSession()
   const { id: courseId, likes = 12, comments } = course
   const [user, setUser] = useState(null)
   const [showPopup, setShowPopup] = useState(false)
   const [showPurhcasePopup, setShowPurchasePopup] = useState(false)
+  const [isPurchased, setIsPurchased] = useState(false)
   const [showLikePopup, setShowLikePopup] = useState(false)
   const [userLike, setUserLikes] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
-  const { data: session } = useSession()
-  const [purchasedCourse, setPurchasedCourse] = useState(false)
   const [error, setError] = useState('')
   useEffect(() => {
     if (session) {
       setUser(session.user)
     }
   }, [session])
-
   useEffect(() => {
     const getCoursesLike = async (token, courseId) => {
       const response = await api
@@ -33,6 +32,17 @@ function CourseCardButtons({ course }) {
       setUserLikes(response.data?.likes)
     })
   }, [userLike, user])
+
+  useEffect(() => {}, [])
+  const getLibrary = async (token) => {
+    const response = await api.getLibrary(token).catch((error) => error)
+    return response
+  }
+  getLibrary(user?.accessToken).then((response) => {
+    if (response.data === undefined) setIsPurchased(false)
+    setIsPurchased(true)
+  })
+
   const handleCopyLink = (e) => {
     e.preventDefault()
     navigator.clipboard.writeText(`http://localhost:3000/courses/${courseId}`)
@@ -52,15 +62,16 @@ function CourseCardButtons({ course }) {
     const response = await api
       .startPurchase(courseId, user?.accessToken)
       .catch((error) => {
-        console.log(error.response)
+        if (error.response.status === 401) {
+          setError(error.response.data.msg)
+        }
         if (error.response.status === 500) {
           setError('Unexpected error, please try again later')
         }
-        setError(error.response.data.msg)
         return error.response
       })
 
-    if (response.status === 401) {
+    if (response.status === 401 || response.status === 500) {
       setShowPurchasePopup(true)
       setTimeout(() => {
         setShowPurchasePopup(false)
@@ -87,7 +98,6 @@ function CourseCardButtons({ course }) {
         setError(error.response.data.msg)
         return error.response
       })
-    console.log(response)
     if (response.status === 401) {
       setShowLikePopup(true)
       setTimeout(() => {
@@ -160,12 +170,21 @@ function CourseCardButtons({ course }) {
       >
         <div className='relative'>
           <button onClick={handlePurchase}>
-            <Image
-              src='/purchase.svg'
-              alt='purchase'
-              width={25}
-              height={25}
-            />
+            {isPurchased ? (
+              <Image
+                src='/purchase.svg'
+                alt='purchase'
+                width={25}
+                height={25}
+              />
+            ) : (
+              <Image
+                src='/purchased.svg'
+                alt='purchased'
+                width={25}
+                height={25}
+              />
+            )}
           </button>
           <Popup
             showPopup={showPurhcasePopup}
