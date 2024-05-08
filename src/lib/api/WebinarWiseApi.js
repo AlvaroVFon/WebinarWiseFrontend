@@ -110,6 +110,18 @@ class WebinarWiseApi {
     })
     return response
   }
+  async isPurchased(token, courseId) {
+    const response = this.axiosInstance
+      .get(`/library/`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .then((res) => res.data.find((course) => course.id === courseId))
+      .catch((error) => error.response)
+
+    return response
+  }
   async getLibrary(token) {
     const response = await this.axiosInstance.get('/library', {
       headers: {

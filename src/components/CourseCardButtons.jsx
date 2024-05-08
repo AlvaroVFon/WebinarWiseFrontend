@@ -11,16 +11,33 @@ function CourseCardButtons({ course }) {
   const [user, setUser] = useState(null)
   const [showPopup, setShowPopup] = useState(false)
   const [showPurhcasePopup, setShowPurchasePopup] = useState(false)
-  const [isPurchased, setIsPurchased] = useState(false)
   const [showLikePopup, setShowLikePopup] = useState(false)
   const [userLike, setUserLikes] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
   const [error, setError] = useState('')
+  const [isPurchased, setIsPurchased] = useState(false)
+
   useEffect(() => {
     if (session) {
       setUser(session.user)
     }
   }, [session])
+  useEffect(() => {
+    const getLibrary = async (token) => {
+      const response = await api
+        .getLibrary(token)
+        .catch((error) => error)
+        .then((res) => res.data?.library.map((course) => course.id))
+      return response
+    }
+    getLibrary(user?.accessToken).then((response) => {
+      const purchased = response?.includes(courseId)
+      console.log(purchased)
+      if (purchased) {
+        setIsPurchased(true)
+      }
+    })
+  }, [user])
   useEffect(() => {
     const getCoursesLike = async (token, courseId) => {
       const response = await api
@@ -32,16 +49,6 @@ function CourseCardButtons({ course }) {
       setUserLikes(response.data?.likes)
     })
   }, [userLike, user])
-
-  useEffect(() => {}, [])
-  const getLibrary = async (token) => {
-    const response = await api.getLibrary(token).catch((error) => error)
-    return response
-  }
-  getLibrary(user?.accessToken).then((response) => {
-    if (response.data === undefined) setIsPurchased(false)
-    setIsPurchased(true)
-  })
 
   const handleCopyLink = (e) => {
     e.preventDefault()
@@ -63,7 +70,7 @@ function CourseCardButtons({ course }) {
       .startPurchase(courseId, user?.accessToken)
       .catch((error) => {
         if (error.response.status === 401) {
-          setError(error.response.data.msg)
+          setError('You need to be logged in to purchase this course')
         }
         if (error.response.status === 500) {
           setError('Unexpected error, please try again later')
@@ -164,35 +171,35 @@ function CourseCardButtons({ course }) {
           message='Link copied to clipboard!'
         />
       </div>
-      <Link
-        href=''
-        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
-      >
-        <div className='relative'>
-          <button onClick={handlePurchase}>
-            {isPurchased ? (
-              <Image
-                src='/purchase.svg'
-                alt='purchase'
-                width={25}
-                height={25}
-              />
-            ) : (
-              <Image
-                src='/purchased.svg'
-                alt='purchased'
-                width={25}
-                height={25}
-              />
-            )}
-          </button>
-          <Popup
-            showPopup={showPurhcasePopup}
-            message={error}
-            className='absolute'
-          />
-        </div>
-      </Link>
+
+      <div className='relative'>
+        <button
+          onClick={handlePurchase}
+          disabled={isPurchased}
+          className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
+        >
+          {!isPurchased ? (
+            <Image
+              src='/purchase.svg'
+              alt='purchase'
+              width={25}
+              height={25}
+            />
+          ) : (
+            <Image
+              src='/purchased.svg'
+              alt='purchased'
+              width={25}
+              height={25}
+            />
+          )}
+        </button>
+        <Popup
+          showPopup={showPurhcasePopup}
+          message={error}
+          className='absolute'
+        />
+      </div>
     </div>
   )
 }
