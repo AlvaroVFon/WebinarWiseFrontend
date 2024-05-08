@@ -1,18 +1,30 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
-function AddComment() {
+import { useSession } from 'next-auth/react'
+function AddComment({ course }) {
+  const { data: session } = useSession()
   const [counter, setCounter] = useState(140)
+  const [comment, setComment] = useState('')
+  const [user, setUser] = useState(null)
+  useEffect(() => {
+    if (session) {
+      setUser(session.user)
+    }
+  }, [session])
   const handleChange = (e) => {
     setCounter(140 - e.target.value.length)
+    setComment(e.target.value)
   }
   const handleComment = async (e) => {
     e.preventDefault()
-    const response = await api.postComment(courseId, user?.accessToken, comment)
+    const response = await api
+      .postComment(course.id, user?.accessToken, comment)
+      .then((res) => console.log(res.data.msg))
   }
   return (
     <form
-      action=''
+      onSubmit={handleComment}
       className='flex flex-col items-end gap-3'
     >
       <textarea
