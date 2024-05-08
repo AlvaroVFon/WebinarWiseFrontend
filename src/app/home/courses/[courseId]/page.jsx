@@ -9,6 +9,7 @@ async function CursosPage({ params }) {
   const user = session?.user
   const { courseId } = await params
   const course = await api.getCoursesById(courseId)
+  console.log(course)
   const category = await api.getCategoryByCourseId(courseId)
   const comments = await api
     .getCommentsByCourseId(courseId)
