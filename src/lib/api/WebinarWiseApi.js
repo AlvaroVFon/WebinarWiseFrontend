@@ -123,11 +123,14 @@ class WebinarWiseApi {
     return response
   }
   async getLibrary(token) {
-    const response = await this.axiosInstance.get('/library', {
-      headers: {
-        Authorization: `${token}`,
-      },
-    })
+    const response = await this.axiosInstance
+      .get('/library', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .then((res) => res.data?.library)
+      .catch((error) => error.response)
     return response
   }
   async toggleLike(token, courseId) {

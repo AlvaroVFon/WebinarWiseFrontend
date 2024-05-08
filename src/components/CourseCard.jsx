@@ -9,7 +9,7 @@ async function CourseCard({ course }) {
       <CourseCardHeader course={course} />
       <div className='flex flex-col items-start gap-2'>
         <p className='border border-muted text-accentDarker p-1 rounded-md'>
-          #{course.category.name}
+          #{course.category?.name}
         </p>
         <p className='text-xs p-1 text-muted'>{date}</p>
         <Image

@@ -27,12 +27,11 @@ function CourseCardButtons({ course }) {
       const response = await api
         .getLibrary(token)
         .catch((error) => error)
-        .then((res) => res.data?.library.map((course) => course.id))
+        .then((res) => res.data?.library?.map((course) => course.id))
       return response
     }
     getLibrary(user?.accessToken).then((response) => {
       const purchased = response?.includes(courseId)
-      console.log(purchased)
       if (purchased) {
         setIsPurchased(true)
       }
