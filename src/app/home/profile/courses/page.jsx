@@ -28,7 +28,13 @@ function ProfileCoursesPage() {
   return (
     <div className='col-start-4'>
       <h1>My courses</h1>
-      {courses && courses?.map((course) => <CourseCard course={course} />)}
+      {courses &&
+        courses?.map((course) => (
+          <CourseCard
+            key={course.id}
+            course={course}
+          />
+        ))}
     </div>
   )
 }
