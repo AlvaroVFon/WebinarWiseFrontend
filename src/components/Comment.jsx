@@ -1,4 +1,3 @@
-import Image from 'next/image'
 function Comment({
   username = 'John Doe',
   userRole = 'estudiante',
@@ -22,12 +21,6 @@ Ratione velit itaque modi ex temporibus consequatur a! Totam, hic`,
         </p>
       </div>
       <p className='p-3'>{comment}</p>
-      <div className='flex items-center justify-end gap-3'>
-        <button className='flex gap-1 items-center hover:bg-bgTertiary p-1 rounded-md duration-300'>
-          <Image src='/upvote.svg' width={25} height={25} alt='upvote' />
-          <p>5</p>
-        </button>
-      </div>
     </div>
   )
 }

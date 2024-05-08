@@ -2,10 +2,26 @@ import AddComment from '@/components/AddComment'
 import Comment from '@/components/Comment'
 import Image from 'next/image'
 import api from '@/lib/api/WebinarWiseApi'
+import { getServerSession } from 'next-auth'
+import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 async function CursosPage({ params }) {
+  const session = await getServerSession(NextAuthOptions)
+  const user = session?.user
   const { courseId } = await params
   const course = await api.getCoursesById(courseId)
   const category = await api.getCategoryByCourseId(courseId)
+  const comments = await api
+    .getCommentsByCourseId(courseId)
+    .then((res) => res.comments)
+  const isPurchached = session
+    ? await api.getLibrary(user.accessToken).then((res) => {
+        const response = res.data.library.find(
+          (item) => item.id === Number(courseId)
+        )
+        return response === undefined ? false : true
+      })
+    : null
+
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>
@@ -28,23 +44,18 @@ async function CursosPage({ params }) {
           <p> Upvotes: 18</p>
         </div>
       </div>
-      <AddComment />
-      <Comment comment='"Increíble curso de programación, ¡aprendí más en unas semanas que en años intentando por mi cuenta!"' />
-      <Comment
-        username='CoderPro92'
-        comment='"Me encantó el curso, muy bien explicado y fácil de seguir. ¡Gracias!"'
-      />
-      <Comment
-        username='FinanceWhiz123'
-        comment='"No me gustó el curso, no lo recomendaría a nadie."'
-      />
-      {/* {comments.map((comment) => (
-        <Comment
-          key={comment.id}
-          username={comment.username}
-          comment={comment.comment}
-        />
-      ))} */}
+      {user === undefined
+        ? null
+        : isPurchached && <AddComment course={course} />}
+      {comments &&
+        comments.map((comment) => (
+          <Comment
+            key={comment.id}
+            username={comment.user_id}
+            comment={comment.text}
+          />
+        ))}
+      <Comment />
     </div>
   )
 }

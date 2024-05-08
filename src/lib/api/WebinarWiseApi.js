@@ -86,17 +86,19 @@ class WebinarWiseApi {
     return response.data
   }
   async postComment(courseId, token, comment) {
-    const response = await this.axiosInstance.post(
-      `/courses/${courseId}/comments`,
-      {
-        comment,
-      },
-      {
-        headers: {
-          Authorization: `${token}`,
+    const response = await this.axiosInstance
+      .post(
+        `/courses/${courseId}/comments`,
+        {
+          text: comment,
         },
-      }
-    )
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .catch((error) => error.response)
 
     return response
   }
