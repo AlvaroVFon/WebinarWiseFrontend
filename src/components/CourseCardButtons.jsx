@@ -79,7 +79,6 @@ function CourseCardButtons({ course, purchasedCourses }) {
     e.preventDefault()
     const response = await api.toggleLike(user?.accessToken, courseId)
     if (response.status === 200) {
-      console.log(response.data.likes)
       if (response.data.likes) {
         setLikeCount(response.data.likes)
         setLikeCount(Number(likeCount) + 1)
