@@ -26,7 +26,9 @@ async function CursosPage({ searchParams }) {
             <CourseCard
               key={index}
               course={course}
-              isPurchased={purchasedCoursesIds?.includes(course.id)}
+              isPurchased={
+                session ? purchasedCoursesIds?.includes(course.id) : false
+              }
             />
           </Suspense>
         ))}
