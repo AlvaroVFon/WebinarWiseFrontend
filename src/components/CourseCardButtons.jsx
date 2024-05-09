@@ -6,20 +6,14 @@ import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
 function CourseCardButtons({ course, isPurchased, likedCourses }) {
   const { data: session } = useSession()
+  const user = session?.user
   const { id: courseId, likes = 12, comments } = course
-  const [user, setUser] = useState(null)
   const [showPopup, setShowPopup] = useState(false)
   const [showPurhcasePopup, setShowPurchasePopup] = useState(false)
   const [showLikePopup, setShowLikePopup] = useState(false)
   const [userLike, setUserLike] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
   const [error, setError] = useState('')
-
-  useEffect(() => {
-    if (session) {
-      setUser(session.user)
-    }
-  }, [session])
 
   useEffect(() => {
     likedCourses?.forEach((course) => {
