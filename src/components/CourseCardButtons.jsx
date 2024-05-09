@@ -52,8 +52,8 @@ function CourseCardButtons({ course, purchasedCourses }) {
     const response = await api
       .startPurchase(courseId, user?.accessToken)
       .catch((error) => {
-        if (error.response.status === 401) {
-          setError(error.response.data.msg)
+        if (error.response.status === 401 && !session) {
+          setError('You need to be logged in to purchase a course')
         }
         if (error.response.status === 500) {
           setError('Unexpected error, please try again later')
