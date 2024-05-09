@@ -26,20 +26,22 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
   useEffect(() => {
     likedCourses?.forEach((course) => {
       if (course.id === courseId) {
-        setUserLike(true)
+        setUserLike(!userLike)
       }
     })
-  }, [user])
+  }, [likedCourses, session])
   useEffect(() => {
     purchasedCourses?.forEach((course) => {
       if (course.id === courseId) {
         setIsPurchased(true)
       }
     })
-  }, [isPurchased, user])
+  }, [purchasedCourses])
   const handleCopyLink = (e) => {
     e.preventDefault()
-    navigator.clipboard.writeText(`http://localhost:3000/courses/${courseId}`)
+    navigator.clipboard.writeText(
+      `http://localhost:3000/home/courses/${courseId}`
+    )
     setShowPopup(true)
     setTimeout(() => {
       setShowPopup(false)

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
-function Pagination({ currentPage = 1, totalPages = 12 }) {
+function Pagination({ currentPage = 1, totalPages = 12, className }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const pathname = usePathname()
@@ -19,7 +19,7 @@ function Pagination({ currentPage = 1, totalPages = 12 }) {
   const page = searchParams.get('page')
 
   return (
-    <div className='flex flex-col gap-1 pb-3'>
+    <div className={`${className} flex flex-col gap-1 pb-3`}>
       <p className='text-xs text-center p-2 text-muted'>
         Page <span className='text-accentDarker'>{currentPage}</span> of{' '}
         <span className='text-accentDarker'>{totalPages}</span>

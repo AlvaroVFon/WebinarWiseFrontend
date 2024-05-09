@@ -19,8 +19,8 @@ async function CursosPage({ searchParams }) {
     .then((res) => res.data?.library)
     .catch((error) => error)
   return (
-    <div className=''>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
+    <>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-[70vh] p-6'>
         {courses?.results?.map((course, index) => (
           <Suspense
             key={index}
@@ -45,7 +45,7 @@ async function CursosPage({ searchParams }) {
           </Suspense>
         </div>
       )}
-    </div>
+    </>
   )
 }
 export default CursosPage
