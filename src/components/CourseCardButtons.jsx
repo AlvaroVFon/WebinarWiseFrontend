@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
-import { set } from 'react-hook-form'
 function CourseCardButtons({ course, purchasedCourses }) {
   const { data: session } = useSession()
   const { id: courseId, likes = 12, comments } = course
