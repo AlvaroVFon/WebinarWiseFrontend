@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import CourseCardButtons from './CourseCardButtons'
 import CourseCardHeader from './CourseCardHeader'
-async function CourseCard({ course, purchasedCourses }) {
+async function CourseCard({ course, purchasedCourses, likedCourses }) {
   const { creation_date } = course
   const date = creation_date.split('T')[0].split('-').reverse().join('-')
   return (
@@ -23,6 +23,7 @@ async function CourseCard({ course, purchasedCourses }) {
       <CourseCardButtons
         course={course}
         purchasedCourses={purchasedCourses}
+        likedCourses={likedCourses}
       />
     </article>
   )

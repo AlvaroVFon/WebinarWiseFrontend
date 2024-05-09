@@ -10,7 +10,10 @@ async function CursosPage({ searchParams }) {
   const { page, search = '', category = '' } = await searchParams
   const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
   const courses = await api.getCourses(url).catch((error) => error)
-
+  const likedCourses = await api
+    .getCourses(url, session?.user?.accessToken)
+    .then((res) => res.results.filter((course) => course.user_liked))
+    .catch((error) => error)
   const purchasedCourses = await api
     .getLibrary(session?.user?.accessToken)
     .then((res) => res.data?.library)
@@ -27,6 +30,7 @@ async function CursosPage({ searchParams }) {
               key={index}
               course={course}
               purchasedCourses={purchasedCourses}
+              likedCourses={likedCourses}
             />
           </Suspense>
         ))}
