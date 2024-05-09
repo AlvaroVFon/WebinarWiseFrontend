@@ -10,17 +10,14 @@ async function CursosPage({ searchParams }) {
   const { page, search = '', category = '' } = await searchParams
   const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
   const courses = await api.getCourses(url).catch((error) => error)
-  const likedCourses = await api
-    .getCourses(url, session?.user?.accessToken)
-    .then((res) => res.results.filter((course) => course.user_liked))
-    .catch((error) => error)
-  const purchasedCourses = await api
+  const purchasedCoursesIds = await api
     .getLibrary(session?.user?.accessToken)
     .then((res) => res.data?.library)
+    .then((res) => res.map((course) => course.id))
     .catch((error) => error)
   return (
-    <>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-[70vh] p-6'>
+    <div className=''>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
         {courses?.results?.map((course, index) => (
           <Suspense
             key={index}
@@ -29,8 +26,7 @@ async function CursosPage({ searchParams }) {
             <CourseCard
               key={index}
               course={course}
-              purchasedCourses={purchasedCourses}
-              likedCourses={likedCourses}
+              isPurchased={purchasedCoursesIds?.includes(course.id)}
             />
           </Suspense>
         ))}
@@ -45,7 +41,7 @@ async function CursosPage({ searchParams }) {
           </Suspense>
         </div>
       )}
-    </>
+    </div>
   )
 }
 export default CursosPage

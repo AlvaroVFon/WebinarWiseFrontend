@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
-function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
+function CourseCardButtons({ course, isPurchased, likedCourses }) {
   const { data: session } = useSession()
   const { id: courseId, likes = 12, comments } = course
   const [user, setUser] = useState(null)
@@ -14,7 +14,6 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
   const [userLike, setUserLike] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
   const [error, setError] = useState('')
-  const [isPurchased, setIsPurchased] = useState(false)
 
   useEffect(() => {
     if (session) {
@@ -29,13 +28,7 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
       }
     })
   }, [likedCourses, session])
-  useEffect(() => {
-    purchasedCourses?.forEach((course) => {
-      if (course.id === courseId) {
-        setIsPurchased(true)
-      }
-    })
-  }, [purchasedCourses])
+
   const handleCopyLink = (e) => {
     e.preventDefault()
     navigator.clipboard.writeText(
