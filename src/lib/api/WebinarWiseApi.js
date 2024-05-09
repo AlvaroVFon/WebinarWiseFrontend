@@ -35,9 +35,13 @@ class WebinarWiseApi {
     })
     return response
   }
-  async getCourses(url) {
+  async getCourses(url, token) {
     const response = await this.axiosInstance
-      .get(url)
+      .get(url, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
       .then((res) => {
         if (res.status === 200) {
           return res.data
@@ -46,6 +50,7 @@ class WebinarWiseApi {
       .catch((error) => error)
     return response
   }
+
   async getCoursesById(id) {
     const response = await this.axiosInstance
       .get(`/courses/${id}`)
