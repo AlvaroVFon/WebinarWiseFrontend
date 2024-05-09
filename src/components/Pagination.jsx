@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
+import FirstPageIcon from './icons/FirstPageIcon'
+import LastPageIcon from './icons/LastPageIcon'
 function Pagination({ currentPage = 1, totalPages = 12, className }) {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -32,12 +34,7 @@ function Pagination({ currentPage = 1, totalPages = 12, className }) {
           )}`}
           className='hover:scale-110 duration-100'
         >
-          <Image
-            src='/firstPage.svg'
-            width={25}
-            height={25}
-            alt='first page'
-          />
+          <FirstPageIcon />
         </Link>
         <button
           onClick={() =>
@@ -65,12 +62,7 @@ function Pagination({ currentPage = 1, totalPages = 12, className }) {
           href={`${pathname}?${createQueryString('page', totalPages)}`}
           className='hover:scale-110 duration-100'
         >
-          <Image
-            src='/lastPage.svg'
-            width={25}
-            height={25}
-            alt='last page'
-          />
+          <LastPageIcon />
         </Link>
       </div>
     </div>

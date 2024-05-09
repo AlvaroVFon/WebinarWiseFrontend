@@ -1,4 +1,5 @@
 'use client'
+import Spinner from '@/components/icons/Spinner'
 import Image from 'next/image'
 function ErrorPage() {
   setTimeout(() => {
@@ -14,12 +15,7 @@ function ErrorPage() {
         height={200}
       />
       <p className='text-xl text-accent'>You are being redirect</p>
-      <Image
-        src='/spinner.svg'
-        width={35}
-        height={35}
-        alt='spinner'
-      />
+      <Spinner />
     </div>
   )
 }

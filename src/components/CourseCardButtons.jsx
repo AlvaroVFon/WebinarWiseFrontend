@@ -1,9 +1,12 @@
 'use client'
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import { useState } from 'react'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
+import CommentIcon from './icons/CommentIcon'
+import CreditCardIcon from './icons/CreditCardIcon'
+import UpvoteIcon from './icons/UpvoteIcon'
+import LinkIcon from './icons/LinkIcon'
 function CourseCardButtons({ course, isPurchased, isLiked }) {
   const { data: session } = useSession()
   const user = session?.user
@@ -74,30 +77,20 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
   return (
     <div className='flex items-center justify-evenly'>
       <button className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'>
-        <Image
-          src='/comment.svg'
-          alt='comments'
-          width={25}
-          height={25}
-        />
+        <CommentIcon color='#a8b3cf' />
         <p className='text-sm text-accent cursor-pointer'>{comments}</p>
       </button>
       {user && (
         <div className='relative'>
           <button
-            className={
-              showIsLiked
-                ? 'flex items-center gap-1 bg-bgTertiary rounded-md p-1 duration-300'
-                : 'flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
-            }
+            className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
             onClick={handleLike}
           >
-            <Image
-              src='/upvote.svg'
-              alt='upvote'
-              width={25}
-              height={25}
-            />
+            {showIsLiked ? (
+              <UpvoteIcon color='#e879f9' />
+            ) : (
+              <UpvoteIcon color='#a8b3cf' />
+            )}
             <p className='text-sm text-accent cursor-pointer'>{likeCount}</p>
           </button>
           <Popup
@@ -112,12 +105,7 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
           className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
           onClick={handleCopyLink}
         >
-          <Image
-            src='/link.svg'
-            alt='link'
-            width={25}
-            height={25}
-          />
+          <LinkIcon />
         </button>
         <Popup
           className='absolute'
@@ -133,19 +121,9 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
           className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
         >
           {!isPurchased ? (
-            <Image
-              src='/purchase.svg'
-              alt='purchase'
-              width={25}
-              height={25}
-            />
+            <CreditCardIcon />
           ) : (
-            <Image
-              src='/purchased.svg'
-              alt='purchased'
-              width={25}
-              height={25}
-            />
+            <CreditCardIcon color='#4ade80' />
           )}
         </button>
         <Popup

@@ -1,4 +1,7 @@
 'use client'
+
+import Spinner from '@/components/icons/Spinner'
+
 function PurchasedPage() {
   setTimeout(() => {
     window.location.href = '/home/courses?page=1'
@@ -9,10 +12,7 @@ function PurchasedPage() {
         Congratulations, your course have been purchased succesfully
       </h1>
       <p className='text-center text-2xl'>You are being redirected</p>
-      <img
-        src='/spinner.svg'
-        alt=''
-      />
+      <Spinner />
     </div>
   )
 }

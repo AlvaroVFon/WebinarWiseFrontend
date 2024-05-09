@@ -1,12 +1,16 @@
 'use client'
 import UserAvatar from './UserAvatar'
 import Link from 'next/link'
-import Image from 'next/image'
-import HeaderNavProfileMenu from './HeaderNavProfileMenu'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { changeTheme } from '@/lib/utils/changeTheme'
 import { useSession, signOut } from 'next-auth/react'
+import CategoryIcon from './icons/CategoryIcon'
+import LightThemeIcon from './icons/LightThemeIcon'
+import DarkThemeIcon from './icons/DarkThemeIcon'
+import CoursesIcon from './icons/CoursesIcon'
+import LogoutIcon from './icons/LogoutIcon'
+import LoginIcon from './icons/LoginIcon'
 
 function HeaderNav() {
   const { status } = useSession()
@@ -22,21 +26,7 @@ function HeaderNav() {
         }}
         className='hover:scale-110 duration-300 p-3'
       >
-        {theme === 'dark' ? (
-          <Image
-            src='/light.svg'
-            width={25}
-            height={25}
-            alt='light'
-          />
-        ) : (
-          <Image
-            src='/dark.svg'
-            width={25}
-            height={25}
-            alt='dark'
-          />
-        )}
+        {theme === 'dark' ? <LightThemeIcon /> : <DarkThemeIcon />}
       </a>
       <Link
         href='/home/courses?page=1'
@@ -46,13 +36,7 @@ function HeaderNav() {
             : 'p-3'
         }
       >
-        <Image
-          src='/courses.svg'
-          alt='courses'
-          width={25}
-          height={25}
-          className='hover:scale-110  duration-300 ease-in-out'
-        />
+        <CoursesIcon />
       </Link>
       <Link
         href='/home/categories'
@@ -62,39 +46,21 @@ function HeaderNav() {
             : 'p-3'
         }
       >
-        <Image
-          src='/category.svg'
-          alt='category'
-          width={25}
-          height={25}
-          className='hover:scale-110 duration-300 ease-in-out'
-        />
+        <CategoryIcon color='#a8b3cf' />
       </Link>
       {status !== 'authenticated' ? (
         <Link
           href='/login'
           className='p-3'
         >
-          <Image
-            src='/login.svg'
-            alt='login'
-            width={25}
-            height={25}
-            className='hover:scale-110 duration-300 ease-in-out'
-          />
+          <LoginIcon />
         </Link>
       ) : (
         <a
           onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
           className='p-3 cursor-pointer'
         >
-          <Image
-            src='/logout.svg'
-            alt='register'
-            width={25}
-            height={25}
-            className='hover:scale-110 duration-300 ease-in-out'
-          />
+          <LogoutIcon />
         </a>
       )}
       {status === 'authenticated' && (
