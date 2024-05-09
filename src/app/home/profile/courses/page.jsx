@@ -2,7 +2,6 @@ import api from '@/lib/api/WebinarWiseApi'
 import CourseCard from '@/components/CourseCard'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
-import Pagination from '@/components/Pagination'
 async function ProfileCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
   const user = session?.user
