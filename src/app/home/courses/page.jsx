@@ -15,6 +15,12 @@ async function CursosPage({ searchParams }) {
     .then((res) => res.data?.library)
     .then((res) => res.map((course) => course.id))
     .catch((error) => error)
+  const likedCoursesIds = await api
+    .getCourses('/courses', session?.user?.accessToken)
+    .then((res) => res.results)
+    .then((res) => res.filter((course) => course.user_liked))
+    .then((res) => res.map((course) => course.id))
+
   return (
     <div className=''>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
@@ -29,6 +35,7 @@ async function CursosPage({ searchParams }) {
               isPurchased={
                 session ? purchasedCoursesIds?.includes(course.id) : false
               }
+              isLiked={session ? likedCoursesIds?.includes(course.id) : false}
             />
           </Suspense>
         ))}

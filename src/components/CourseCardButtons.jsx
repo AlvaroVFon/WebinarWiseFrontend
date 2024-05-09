@@ -4,27 +4,18 @@ import Image from 'next/image'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
-function CourseCardButtons({ course, isPurchased, likedCourses }) {
+function CourseCardButtons({ course, isPurchased, isLiked }) {
   const { data: session } = useSession()
   const user = session?.user
   const { id: courseId, likes = 12, comments } = course
   const [showPopup, setShowPopup] = useState(false)
   const [showPurhcasePopup, setShowPurchasePopup] = useState(false)
   const [showLikePopup, setShowLikePopup] = useState(false)
-  const [userLike, setUserLike] = useState(false)
   const [likeCount, setLikeCount] = useState(likes)
+  const [showIsLiked, setShowIsLiked] = useState(isLiked)
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    likedCourses?.forEach((course) => {
-      if (course.id === courseId) {
-        setUserLike(!userLike)
-      }
-    })
-  }, [likedCourses, session])
-
-  const handleCopyLink = (e) => {
-    e.preventDefault()
+  const handleCopyLink = () => {
     navigator.clipboard.writeText(
       `http://localhost:3000/home/courses/${courseId}`
     )
@@ -33,8 +24,7 @@ function CourseCardButtons({ course, isPurchased, likedCourses }) {
       setShowPopup(false)
     }, 1000)
   }
-  const handlePurchase = async (e) => {
-    e.preventDefault()
+  const handlePurchase = async () => {
     if (!user) {
       setShowPurchasePopup(true)
       setTimeout(() => {
@@ -63,12 +53,10 @@ function CourseCardButtons({ course, isPurchased, likedCourses }) {
       window.location.href = `${response.data.url}`
     }
   }
-  const handleLike = async (e) => {
-    e.preventDefault()
-
+  const handleLike = async () => {
     const response = await api.toggleLike(user?.accessToken, courseId)
     if (response.status === 200) {
-      setUserLike(!userLike)
+      setShowIsLiked(!showIsLiked)
       if (response.data.likes) {
         setLikeCount(Number(likeCount) + 1)
       } else if (!response.data.likes) {
@@ -98,7 +86,7 @@ function CourseCardButtons({ course, isPurchased, likedCourses }) {
         <div className='relative'>
           <button
             className={
-              userLike
+              showIsLiked
                 ? 'flex items-center gap-1 bg-bgTertiary rounded-md p-1 duration-300'
                 : 'flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
             }
