@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
@@ -99,10 +98,7 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
   }
   return (
     <div className='flex items-center justify-evenly'>
-      <Link
-        href=''
-        className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
-      >
+      <button className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'>
         <Image
           src='/comment.svg'
           alt='comments'
@@ -110,11 +106,10 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
           height={25}
         />
         <p className='text-sm text-accent cursor-pointer'>{comments}</p>
-      </Link>
+      </button>
       {user && (
         <div className='relative'>
-          <Link
-            href='#'
+          <button
             className={
               userLike
                 ? 'flex items-center gap-1 bg-bgTertiary rounded-md p-1 duration-300'
@@ -129,7 +124,7 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
               height={25}
             />
             <p className='text-sm text-accent cursor-pointer'>{likeCount}</p>
-          </Link>
+          </button>
           <Popup
             showPopup={showLikePopup}
             message={error}
@@ -138,8 +133,7 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
         </div>
       )}
       <div className='relative'>
-        <Link
-          href=''
+        <button
           className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'
           onClick={handleCopyLink}
         >
@@ -149,7 +143,7 @@ function CourseCardButtons({ course, purchasedCourses, likedCourses }) {
             width={25}
             height={25}
           />
-        </Link>
+        </button>
         <Popup
           className='absolute'
           showPopup={showPopup}
