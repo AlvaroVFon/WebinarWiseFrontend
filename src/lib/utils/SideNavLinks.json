@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/admin/profile/courses",
+    "label": "My courses"
+  },
+  {
+    "path": "/admin/profile/settings",
+    "label": "Account Settings"
+  },
+  {
+    "path": "/admin/profile/settings/edit",
+    "label": "Edit Profile"
+  }
+]

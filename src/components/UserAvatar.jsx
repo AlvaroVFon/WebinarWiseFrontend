@@ -16,7 +16,7 @@ function UserAvatar({ user }) {
         className='rounded-full'
         onMouseOver={() => setShowMenu(true)}
       />
-      {pathname.includes('/home/profile') && <p className=''>{user?.email}</p>}
+      {pathname.includes('/admin/profile') && <p className=''>{user?.email}</p>}
 
       <HeaderNavProfileMenu
         showMenu={showMenu}
