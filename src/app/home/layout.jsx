@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 function HomeLayout({ children }) {
   return (
     <div className='relative'>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense>
         <Header />
       </Suspense>
       <div>{children}</div>

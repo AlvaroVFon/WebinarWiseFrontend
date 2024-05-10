@@ -36,8 +36,7 @@ async function CursosPage({ params }) {
           width={920}
           height={600}
           alt='img'
-          className='rounded-xl'
-          layout='responsive'
+          className='rounded-xl 4xl:w-[1020px] 4xl:h-[700px]'
         />
         <div className='flex justify-end items-center gap-3 text-muted p-3'>
           <p>Duration: 1500 h.</p>
