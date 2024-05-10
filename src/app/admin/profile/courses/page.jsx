@@ -14,7 +14,7 @@ async function ProfileCoursesPage() {
     .then((res) => res.map((course) => course.id))
   return (
     <>
-      <div className='absolute grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-10  place-items-center p-6'>
+      <div className='grid col-start-3 md:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5  gap-10  place-items-center p-6'>
         {library?.map((course) => (
           <CourseCard
             key={course.id}

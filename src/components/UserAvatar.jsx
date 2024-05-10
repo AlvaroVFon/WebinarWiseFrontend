@@ -11,7 +11,7 @@ function UserAvatar({ user, showUserEmail, disableMenu }) {
         src={`/avatar.png`}
         width={40}
         height={40}
-        className='rounded-full'
+        className='rounded-full min-w-8 min-h-8 cursor-pointer'
         onMouseOver={() => setShowMenu(true)}
       />
       {showUserEmail && <p className=''>{user?.email}</p>}

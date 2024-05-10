@@ -6,7 +6,7 @@ function CategoryCard({ category }) {
       <h1 className='text-2xl font-bold'>{category.name}</h1>
       <Image
         src={
-          category.thumbnaul || 'https://placehold.jp/3d4070/ffffff/300x160.png'
+          category.thumbnail || 'https://placehold.jp/3d4070/ffffff/300x160.png'
         }
         width={300}
         height={160}

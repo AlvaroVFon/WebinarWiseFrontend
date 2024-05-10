@@ -17,6 +17,9 @@ module.exports = {
         accentDarker: 'var(--accent-darker)',
         muted: 'var(--muted)',
       },
+      screens: {
+        '4xl': '2560px',
+      },
     },
   },
   plugins: [],

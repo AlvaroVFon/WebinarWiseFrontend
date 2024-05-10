@@ -36,43 +36,38 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
     }
     const response = await api
       .startPurchase(courseId, user?.accessToken)
-      .catch((error) => {
-        if (error.response.status === 401 && !session) {
-          setError('You need to be logged in to purchase a course')
+      .then((res) => {
+        if (res.error) {
+          setError(res.error)
+          setShowPurchasePopup(true)
+          setTimeout(() => {
+            setShowPurchasePopup(false)
+          }, 2000)
         }
-        if (error.response.status === 500) {
-          setError('Unexpected error, please try again later')
-        }
-        return error.response
+        if (res?.data?.url) window.location.href = res?.data?.url
       })
-
-    if (response.status === 401 || response.status === 500) {
-      setShowPurchasePopup(true)
-      setTimeout(() => {
-        setShowPurchasePopup(false)
-      }, 2000)
-    }
-    if (response.data?.url) {
-      window.location.href = `${response.data.url}`
-    }
   }
+
   const handleLike = async () => {
-    const response = await api.toggleLike(user?.accessToken, courseId)
-    if (response.status === 200) {
-      setShowIsLiked(!showIsLiked)
-      if (response.data.likes) {
-        setLikeCount(Number(likeCount) + 1)
-      } else if (!response.data.likes) {
-        setLikeCount(Number(likeCount) - 1)
-      }
-    }
-    if (response.status === 401) {
-      setError(response.data.msg)
-      setShowLikePopup(true)
-      setTimeout(() => {
-        setShowLikePopup(false)
-      }, 2000)
-    }
+    const response = await api
+      .toggleLike(user?.accessToken, courseId)
+      .then((res) => {
+        if (res.error) {
+          setError(res.error)
+          setShowLikePopup(true)
+          setTimeout(() => {
+            setShowLikePopup(false)
+          }, 2000)
+        }
+        if (res.data) {
+          setShowIsLiked(!showIsLiked)
+          if (res.data?.likes) {
+            setLikeCount(Number(likeCount) + 1)
+          } else if (!res.data?.likes) {
+            setLikeCount(Number(likeCount) - 1)
+          }
+        }
+      })
   }
   return (
     <div className='flex items-center justify-evenly'>

@@ -11,7 +11,7 @@ function Header() {
   const category = searchParams.get('category') || ''
 
   return (
-    <header className='sticky top-0 z-10 flex p-3 items-center border-b border-muted justify-between w-full bg-bgSecondary '>
+    <header className='sticky top-0 z-10 flex p-3 items-center border-b border-muted justify-center md:justify-between w-full bg-bgSecondary '>
       <Link
         href='/'
         className='hidden md:block'

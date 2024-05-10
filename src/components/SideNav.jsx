@@ -7,7 +7,7 @@ import SideNavLinks from '@/lib/utils/SideNavLinks'
 function SideNav({ user }) {
   const pathname = usePathname()
   return (
-    <div className='fixed flex flex-col gap-16 bg-bgTertiary h-full p-6'>
+    <div className='fixed col-span-2 hidden lg:flex flex-col gap-16 bg-bgTertiary h-full p-6'>
       <UserAvatar
         user={user}
         showUserEmail={true}

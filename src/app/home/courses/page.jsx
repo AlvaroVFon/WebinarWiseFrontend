@@ -9,7 +9,7 @@ async function CursosPage({ searchParams }) {
   const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
   const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
-  const courses = await api.getCourses(url).catch((error) => error)
+  const courses = await api.getCourses(url)
   const purchasedCoursesIds = await api
     .getLibrary(session?.user?.accessToken)
     .then((res) => res.data?.library)
@@ -23,7 +23,7 @@ async function CursosPage({ searchParams }) {
 
   return (
     <div className=''>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-y-10  place-items-center min-h-screen p-6'>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 4xl:grid-cols-6  gap-y-10  place-items-center min-h-screen p-6'>
         {courses?.results?.map((course, index) => (
           <Suspense
             key={index}

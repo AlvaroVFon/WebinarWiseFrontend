@@ -47,7 +47,7 @@ class WebinarWiseApi {
           return res.data
         }
       })
-      .catch((error) => error)
+      .catch((error) => error.response)
     return response
   }
 
@@ -108,11 +108,20 @@ class WebinarWiseApi {
     return response
   }
   async startPurchase(courseId, token) {
-    const response = this.axiosInstance.get(`/library/${courseId}/checkout`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    })
+    const response = this.axiosInstance
+      .get(`/library/${courseId}/checkout`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          return { error: 'You need to be logged in to purchase a course' }
+        }
+        if (error.response.status === 500) {
+          return { error: 'Unexpected error, please try again later' }
+        }
+      })
     return response
   }
   async getLibrary(token) {
@@ -126,14 +135,19 @@ class WebinarWiseApi {
     return response
   }
   async toggleLike(token, courseId) {
-    const response = this.axiosInstance
+    const response = await this.axiosInstance
       .post(`/courses/${courseId}/like`, null, {
         headers: {
           Authorization: `${token}`,
         },
       })
-      .catch((error) => error.response)
-
+      .catch((error) => {
+        if (error.response.status === 401) {
+          return { error: 'You need to be logged in to like a course' }
+        } else if (error.response.status === 500) {
+          return { error: 'Unexpected error, please try again later' }
+        }
+      })
     return response
   }
   async getLikedCourses(token, courseId) {

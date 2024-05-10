@@ -47,6 +47,7 @@ function HeaderNav() {
       >
         <CategoryIcon />
       </Link>
+
       {status !== 'authenticated' ? (
         <Link
           href='/login'
