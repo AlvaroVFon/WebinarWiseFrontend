@@ -56,6 +56,14 @@ async function CursosPage({ params }) {
             commentDate={comment.creation_date.split('T')[0]}
           />
         ))}
+      {comments.length === 0 && (
+        <Comment
+          comment='No comments yet. Purchase the course to leave your comment'
+          username=''
+          userRole=''
+          commentDate=''
+        />
+      )}
     </div>
   )
 }
