@@ -1,11 +1,9 @@
 'use client'
-import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Image from 'next/image'
 import HeaderNavProfileMenu from './HeaderNavProfileMenu'
-function UserAvatar({ user }) {
+function UserAvatar({ user, showUserEmail, disableMenu }) {
   const [showMenu, setShowMenu] = useState(false)
-  const pathname = usePathname()
   return (
     <div className='flex flex-col items-center gap-2 relative'>
       <Image
@@ -16,11 +14,12 @@ function UserAvatar({ user }) {
         className='rounded-full'
         onMouseOver={() => setShowMenu(true)}
       />
-      {pathname.includes('/admin/profile') && <p className=''>{user?.email}</p>}
+      {showUserEmail && <p className=''>{user?.email}</p>}
 
       <HeaderNavProfileMenu
         showMenu={showMenu}
         setShowMenu={setShowMenu}
+        disableMenu={disableMenu}
       />
     </div>
   )

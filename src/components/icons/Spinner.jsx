@@ -1,9 +1,9 @@
-function Spinner({ color }) {
+function Spinner({ color, width, height }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='35'
-      height='35'
+      width={width ? width : '35'}
+      height={height ? height : '35'}
       viewBox='0 0 24 24'
     >
       <circle

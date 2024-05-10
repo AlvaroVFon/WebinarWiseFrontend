@@ -11,23 +11,22 @@ import DarkThemeIcon from './icons/DarkThemeIcon'
 import CoursesIcon from './icons/CoursesIcon'
 import LogoutIcon from './icons/LogoutIcon'
 import LoginIcon from './icons/LoginIcon'
-
 function HeaderNav() {
-  const { status } = useSession()
+  const { status, data: session } = useSession()
   const pathname = usePathname()
   const [theme, setTheme] = useState('dark')
+  const handleThemeChange = () => {
+    changeTheme()
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
   return (
     <nav className='flex gap-3 justify-end text-accent items-center'>
-      <a
-        href='#'
-        onClick={() => {
-          changeTheme()
-          setTheme(theme === 'dark' ? 'light' : 'dark')
-        }}
+      <button
+        onClick={handleThemeChange}
         className='hover:scale-110 duration-300 p-3'
       >
         {theme === 'dark' ? <LightThemeIcon /> : <DarkThemeIcon />}
-      </a>
+      </button>
       <Link
         href='/home/courses?page=1'
         className={
@@ -46,7 +45,7 @@ function HeaderNav() {
             : 'p-3'
         }
       >
-        <CategoryIcon color='#a8b3cf' />
+        <CategoryIcon />
       </Link>
       {status !== 'authenticated' ? (
         <Link
@@ -56,18 +55,14 @@ function HeaderNav() {
           <LoginIcon />
         </Link>
       ) : (
-        <a
+        <button
           onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
           className='p-3 cursor-pointer'
         >
           <LogoutIcon />
-        </a>
+        </button>
       )}
-      {status === 'authenticated' && (
-        <Link href='/admin/profile/courses'>
-          <UserAvatar />
-        </Link>
-      )}
+      {status === 'authenticated' && <UserAvatar user={session?.user} />}
     </nav>
   )
 }

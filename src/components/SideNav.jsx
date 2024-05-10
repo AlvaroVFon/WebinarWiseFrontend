@@ -8,7 +8,11 @@ function SideNav({ user }) {
   const pathname = usePathname()
   return (
     <div className='fixed flex flex-col gap-16 bg-bgTertiary h-full p-6'>
-      <UserAvatar user={user} />
+      <UserAvatar
+        user={user}
+        showUserEmail={true}
+        disableMenu={true}
+      />
       {SideNavLinks.map((link) => {
         const isActive =
           pathname === link.path

@@ -1,0 +1,14 @@
+[
+  {
+    "href": "/admin/profile/courses",
+    "label": "My courses"
+  },
+  {
+    "href": "/admin/profile/settings",
+    "label": "Account settings"
+  },
+  {
+    "href": "/admin/profile/settings/edit",
+    "label": "Edit profile"
+  }
+]
