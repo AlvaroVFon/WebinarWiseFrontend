@@ -1,13 +1,22 @@
 'use client'
+import Spinner from '@/components/icons/Spinner'
+import { useRouter } from 'next/navigation'
+
 function LoginErrorPage() {
+  const router = useRouter()
   setTimeout(() => {
-    window.location.href = '/login'
+    router.push('/login')
   }, 2000)
+
   return (
-    <div className='min-h-screen flex justify-center items-center'>
+    <div className='min-h-screen flex flex-col justify-center items-center gap-10'>
       <h1 className='text-3xl text-center text-accent'>
-        Invalid Credentials. Redirecting to login page...
+        You are not logged in, redirecting to login page.
       </h1>
+      <Spinner
+        width={50}
+        height={50}
+      />
     </div>
   )
 }

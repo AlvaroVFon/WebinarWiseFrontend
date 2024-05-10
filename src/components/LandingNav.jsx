@@ -1,15 +1,10 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import LoginIcon from './icons/LoginIcon'
 function LandingNav() {
   return (
     <nav className='flex gap-8 text-xl p-3 font-semibold'>
       <Link href='/login'>
-        <Image
-          src='/login.svg'
-          alt='login'
-          width={25}
-          height={25}
-        />
+        <LoginIcon />
       </Link>
     </nav>
   )
