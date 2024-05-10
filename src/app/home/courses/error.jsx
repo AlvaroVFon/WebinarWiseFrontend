@@ -1,9 +1,11 @@
 'use client'
 import Spinner from '@/components/icons/Spinner'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 function ErrorPage() {
+  const router = useRouter()
   setTimeout(() => {
-    window.location.href = '/'
+    router.push('/')
   }, 3000)
 
   return (
@@ -15,7 +17,10 @@ function ErrorPage() {
         height={200}
       />
       <p className='text-xl text-accent'>You are being redirect</p>
-      <Spinner />
+      <Spinner
+        width={50}
+        height={50}
+      />
     </div>
   )
 }

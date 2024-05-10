@@ -1,13 +1,15 @@
 'use client'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
-import { useSession } from 'next-auth/react'
 import CommentIcon from './icons/CommentIcon'
 import CreditCardIcon from './icons/CreditCardIcon'
 import UpvoteIcon from './icons/UpvoteIcon'
 import LinkIcon from './icons/LinkIcon'
 function CourseCardButtons({ course, isPurchased, isLiked }) {
+  const router = useRouter()
   const { data: session } = useSession()
   const user = session?.user
   const { id: courseId, likes = 12, comments } = course
@@ -44,7 +46,7 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
             setShowPurchasePopup(false)
           }, 2000)
         }
-        if (res?.data?.url) window.location.href = res?.data?.url
+        if (res?.data?.url) router.push(res.data.url)
       })
   }
 

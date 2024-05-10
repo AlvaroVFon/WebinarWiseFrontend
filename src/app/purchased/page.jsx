@@ -1,10 +1,12 @@
 'use client'
 
 import Spinner from '@/components/icons/Spinner'
+import { useRouter } from 'next/navigation'
 
 function PurchasedPage() {
+  const router = useRouter()
   setTimeout(() => {
-    window.location.href = '/home/courses?page=1'
+    router.push('/')
   }, 3000)
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-6'>
