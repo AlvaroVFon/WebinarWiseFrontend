@@ -7,8 +7,8 @@ import api from '@/lib/api/WebinarWiseApi'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import ErrorPopup from './ErrorPopup'
-import Spinner from './icons/Spinner'
 import InfoIcon from './icons/InfoIcon'
+import Button from './Button'
 function LoginForm({ formType }) {
   const router = useRouter()
   const [error, setError] = useState(null)
@@ -136,24 +136,18 @@ function LoginForm({ formType }) {
           )}
         </div>
         <div className='flex flex-col'>
-          <div className='grid items-center'>
-            <button className={`${styles.btn} mt-5 flex justify-center gap-5`}>
-              {formType === 'login' ? 'Login' : 'Sign up'}
-              {isSubmitting && (
-                <Spinner
-                  width={25}
-                  height={25}
-                  color='#597dd8'
-                />
-              )}
-            </button>
+          <div className='grid items-center justify-end'>
+            <Button
+              isLoading={isSubmitting}
+              label={formType === 'login' ? 'Login' : 'Sign Up'}
+            />
           </div>
           {formType === 'login' && (
             <p className='mt-3'>
               Don&apos;t have an account?{' '}
               <Link
                 href='/signup'
-                className='text-[#597dd8] hover:text-[#4462cc]'
+                className='text-blue-500 hover:text-blue-700 duration-300'
               >
                 Sign up
               </Link>
