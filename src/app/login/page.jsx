@@ -1,6 +1,14 @@
 import AuthForm from '@/components/AuthForm'
 import Logo from '@/components/Logo'
-function LoginPage() {
+import { getServerSession } from 'next-auth'
+import NextAuthOptions from '../api/auth/[...nextauth]/NextAuthOptions'
+import { redirect } from 'next/navigation'
+async function LoginPage() {
+  const session = await getServerSession(NextAuthOptions)
+  if (session) {
+    redirect('/home/courses?page=1')
+  }
+
   return (
     <div className='min-h-screen flex flex-col md:flex-row justify-center items-center'>
       <Logo />
