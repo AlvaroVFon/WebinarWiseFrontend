@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import Button from './Button'
 import ErrorPopup from './ErrorPopup'
 function UpdatePasswordForm() {
