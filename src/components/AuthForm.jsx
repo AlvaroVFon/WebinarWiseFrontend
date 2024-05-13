@@ -140,6 +140,7 @@ function LoginForm({ formType }) {
             <Button
               isLoading={isSubmitting}
               label={formType === 'login' ? 'Login' : 'Sign Up'}
+              width={64}
             />
           </div>
           {formType === 'login' && (
