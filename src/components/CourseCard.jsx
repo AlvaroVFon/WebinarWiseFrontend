@@ -3,7 +3,7 @@ import Image from 'next/image'
 import CourseCardButtons from './CourseCardButtons'
 import CourseCardHeader from './CourseCardHeader'
 import { useRouter } from 'next/navigation'
-async function CourseCard({ course, isPurchased, isLiked }) {
+function CourseCard({ course, isPurchased, isLiked }) {
   const router = useRouter()
   return (
     <article className='bg-bgSecondary rounded-xl w-[285px] h-[414px] p-4 border border-muted hover:border-accent flex flex-col justify-between hover:scale-105 duration-300'>
