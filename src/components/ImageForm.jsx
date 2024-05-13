@@ -1,8 +1,6 @@
 'use client'
-import styles from '@/styles/form.module.css'
 import { useState } from 'react'
 import ImagePreview from './ImagePreview'
-import ErrorPopup from './ErrorPopup'
 import Button from './Button'
 function ImageForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -47,8 +45,8 @@ function ImageForm() {
           disabled={error}
           className='col-start-3'
         />
+        {error && <p className='text-red-400'>{error}</p>}
       </form>
-      {error && <ErrorPopup message={error} />}
     </div>
   )
 }
