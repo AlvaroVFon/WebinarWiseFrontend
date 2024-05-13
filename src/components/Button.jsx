@@ -18,6 +18,7 @@ function Button({
   borderHoverColor = 'blue-700',
   disabled,
   disabledColor = 'muted',
+  className,
 }) {
   return (
     <button
@@ -25,8 +26,8 @@ function Button({
       type={type}
       className={
         disabled
-          ? `flex items-center justify-center gap-3 w-${width} h-${height} text-${disabledColor} border border-${disabledColor} rounded ${padding} ${width} ${height} cursor-not-allowed`
-          : `flex items-center justify-center gap-3 w-${width} h-${height} text-${textColor} hover:text-${textHoverColor} bg-${bgColor} hover:bg-${bgHoverColor} border border-${borderColor} hover:border-${borderHoverColor} duration-300 rounded`
+          ? `${className} flex items-center justify-center gap-3 w-${width} h-${height} text-${disabledColor} border border-${disabledColor} rounded ${width} ${height} cursor-not-allowed`
+          : `${className} flex items-center justify-center gap-3 w-${width} h-${height} text-${textColor} hover:text-${textHoverColor} bg-${bgColor} hover:bg-${bgHoverColor} border border-${borderColor} hover:border-${borderHoverColor} duration-300 rounded`
       }
     >
       {isLoading ? loadingLabel : label}

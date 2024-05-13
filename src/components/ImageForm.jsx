@@ -1,9 +1,9 @@
 'use client'
 import styles from '@/styles/form.module.css'
 import { useState } from 'react'
-import Spinner from './icons/Spinner'
 import ImagePreview from './ImagePreview'
 import ErrorPopup from './ErrorPopup'
+import Button from './Button'
 function ImageForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [fileUrl, setFileUrl] = useState(null)
@@ -23,14 +23,14 @@ function ImageForm() {
 
   const handleSubmit = (e) => {}
   return (
-    <div className='flex gap-16 justify-center items-center'>
+    <div className='flex flex-col gap-16 justify-center items-center w-full'>
       <ImagePreview
         width={100}
         height={100}
         url={fileUrl}
       />
       <form
-        className='flex gap-8 items-center'
+        className='grid grid-cols-3 items-center justify-end gap-3 w-full'
         onSubmit={handleSubmit}
       >
         <input
@@ -39,25 +39,14 @@ function ImageForm() {
           accept='image/*'
           required
           onChange={handleChange}
-          className='text-muted'
+          className='text-muted col-span-2'
         />
-        <button
-          className={`${styles.btn}`}
+        <Button
+          isLoading={isSubmitting}
+          label='Upload Image'
           disabled={error}
-        >
-          {isSubmitting ? (
-            <span className='flex items-center gap-3'>
-              Uploading
-              <Spinner
-                width={25}
-                height={25}
-                color='#597dd8'
-              />
-            </span>
-          ) : (
-            'Upload Image'
-          )}
-        </button>
+          className='col-start-3'
+        />
       </form>
       {error && <ErrorPopup message={error} />}
     </div>
