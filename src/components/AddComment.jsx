@@ -32,7 +32,7 @@ function AddComment({ course }) {
         id='addComment'
         placeholder="What's on your mind?"
         onChange={handleChange}
-        className='bg-bgTertiary hover:bg-bgSecondary focus:bg-bgSecondary placeholder:text-muted p-3 border border-muted hover:border-accent h-[100px] lg:w-[920px] rounded-lg resize-none duration-300'
+        className='bg-bgTertiary hover:bg-bgSecondary focus:bg-bgSecondary placeholder:text-muted p-3 border border-muted hover:border-accent h-[100px] lg:w-[920px] 4xl:w-[1020px] rounded-lg resize-none duration-300'
         maxLength={140}
       />
       <div className='flex justify-between w-full'>
