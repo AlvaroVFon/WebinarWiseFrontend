@@ -34,6 +34,7 @@ function EditNameForm() {
       <Button
         isLoading={isSubmitting}
         disabled={errors.name}
+        width={44}
         label='Update Name'
         className={`col-start-3`}
       />

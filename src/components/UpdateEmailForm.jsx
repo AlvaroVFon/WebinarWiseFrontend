@@ -27,7 +27,7 @@ function UpdateEmailForm() {
             message: 'Invalid email address',
           },
         })}
-        className='col-span-2 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full'
+        className='col-span-2 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300'
       />
       <Button
         label='Update email'

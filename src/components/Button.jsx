@@ -8,20 +8,19 @@ function Button({
   spinnerWidth = 20,
   spinnerHeight = 20,
   width = 32,
-  height = 12,
   padding = 2,
   disabled,
-  disabledColor = 'muted',
   className,
 }) {
   const style = disabled
-    ? `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-${height} text-muted rounded w-${width} h-${height} cursor-not-allowed`
-    : `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-${height} text-blue-500 hover:text-blue-700 border border-blue-500 hover:border-blue-700 duration-300 rounded`
+    ? `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-12 text-muted border border-muted rounded cursor-not-allowed`
+    : `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-12 text-blue-500 hover:text-blue-700 border border-blue-500 hover:border-blue-700 duration-300 rounded`
   return (
     <button
       onClick={onClick}
       type={type}
       className={style}
+      disabled={disabled}
     >
       {isLoading ? loadingLabel : label}
       {isLoading && (
