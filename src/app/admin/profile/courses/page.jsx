@@ -17,8 +17,8 @@ async function ProfileCoursesPage() {
   return (
     <>
       <div className='grid col-start-3 md:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5  gap-10  place-items-center p-6'>
-        {library?.map((course) => (
-          <Suspense fallback={<CourseCardSkeleton />}>
+        {library?.map((course, index) => (
+          <Suspense fallback={<CourseCardSkeleton key={index} />}>
             <CourseCard
               key={course.id}
               course={course}
