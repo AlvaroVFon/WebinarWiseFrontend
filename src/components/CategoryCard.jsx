@@ -2,7 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 function CategoryCard({ category }) {
   return (
-    <div className='bg-bgSecondary rounded-xl w-[285px] h-[414px] p-4 border border-muted hover:border-accent flex flex-col justify-between hover:scale-105 duration-300 '>
+    <Link
+      href={`/home/courses?perPage=12&page=1&category=${category.id}`}
+      className='bg-bgSecondary rounded-xl w-[285px] h-[414px] p-4 border border-muted hover:border-accent flex flex-col justify-between hover:scale-105 duration-300 '
+    >
       <h1 className='text-2xl font-bold'>{category.name}</h1>
       <Image
         src={
@@ -17,15 +20,7 @@ function CategoryCard({ category }) {
         {category.description ||
           'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga cupiditate quidem ipsa voluptate ducimus omnis eos consectetur ipsam iure aliquam!'}{' '}
       </p>
-      <div className='flex justify-end'>
-        <Link
-          href={`/home/courses?perPage=12&page=1&category=${category.id}`}
-          className='text-muted hover:text-accent duration-300'
-        >
-          View courses...
-        </Link>
-      </div>
-    </div>
+    </Link>
   )
 }
 export default CategoryCard
