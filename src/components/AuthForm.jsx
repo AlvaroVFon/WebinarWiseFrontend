@@ -9,10 +9,12 @@ import { useState } from 'react'
 import ErrorPopup from './ErrorPopup'
 import InfoIcon from './icons/InfoIcon'
 import Button from './Button'
+import Alert from './Alert'
 function LoginForm({ formType }) {
   const router = useRouter()
   const [error, setError] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
   setTimeout(() => {
     if (error) setError(null)
   }, 5000)
@@ -46,8 +48,11 @@ function LoginForm({ formType }) {
       .then((res) => {
         res.registered
         if (res) {
-          alert('Account created successfully. Please login to continue.')
-          router.push('/login')
+          setShowAlert(true)
+          setTimeout(() => {
+            setIsSuccess(false)
+            router.push('/login')
+          }, 3000)
         }
       })
       .catch((error) => {
@@ -57,6 +62,13 @@ function LoginForm({ formType }) {
   }
   return (
     <div className='flex flex-col items-center'>
+      <Alert
+        buttonLabel='Continue to login'
+        message='Account created succesfully. Please login to continue.'
+        showAlert={showAlert}
+        setShowAlert={setShowAlert}
+        redirectUrl='/login'
+      />
       <form
         className='flex flex-col gap-3 border-t md:border-l md:border-t-0 p-10'
         onSubmit={

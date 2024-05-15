@@ -39,7 +39,7 @@ function AddCourseForm({ categories }) {
   const inputStyle =
     'bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full placeholder:text-[#9CA1AB]'
   return (
-    <div className=' flex flex-col items-center justify-evenly h-screen'>
+    <div className=' flex flex-col items-center justify-evenly mt-16'>
       <form
         className='flex flex-col items-end gap-10 w-1/2'
         onSubmit={handleSubmit(onSubmit)}

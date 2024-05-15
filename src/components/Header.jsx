@@ -13,7 +13,7 @@ function Header() {
   return (
     <header className='sticky top-0 z-10 flex p-3 items-center border-b border-muted justify-center md:justify-between w-full bg-bgSecondary '>
       <Link
-        href='/'
+        href='/home/courses?page=1'
         className='hidden md:block'
       >
         <Image

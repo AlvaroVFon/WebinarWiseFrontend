@@ -1,7 +1,7 @@
 import AccountForm from '@/components/AccountForm'
 function SettingsPage() {
   return (
-    <main className='min-h-screen flex justify-center items-center'>
+    <main className='mt-10 flex justify-center items-center'>
       <AccountForm />
     </main>
   )
