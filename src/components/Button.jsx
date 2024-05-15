@@ -13,8 +13,12 @@ function Button({
   className,
 }) {
   const style = disabled
-    ? `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-12 text-muted border border-muted rounded cursor-not-allowed`
+    ? `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-12 text-muted border border-muted rounded `
+    : type === 'warning'
+    ? `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-12 text-red-400 border border-red-400 hover:text-red-600 hover:border-red-600 rounded duration-300`
     : `${className} flex items-center justify-center p-${padding} gap-3 w-${width} h-12 text-blue-500 hover:text-blue-700 border border-blue-500 hover:border-blue-700 duration-300 rounded`
+
+  const spinnerColor = type === 'warning' ? '#f87171' : '#3b82f6'
   return (
     <button
       onClick={onClick}
@@ -27,7 +31,7 @@ function Button({
         <Spinner
           width={spinnerWidth}
           height={spinnerHeight}
-          color='#3b82f6'
+          color={spinnerColor}
         />
       )}
     </button>

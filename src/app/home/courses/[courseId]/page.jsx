@@ -9,6 +9,7 @@ async function CursosPage({ params }) {
   const user = session?.user
   const { courseId } = await params
   const course = await api.getCoursesById(courseId)
+  const durationInHours = course.duration / 3600
   const category = await api.getCategoryByCourseId(courseId)
   const comments = await api
     .getCommentsByCourseId(courseId)
@@ -39,8 +40,8 @@ async function CursosPage({ params }) {
           className='rounded-xl 4xl:w-[1020px] 4xl:h-[700px]'
         />
         <div className='flex justify-end items-center gap-3 text-muted p-3'>
-          <p>Duration: 1500 h.</p>
-          <p> Upvotes: 18</p>
+          <p>Duration: {durationInHours} h.</p>
+          <p> Upvotes: {course.likes}</p>
         </div>
       </div>
       {user === undefined

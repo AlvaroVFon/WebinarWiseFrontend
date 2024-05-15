@@ -3,9 +3,7 @@ import Button from './Button'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 function EditNameForm() {
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  const onSubmit = (data) => {}
   const {
     register,
     handleSubmit,

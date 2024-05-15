@@ -62,12 +62,13 @@ function ImageForm() {
           accept='image/*'
           required
           onChange={handleChange}
-          className='text-muted col-span-2 hidden'
+          className='hidden'
         />
         <input
           type='text'
           name='fileName'
           onClick={handleClick}
+          placeholder='Choose an image file'
           readOnly
           className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full col-span-2 cursor-pointer'
         />

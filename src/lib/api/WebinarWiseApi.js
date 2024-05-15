@@ -50,7 +50,15 @@ class WebinarWiseApi {
       .catch((error) => error.response)
     return response
   }
-
+  async postCourse(token, course) {
+    const response = await this.axiosInstance
+      .post('/courses', course, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => error.response)
+  }
   async getCoursesById(id) {
     const response = await this.axiosInstance
       .get(`/courses/${id}`)
