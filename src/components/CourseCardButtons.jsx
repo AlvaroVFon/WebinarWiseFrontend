@@ -73,9 +73,9 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
   }
   return (
     <div className='flex items-center justify-evenly'>
-      <button className='flex items-center gap-1 hover:bg-bgTertiary rounded-md p-1 duration-300'>
+      <button className='flex items-center gap-1 rounded-md p-1 duration-300 cursor-default'>
         <CommentIcon color='#a8b3cf' />
-        <p className='text-sm text-accent cursor-pointer'>{comments}</p>
+        <p className='text-sm text-accent'>{comments}</p>
       </button>
       {user && (
         <div className='relative'>

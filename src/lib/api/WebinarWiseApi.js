@@ -151,7 +151,7 @@ class WebinarWiseApi {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          return { error: 'You need to be logged in to like a course' }
+          return { error: 'You need to purchase the course first' }
         } else if (error.response.status === 500) {
           return { error: 'Unexpected error, please try again later' }
         }
