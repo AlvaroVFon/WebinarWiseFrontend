@@ -3,7 +3,9 @@ import Button from './Button'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 function EditNameForm() {
-  const onSubmit = (data) => {}
+  const onSubmit = (data) => {
+    setIsSubmitting(true)
+  }
   const {
     register,
     handleSubmit,
