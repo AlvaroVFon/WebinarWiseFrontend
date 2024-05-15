@@ -3,10 +3,8 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import HeaderNavProfileMenu from './HeaderNavProfileMenu'
-import axios from 'axios'
 function UserAvatar({ user, showUserEmail, disableMenu }) {
   const session = useSession()
-
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div className='flex flex-col items-center gap-2 relative'>

@@ -4,8 +4,10 @@ import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 import { Suspense } from 'react'
 import CourseCardSkeleton from '@/components/CourseCardSkeleton'
+import SuggestedCourses from '@/components/SuggestedCourses'
 async function ProfileCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
+  const courses = await api.getCourses('/courses').then((res) => res.results)
   const library = await api
     .getLibrary(session?.user?.accessToken)
     .then((res) => res.data?.library)
@@ -17,6 +19,15 @@ async function ProfileCoursesPage() {
   return (
     <>
       <div className='grid col-start-3 md:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5  gap-10  place-items-center p-6'>
+        {library.length === 0 && (
+          <>
+            <h2 className='text-2xl font-bold text-accent col-span-full text-center mt-20'>
+              No Courses Found. You can start by adding some courses to your
+              library. Here are some suggestions...
+            </h2>
+            <SuggestedCourses courses={courses} />
+          </>
+        )}
         {library?.map((course, index) => (
           <Suspense
             key={index}
