@@ -8,7 +8,6 @@ function AddCourseForm({ categories }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState(null)
   const session = useSession() //para proteger la ruta si no es profesor
-  console.log(session)
   const {
     register,
     handleSubmit,
