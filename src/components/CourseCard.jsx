@@ -3,6 +3,7 @@ import Image from 'next/image'
 import CourseCardButtons from './CourseCardButtons'
 import CourseCardHeader from './CourseCardHeader'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 function CourseCard({ course, isPurchased, isLiked }) {
   const router = useRouter()
   return (
@@ -13,9 +14,13 @@ function CourseCard({ course, isPurchased, isLiked }) {
       >
         <CourseCardHeader course={course} />
         <div className='flex flex-col items-end gap-4'>
-          <p className='border border-muted text-accentDarker p-1 rounded-md'>
+          <Link
+            href={`/home/courses?perPage=12&page=1&category=${course.category.id}`}
+            onClick={(e) => e.stopPropagation()}
+            className='border border-muted text-accentDarker p-1 rounded-md hover:bg-bgTertiary hover:text-accent cursor-pointer duration-300'
+          >
             #{course.category?.name}
-          </p>
+          </Link>
           <Image
             src='https://placehold.jp/3d4070/ffffff/300x160.png'
             alt='Curso de React'
