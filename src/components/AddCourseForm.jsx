@@ -32,9 +32,8 @@ function AddCourseForm({ categories }) {
       }, 3000)
       return
     }
-    console.log(course)
     api.postCourse(session?.data?.user?.accessToken, course).then((res) => {
-      isSubmitting(false)
+      setIsSubmitting(false)
       reset()
     })
   }
