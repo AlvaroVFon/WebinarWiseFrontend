@@ -3,10 +3,12 @@ import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Button from '@/components/Button'
+import Alert from './Alert'
 import api from '@/lib/api/WebinarWiseApi'
 function AddCourseForm({ categories }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(false)
   const session = useSession() //para proteger la ruta si no es profesor
   const {
     register,
@@ -33,6 +35,7 @@ function AddCourseForm({ categories }) {
     }
     api.postCourse(session?.data?.user?.accessToken, course).then((res) => {
       setIsSubmitting(false)
+      setSuccess(true)
       reset()
     })
   }
@@ -40,6 +43,15 @@ function AddCourseForm({ categories }) {
     'bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full placeholder:text-[#9CA1AB]'
   return (
     <div className=' flex flex-col items-center justify-evenly mt-16'>
+      {success && (
+        <Alert
+          showAlert={success}
+          message={'Course created successfully'}
+          setShowAlert={setSuccess}
+          buttonLabel='Continue'
+          redirectUrl='/admin/profile/courses/createdCourses'
+        />
+      )}
       <form
         className='flex flex-col items-end gap-10 w-1/2'
         onSubmit={handleSubmit(onSubmit)}
@@ -156,6 +168,7 @@ function AddCourseForm({ categories }) {
         <Button
           width={44}
           isLoading={isSubmitting}
+          label='Create course'
         />
       </form>
     </div>

@@ -9,9 +9,7 @@ function SearchBar() {
   const category = searchParams.get('category') || ''
   const handleChange = (e) => {
     const search = e.target.value
-    router.push(
-      `${pathname}?page=${page}&search=${search}&category=${category}`
-    )
+    router.push(`${pathname}?page=1&search=${search}&category=${category}`)
   }
   return (
     <input

@@ -3,7 +3,7 @@ import Link from 'next/link'
 function CategoryCard({ category }) {
   return (
     <Link
-      href={`/home/courses?perPage=12&page=1&category=${category.id}`}
+      href={`/home/courses?perPage=10&page=1&category=${category.id}`}
       className='bg-bgSecondary rounded-xl w-[285px] h-[414px] p-4 border border-muted hover:border-accent flex flex-col justify-between hover:scale-105 duration-300 '
     >
       <h1 className='text-2xl font-bold'>{category.name}</h1>

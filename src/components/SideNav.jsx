@@ -9,7 +9,7 @@ function SideNav({ user }) {
   const { data: session } = useSession()
   const pathname = usePathname()
   return (
-    <div className='fixed col-span-2 hidden lg:flex flex-col gap-16 bg-bgTertiary h-full p-6'>
+    <div className='fixed col-span-2 hidden lg:flex flex-col gap-5 bg-bgTertiary h-full p-6'>
       <UserAvatar
         user={user}
         showUserEmail={true}

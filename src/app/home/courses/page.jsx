@@ -8,7 +8,7 @@ import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 async function CursosPage({ searchParams }) {
   const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
-  const url = `/courses?page=${page}&perPage=12&search=${search}&category=${category}`
+  const url = `/courses?page=${page}&perPage=10&search=${search}&category=${category}`
   const courses = await api.getCourses(url)
   const purchasedCoursesIds = await api
     .getLibrary(session?.user?.accessToken)

@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       lang='en'
       className={`${varelaRound.className}`}
     >
-      <body className='dark bg-bgPrimary text-primary relative'>
+      <body className='dark bg-bgPrimary text-primary relative min-h-screen'>
         <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>

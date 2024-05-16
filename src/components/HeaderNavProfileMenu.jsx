@@ -1,6 +1,10 @@
+'use client'
 import { signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import HeaderProfileMenuLinks from '@/lib/utils/HeaderProfileMenuLinks'
 function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
+  const session = useSession()
+  const linkStyle = 'hover:bg-bgCuaternary w-full p-2 rounded'
   return (
     <>
       {showMenu && !disableMenu && (
@@ -13,17 +17,35 @@ function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
               <a
                 key={link.href}
                 href={link.href}
-                className='hover:bg-bgCuaternary w-full p-2 rounded'
+                className={linkStyle}
               >
                 {link.label}
               </a>
             )
           })}
-
+          {
+            // If the user is not logged in, show the login link
+            session?.data?.user?.roleName !== 'role_user' && (
+              <>
+                <a
+                  href='/admin/profile/courses/addCourse'
+                  className={linkStyle}
+                >
+                  Add Course
+                </a>
+                <a
+                  href='/admin/profile/courses/createdCourses'
+                  className={linkStyle}
+                >
+                  Created courses
+                </a>
+              </>
+            )
+          }
           <a
             href='#'
             onClick={() => signOut({ callbackUrl: '/login' })}
-            className='hover:bg-bgCuaternary w-full p-1 rounded'
+            className={linkStyle}
           >
             Logout
           </a>
