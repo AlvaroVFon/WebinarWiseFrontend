@@ -1,16 +1,17 @@
 import api from '@/lib/api/WebinarWiseApi'
 import CategoryCard from '@/components/CategoryCard'
+import GridWrapper from '@/components/GridWrapper'
 async function CategoriesPage() {
   const categories = await api.getCategories()
   return (
-    <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-5 4xl:grid-cols-6 gap-y-10  place-items-center p-6'>
+    <GridWrapper>
       {categories.results.map((category) => (
         <CategoryCard
           key={category.id}
           category={category}
         />
       ))}
-    </div>
+    </GridWrapper>
   )
 }
 export default CategoriesPage

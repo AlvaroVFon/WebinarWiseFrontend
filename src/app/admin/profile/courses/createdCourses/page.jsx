@@ -4,6 +4,7 @@ import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 import CourseCard from '@/components/CourseCard'
 import { Suspense } from 'react'
 import CourseCardSkeleton from '@/components/CourseCardSkeleton'
+import GridWrapper from '@/components/GridWrapper'
 async function CreatedCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
   const courses = await api
@@ -12,9 +13,8 @@ async function CreatedCoursesPage() {
       res.results.filter((course) => course.teacher.id === session?.user?.id)
     )
 
-  console.log(courses)
   return (
-    <div className='grid col-start-3 md:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5  gap-10  place-items-center p-6'>
+    <GridWrapper xxl={4}>
       {courses?.map((course, index) => (
         <Suspense fallback={<CourseCardSkeleton />}>
           <CourseCard
@@ -23,7 +23,7 @@ async function CreatedCoursesPage() {
           />
         </Suspense>
       ))}
-    </div>
+    </GridWrapper>
   )
 }
 export default CreatedCoursesPage

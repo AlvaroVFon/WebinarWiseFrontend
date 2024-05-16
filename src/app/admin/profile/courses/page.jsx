@@ -5,6 +5,7 @@ import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 import { Suspense } from 'react'
 import CourseCardSkeleton from '@/components/CourseCardSkeleton'
 import SuggestedCourses from '@/components/SuggestedCourses'
+import GridWrapper from '@/components/GridWrapper'
 async function ProfileCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
   const courses = await api.getCourses('/courses').then((res) => res.results)
@@ -18,7 +19,7 @@ async function ProfileCoursesPage() {
     .then((res) => res.map((course) => course.id))
   return (
     <>
-      <div className='grid col-start-3 md:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5  gap-10  place-items-center p-6'>
+      <GridWrapper xxl={4}>
         {library.length === 0 && (
           <>
             <h2 className='text-2xl font-bold text-accent col-span-full text-center mt-20'>
@@ -41,7 +42,7 @@ async function ProfileCoursesPage() {
             />
           </Suspense>
         ))}
-      </div>
+      </GridWrapper>
     </>
   )
 }

@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
+import GridWrapper from '@/components/GridWrapper'
 async function CursosPage({ searchParams }) {
   const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
@@ -22,8 +23,8 @@ async function CursosPage({ searchParams }) {
     .then((res) => res.map((course) => course.id))
 
   return (
-    <div className=''>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 4xl:grid-cols-6  gap-y-10  place-items-center p-6'>
+    <>
+      <GridWrapper>
         {courses?.results?.map((course, index) => (
           <Suspense
             key={index}
@@ -39,7 +40,7 @@ async function CursosPage({ searchParams }) {
             />
           </Suspense>
         ))}
-      </div>
+      </GridWrapper>
       {courses?.totalPages > 1 && (
         <div className='flex justify-center'>
           <Suspense>
@@ -50,7 +51,7 @@ async function CursosPage({ searchParams }) {
           </Suspense>
         </div>
       )}
-    </div>
+    </>
   )
 }
 export default CursosPage
