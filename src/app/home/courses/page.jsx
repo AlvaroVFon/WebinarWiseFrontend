@@ -6,6 +6,7 @@ import api from '@/lib/api/WebinarWiseApi'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 import GridWrapper from '@/components/GridWrapper'
+import NoResultIcon from '@/components/icons/NoResultsIcon'
 async function CursosPage({ searchParams }) {
   const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
@@ -22,9 +23,14 @@ async function CursosPage({ searchParams }) {
         ?.filter((course) => course.user_liked)
         ?.map((course) => course.id)
     )
-
   return (
     <>
+      {courses.results.length === 0 && (
+        <div className='flex flex-col gap-6 justify-center items-center h-96'>
+          <NoResultIcon size={100} />
+          <p className='text-3xl text-accent'>No results found</p>
+        </div>
+      )}
       <GridWrapper>
         {courses?.results?.map((course, index) => (
           <Suspense
