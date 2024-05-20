@@ -1,18 +1,14 @@
-function GridWrapper({
-  children,
-  sm = 1,
-  md = 2,
-  lg = 3,
-  xl = 4,
-  xxl = 5,
-  xxxl = 6,
-}) {
-  return (
-    <div
-      className={`grid col-start-3 sm:grid-cols-${sm} md:grid-cols-${md} xl:grid-cols-${xl} 2xl:grid-cols-${xxl} 4xl:grid-cols-${xxxl}  gap-10  place-items-center p-6`}
-    >
-      {children}
-    </div>
-  )
+'use client'
+import { usePathname } from 'next/navigation'
+
+function GridWrapper({ children }) {
+  const pathname = usePathname()
+
+  const wrapperClass =
+    pathname.includes === 'admin/profile'
+      ? 'grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5 4xl:grid-cols-6  gap-10  place-items-center p-6'
+      : 'grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5  gap-10  place-items-center p-6'
+
+  return <div className={wrapperClass}>{children}</div>
 }
 export default GridWrapper
