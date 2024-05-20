@@ -14,9 +14,12 @@ async function CreatedCoursesPage() {
     )
 
   return (
-    <GridWrapper xxl={4}>
+    <GridWrapper>
       {courses?.map((course, index) => (
-        <Suspense fallback={<CourseCardSkeleton />}>
+        <Suspense
+          key={index}
+          fallback={<CourseCardSkeleton />}
+        >
           <CourseCard
             key={index}
             course={course}
