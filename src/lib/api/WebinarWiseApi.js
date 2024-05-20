@@ -38,7 +38,7 @@ class WebinarWiseApi {
   async getCourses(page = 1, search = '', category = '', token) {
     const response = await this.axiosInstance
       .get(
-        `/courses?page=${page}$perPage=10&search=${search}&category=${category}`,
+        `/courses?page=${page}&perPage=10&search=${search}&category=${category}`,
         {
           headers: {
             Authorization: `${token}`,
