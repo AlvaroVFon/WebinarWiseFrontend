@@ -27,6 +27,7 @@ function CourseCard({ course, isPurchased, isLiked }) {
             width={300}
             height={160}
             className='rounded-xl'
+            priority
           />
         </div>
       </div>
