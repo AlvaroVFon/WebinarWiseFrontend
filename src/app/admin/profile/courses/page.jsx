@@ -19,7 +19,7 @@ async function ProfileCoursesPage() {
     .then((res) => res.map((course) => course.id))
   return (
     <>
-      <GridWrapper xxl={4}>
+      <GridWrapper>
         {library.length === 0 && (
           <>
             <h2 className='text-2xl font-bold text-accent col-span-full text-center mt-20'>
