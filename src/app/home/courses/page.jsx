@@ -9,18 +9,19 @@ import GridWrapper from '@/components/GridWrapper'
 async function CursosPage({ searchParams }) {
   const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
-  const url = `/courses?page=${page}&perPage=10&search=${search}&category=${category}`
-  const courses = await api.getCourses(url)
+  const courses = await api.getCourses(page, search, category)
   const purchasedCoursesIds = await api
     .getLibrary(session?.user?.accessToken)
-    .then((res) => res.data?.library)
-    .then((res) => res.map((course) => course.id))
+    .then((res) => res.data?.library.map((course) => course.id))
     .catch((error) => error)
+
   const likedCoursesIds = await api
-    .getCourses('/courses', session?.user?.accessToken)
-    .then((res) => res.results)
-    .then((res) => res.filter((course) => course.user_liked))
-    .then((res) => res.map((course) => course.id))
+    .getCourses(page, search, category, session?.user?.accessToken)
+    .then((res) =>
+      res.results
+        ?.filter((course) => course.user_liked)
+        ?.map((course) => course.id)
+    )
 
   return (
     <>

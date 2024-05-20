@@ -6,7 +6,7 @@ function Breadcrumb({ categories, courses }) {
   const params = useParams()
   const { courseId } = params
   const categoryId = searchParams.get('category')
-  const category = categories.results.find(
+  const category = categories?.results.find(
     (category) => category.id === Number(categoryId)
   )
   const courseName = courses?.find(

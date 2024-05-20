@@ -5,7 +5,6 @@ function SearchBar() {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const router = useRouter()
-  const page = searchParams.get('page') || 1
   const category = searchParams.get('category') || ''
   const handleChange = (e) => {
     const search = e.target.value
