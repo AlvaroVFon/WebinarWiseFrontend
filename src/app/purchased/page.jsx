@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 function PurchasedPage() {
   const router = useRouter()
   setTimeout(() => {
-    router.push('/home/courses?page=1')
+    router.push('/admin/profile/courses')
   }, 3000)
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-6'>
