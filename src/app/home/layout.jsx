@@ -1,3 +1,5 @@
+import { getServerSession } from 'next-auth'
+import NextAuthOptions from '../api/auth/[...nextauth]/NextAuthOptions'
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import api from '@/lib/api/WebinarWiseApi'

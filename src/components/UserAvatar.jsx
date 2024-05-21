@@ -10,7 +10,7 @@ function UserAvatar({ user, showUserEmail, disableMenu }) {
     <div className='flex flex-col items-center gap-2 relative'>
       <Image
         alt='avatar'
-        src='/avatar.png'
+        src={`https://webinarwise-api.onrender.com/assets/user/profile/${session?.data?.user?.id}.png`}
         width={40}
         height={40}
         className='rounded-full min-w-8 min-h-8 cursor-pointer'

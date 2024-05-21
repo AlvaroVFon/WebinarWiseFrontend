@@ -35,6 +35,16 @@ class WebinarWiseApi {
     })
     return response
   }
+  async updateUserInfo(token, user) {
+    const response = await this.axiosInstance
+      .put('/auth/info', user, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => error.response)
+    return response
+  }
   async getCourses(token, page = 1, search = '', category = '') {
     const response = await this.axiosInstance
       .get(

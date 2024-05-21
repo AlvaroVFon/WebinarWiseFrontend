@@ -37,7 +37,6 @@ function ImageForm() {
       session?.data?.user?.accessToken,
       formData
     )
-    console.log(response)
     return response
   }
   const handleSubmit = (e) => {
