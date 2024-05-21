@@ -29,6 +29,7 @@ function HeaderNav() {
       </button>
       <Link
         href='/home/courses?page=1'
+        title='Courses'
         className={
           pathname === '/home/courses'
             ? 'p-3 bg-accentDarker rounded-md'
@@ -39,6 +40,7 @@ function HeaderNav() {
       </Link>
       <Link
         href='/home/categories'
+        title='Categories'
         className={
           pathname === '/home/categories'
             ? 'p-3 bg-accentDarker rounded-md'
@@ -52,6 +54,7 @@ function HeaderNav() {
         <Link
           href='/login'
           className='p-3'
+          title='Login'
         >
           <LoginIcon />
         </Link>
@@ -59,6 +62,7 @@ function HeaderNav() {
         <button
           onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
           className='p-3 cursor-pointer'
+          title='Logout'
         >
           <LogoutIcon />
         </button>
