@@ -20,7 +20,7 @@ function DeleteAccount() {
   return (
     <div>
       <form
-        className='grid grid-cols-3 gap-3'
+        className='flex flex-col md:grid md:grid-cols-3 gap-3'
         onSubmit={handleSubmit}
       >
         <div className='col-span-2 flex flex-col'>
@@ -28,12 +28,12 @@ function DeleteAccount() {
             type='text'
             name='delete'
             placeholder='Type DELETE to confirm'
-            className=' bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300'
+            className=' bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 min-w-44'
           />
         </div>
 
         <Button
-          width={44}
+          className={'min-w-44'}
           type='warning'
           isLoading={isSunmitting}
           disabled={error}

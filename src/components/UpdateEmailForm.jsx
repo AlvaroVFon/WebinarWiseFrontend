@@ -22,7 +22,7 @@ function UpdateEmailForm() {
   return (
     <div className=''>
       <form
-        className='grid grid-cols-3 gap-3'
+        className='flex flex-col md:grid md:grid-cols-3 gap-3'
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
@@ -36,13 +36,13 @@ function UpdateEmailForm() {
               message: 'Invalid email address',
             },
           })}
-          className='col-span-2 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300'
+          className='col-span-2 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 min-w-44'
         />
         <Button
           label='Update email'
-          width={44}
           isLoading={isSubmitting}
           disabled={errors.email || error}
+          className={'min-w-44'}
         />
 
         {errors.email && <p className='text-red-400'>{errors.email.message}</p>}

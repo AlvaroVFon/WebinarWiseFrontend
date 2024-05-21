@@ -21,14 +21,14 @@ function UpdatePasswordForm() {
   return (
     <div className=''>
       <form
-        className='grid grid-cols-3 gap-3'
+        className='flex flex-col md:grid md:grid-cols-3 gap-3'
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className='col-span-2'>
           <input
             type='password'
-            placeholder='Enter your current password'
-            className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full col-span-2'
+            placeholder='Current password'
+            className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full col-span-2 min-w-44'
             {...register('currentPassword', {
               required: 'This field is required',
               pattern: {
@@ -54,8 +54,8 @@ function UpdatePasswordForm() {
           )}
           <input
             type='password'
-            placeholder='Enter your new password'
-            className='mt-3 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full col-span-2'
+            placeholder='New password'
+            className='mt-3 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full col-span-2 min-w-44'
             {...register('newPassword', {
               required: 'This field is required',
               pattern: {
@@ -79,7 +79,7 @@ function UpdatePasswordForm() {
         <Button
           isLoading={isSubmitting}
           label='Change password'
-          width={44}
+          className={'min-w-44'}
           disabled={errors.currentPassword || errors.newPassword || error}
         />
         {errors.newPassword && (
