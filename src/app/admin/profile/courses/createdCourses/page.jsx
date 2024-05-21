@@ -8,11 +8,10 @@ import GridWrapper from '@/components/GridWrapper'
 async function CreatedCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
   const courses = await api
-    .getCourses('/courses')
+    .getAllCourses()
     .then((res) =>
       res.results.filter((course) => course.teacher.id === session?.user?.id)
     )
-
   return (
     <GridWrapper>
       {courses?.map((course, index) => (

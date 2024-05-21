@@ -10,14 +10,14 @@ import NoResultIcon from '@/components/icons/NoResultsIcon'
 async function CursosPage({ searchParams }) {
   const session = await getServerSession(NextAuthOptions)
   const { page, search = '', category = '' } = await searchParams
-  const courses = await api.getCourses(page, search, category)
+  const courses = await api.getCourses(undefined, page, search, category)
   const purchasedCoursesIds = await api
     .getLibrary(session?.user?.accessToken)
     .then((res) => res.data?.library.map((course) => course.id))
     .catch((error) => error)
 
   const likedCoursesIds = await api
-    .getCourses(page, search, category, session?.user?.accessToken)
+    .getCourses(session?.user?.accessToken, page, search, category)
     .then((res) =>
       res.results
         ?.filter((course) => course.user_liked)

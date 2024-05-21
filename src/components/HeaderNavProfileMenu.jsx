@@ -1,6 +1,7 @@
 'use client'
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 import HeaderProfileMenuLinks from '@/lib/utils/HeaderProfileMenuLinks'
 function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
   const session = useSession()
@@ -14,38 +15,37 @@ function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
         >
           {HeaderProfileMenuLinks.map((link) => {
             return (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={linkStyle}
               >
                 {link.label}
-              </a>
+              </Link>
             )
           })}
           {
             // If the user is not logged in, show the login link
             session?.data?.user?.roleName !== 'role_user' && (
               <>
-                <a
+                <Link
                   href='/admin/profile/courses/addCourse'
                   className={linkStyle}
                 >
                   Add Course
-                </a>
-                <a
+                </Link>
+                <Link
                   href='/admin/profile/courses/createdCourses'
                   className={linkStyle}
                 >
                   Created courses
-                </a>
+                </Link>
               </>
             )
           }
           <a
-            href='#'
             onClick={() => signOut({ callbackUrl: '/login' })}
-            className={linkStyle}
+            className={`${linkStyle} cursor-pointer`}
           >
             Logout
           </a>

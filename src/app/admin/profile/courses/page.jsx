@@ -8,12 +8,12 @@ import SuggestedCourses from '@/components/SuggestedCourses'
 import GridWrapper from '@/components/GridWrapper'
 async function ProfileCoursesPage() {
   const session = await getServerSession(NextAuthOptions)
-  const courses = await api.getCourses('/courses').then((res) => res.results)
+  const courses = await api.getAllCourses().then((res) => res.results)
   const library = await api
     .getLibrary(session?.user?.accessToken)
     .then((res) => res.data?.library)
   const likedCoursesIds = await api
-    .getCourses('/courses', session?.user?.accessToken)
+    .getCourses(session?.user?.accessToken)
     .then((res) => res.results)
     .then((res) => res.filter((course) => course.user_liked))
     .then((res) => res.map((course) => course.id))

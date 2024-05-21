@@ -35,7 +35,7 @@ class WebinarWiseApi {
     })
     return response
   }
-  async getCourses(page = 1, search = '', category = '', token) {
+  async getCourses(token, page = 1, search = '', category = '') {
     const response = await this.axiosInstance
       .get(
         `/courses?page=${page}&perPage=10&search=${search}&category=${category}`,
@@ -45,6 +45,16 @@ class WebinarWiseApi {
           },
         }
       )
+      .then((res) => {
+        if (res.status === 200) {
+          return res.data
+        }
+      })
+      .catch((error) => error.response)
+    return response
+  }
+  async getAllCourses() {
+    const response = await this.axiosInstance('/courses')
       .then((res) => {
         if (res.status === 200) {
           return res.data
