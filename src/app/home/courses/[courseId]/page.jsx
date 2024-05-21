@@ -4,6 +4,7 @@ import Image from 'next/image'
 import api from '@/lib/api/WebinarWiseApi'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
+import CourseCardButtons from '@/components/CourseCardButtons'
 async function CursosPage({ params }) {
   const session = await getServerSession(NextAuthOptions)
   const user = session?.user
@@ -22,15 +23,30 @@ async function CursosPage({ params }) {
         return response === undefined ? false : true
       })
     : null
-
+  const likedCoursesIds = await api
+    .getCourses(session?.user?.accessToken)
+    .then((res) =>
+      res.results
+        ?.filter((course) => course.user_liked)
+        ?.map((course) => course.id)
+    )
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
       <div className=''>
         <div className='flex flex-col items-start mb-3'>
           <h1 className='text-4xl font-bold my-10'>{course.name}</h1>
-          <p className='border p-1 rounded text-accent border-muted'>
-            #{category.name}
-          </p>
+          <div className='flex justify-between w-full'>
+            <p className='border p-1 rounded text-accent border-muted'>
+              #{category.name}
+            </p>
+            <div className=''>
+              <CourseCardButtons
+                course={course}
+                isPurchased={isPurchached}
+                isLiked={likedCoursesIds?.includes(course.id)}
+              />
+            </div>
+          </div>
         </div>
         <Image
           src='https://placehold.jp/27272A/ffffff/920x600.png'

@@ -17,7 +17,7 @@ async function CursosPage({ searchParams }) {
     .catch((error) => error)
 
   const likedCoursesIds = await api
-    .getCourses(session?.user?.accessToken, page, search, category)
+    .getCourses(session?.user?.accessToken)
     .then((res) =>
       res.results
         ?.filter((course) => course.user_liked)
