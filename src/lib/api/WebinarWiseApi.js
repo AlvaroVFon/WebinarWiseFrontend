@@ -100,7 +100,6 @@ class WebinarWiseApi {
     const response = await this.axiosInstance
       .get('/category')
       .catch((error) => error)
-    console.log(response)
     return response.data
   }
   async postComment(courseId, token, comment) {
