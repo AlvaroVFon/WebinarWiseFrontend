@@ -23,7 +23,7 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
   const handleCopyLink = () => {
     if (process.env.NODE_ENV === 'production') {
       navigator.clipboard.writeText(
-        `https://webinarwise.com${pathname}/${courseId}`
+        `https://webinar-wise-frontend.vercel.app${pathname}/${courseId}`
       )
     } else {
       navigator.clipboard.writeText(
