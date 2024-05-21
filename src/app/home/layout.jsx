@@ -4,7 +4,7 @@ import api from '@/lib/api/WebinarWiseApi'
 import { Suspense } from 'react'
 async function HomeLayout({ children }) {
   const categories = await api.getCategories()
-  const courses = await api.getCourses()
+  const courses = await api.getAllCourses()
   return (
     <div className='relative'>
       <Suspense>
