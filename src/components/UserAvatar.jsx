@@ -16,7 +16,7 @@ function UserAvatar({ user, showUserEmail, disableMenu }) {
         className='rounded-full min-w-8 min-h-8 cursor-pointer'
         onMouseOver={() => setShowMenu(true)}
       />
-      {showUserEmail && <p className='max-w-[160px]'>{user?.email}</p>}
+      {showUserEmail && <h2 className='max-w-48 break-words'>{user?.email}</h2>}
 
       <HeaderNavProfileMenu
         showMenu={showMenu}

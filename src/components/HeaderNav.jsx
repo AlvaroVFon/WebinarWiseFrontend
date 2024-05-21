@@ -11,6 +11,7 @@ import DarkThemeIcon from './icons/DarkThemeIcon'
 import CoursesIcon from './icons/CoursesIcon'
 import LogoutIcon from './icons/LogoutIcon'
 import LoginIcon from './icons/LoginIcon'
+import NotificationIcon from './icons/NotificationIcon'
 function HeaderNav() {
   const { status, data: session } = useSession()
   const pathname = usePathname()
@@ -59,15 +60,23 @@ function HeaderNav() {
           <LoginIcon />
         </Link>
       ) : (
-        <button
-          onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
-          className='p-3 cursor-pointer'
-          title='Logout'
-        >
-          <LogoutIcon />
-        </button>
+        <>
+          <Link
+            href='/admin/profile/notifications'
+            title='Notifications'
+          >
+            <NotificationIcon />
+          </Link>
+          <button
+            onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
+            className='p-3 cursor-pointer'
+            title='Logout'
+          >
+            <LogoutIcon />
+          </button>
+          <UserAvatar user={session?.user} />
+        </>
       )}
-      {status === 'authenticated' && <UserAvatar user={session?.user} />}
     </nav>
   )
 }

@@ -10,5 +10,9 @@
   {
     "href": "/admin/profile/settings/edit",
     "label": "Edit profile"
+  },
+  {
+    "href": "/admin/profile/notifications",
+    "label": "Notifications"
   }
 ]

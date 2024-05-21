@@ -10,5 +10,9 @@
   {
     "path": "/admin/profile/settings/edit",
     "label": "Edit Profile"
+  },
+  {
+    "path": "/admin/profile/notifications",
+    "label": "Notifications"
   }
 ]
