@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import Popup from '@/components/Popup'
 import api from '@/lib/api/WebinarWiseApi'
@@ -9,6 +9,7 @@ import CreditCardIcon from './icons/CreditCardIcon'
 import UpvoteIcon from './icons/UpvoteIcon'
 import LinkIcon from './icons/LinkIcon'
 function CourseCardButtons({ course, isPurchased, isLiked }) {
+  const pathname = usePathname()
   const router = useRouter()
   const { data: session } = useSession()
   const user = session?.user
@@ -19,11 +20,16 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
   const [likeCount, setLikeCount] = useState(likes)
   const [showIsLiked, setShowIsLiked] = useState(isLiked)
   const [error, setError] = useState('')
-
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(
-      `http://localhost:3000/home/courses/${courseId}`
-    )
+    if (process.env.NODE_ENV === 'production') {
+      navigator.clipboard.writeText(
+        `https://webinarwise.com${pathname}/${courseId}`
+      )
+    } else {
+      navigator.clipboard.writeText(
+        `http://localhost:3000${pathname}/${courseId}`
+      )
+    }
     setShowPopup(true)
     setTimeout(() => {
       setShowPopup(false)
