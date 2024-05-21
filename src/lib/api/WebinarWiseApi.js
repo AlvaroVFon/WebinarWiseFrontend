@@ -180,6 +180,18 @@ class WebinarWiseApi {
     })
     return response
   }
+  async postPicture(token, picture) {
+    const response = await this.axiosInstance
+      .post('auth/pic', picture, {
+        headers: {
+          Authorization: `${token}`,
+          'content-type': 'multipart/form-data',
+        },
+      })
+      .catch((error) => error.response)
+    console.log(response)
+    return response
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api

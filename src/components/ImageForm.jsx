@@ -1,11 +1,18 @@
 'use client'
 import { useState } from 'react'
+import { useSession } from 'next-auth/react'
 import ImagePreview from './ImagePreview'
 import Button from './Button'
+import Alert from './Alert'
 import CloseIcon from './icons/CloseIcon'
+import api from '@/lib/api/WebinarWiseApi'
 function ImageForm() {
+  const session = useSession()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [fileUrl, setFileUrl] = useState(null)
+  const [alertMessage, setAlertMessage] = useState(null)
+  const [showAlert, setShowAlert] = useState(false)
+  const [file, setFile] = useState(null)
   const [error, setError] = useState(null)
 
   const handleChange = (e) => {
@@ -17,6 +24,7 @@ function ImageForm() {
       return
     }
     if (fileType === 'image') {
+      setFile(e.target.files[0])
       setError(null)
       setFileUrl(URL.createObjectURL(e.target.files[0]))
     }
@@ -24,12 +32,42 @@ function ImageForm() {
   const handleClick = () => {
     document.querySelector('input[type="file"]').click()
   }
+  const handleUpload = async (formData) => {
+    const response = await api.postPicture(
+      session?.data?.user?.accessToken,
+      formData
+    )
+    console.log(response)
+    return response
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    const formData = new FormData()
+    if (file) {
+      formData.append('file', file)
+      handleUpload(formData).then((response) => {
+        if (response.error) {
+          setError(response.error)
+          setIsSubmitting(false)
+        }
+        if (response.status === 200) {
+          setAlertMessage('Image uploaded successfully')
+          setShowAlert(true)
+          setIsSubmitting(false)
+        }
+      })
+    }
   }
   return (
     <div className='flex flex-col gap-16 justify-center items-center w-full'>
+      <Alert
+        showAlert={showAlert}
+        setShowAlert={setShowAlert}
+        message={alertMessage}
+        buttonLabel='Close'
+        redirectUrl='reload'
+      />
       <ImagePreview
         width={100}
         height={100}
@@ -60,7 +98,6 @@ function ImageForm() {
           type='file'
           name='profileImage'
           accept='image/*'
-          required
           onChange={handleChange}
           className='hidden'
         />
@@ -75,7 +112,7 @@ function ImageForm() {
         <Button
           isLoading={isSubmitting}
           label='Upload Image'
-          disabled={error}
+          disabled={error || !file}
           width={44}
           className='col-start-3'
         />
