@@ -11,10 +11,12 @@ async function HomeLayout({ children }) {
         <Header />
       </Suspense>
       <div>
-        <Breadcrumb
-          categories={categories}
-          courses={courses.results}
-        />
+        <Suspense>
+          <Breadcrumb
+            categories={categories}
+            courses={courses.results}
+          />
+        </Suspense>
         {children}
       </div>
     </div>
