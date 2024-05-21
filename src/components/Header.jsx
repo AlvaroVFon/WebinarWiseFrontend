@@ -5,6 +5,7 @@ import SearchBar from './SearchBar'
 import HeaderNav from './HeaderNav'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
+import Logo from './Logo'
 function Header() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -16,12 +17,7 @@ function Header() {
         href='/home/courses?page=1'
         className='hidden md:block'
       >
-        <Image
-          src='/logo.svg'
-          alt='logo'
-          width={250}
-          height={50}
-        />
+        <Logo />
       </Link>
 
       {pathname === '/home/courses' && category === '' && (

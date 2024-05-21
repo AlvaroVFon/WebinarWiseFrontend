@@ -1,16 +1,11 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import { Roboto } from 'next/font/google'
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] })
 function Logo() {
   return (
-    <Link href='/'>
-      <Image
-        src='/logo.svg'
-        width={500}
-        height={50}
-        alt='logo'
-        className='w-64 md:w-[450px] p-5 md:p-10'
-      />
-    </Link>
+    <h1 className={`${roboto.className} text-3xl text-logo font-semibold`}>
+      <span className='text-blue-700'>&#60;</span> WebinarWise{' '}
+      <span className='text-blue-700'>&#47;&#62; </span>
+    </h1>
   )
 }
 export default Logo

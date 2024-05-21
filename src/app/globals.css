@@ -12,6 +12,7 @@
     --accent: #a8b3cf;
     --accent-darker: #707789;
     --muted: #525866;
+    --logo: #f8f9fa;
   }
   .light {
     --bg-primary: #ffffff; /* Blanco para el fondo principal */
@@ -21,6 +22,7 @@
     --primary: #007bff; /* Azul brillante para el color primario */
     --accent: #2a7fff; /* Azul más oscuro para resaltar */
     --accent-darker: #0044cc; /* Azul oscuro para resaltar aún más */
-    --muted: #6c757d; /* Gris suave paris suave para texto secundario o  /* Gris suave para texto secundar/* Gris suave para texto secundario o elementos menos importantes */
+    --muted: #6c757d;
+    --logo: #202020;
   }
 }

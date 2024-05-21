@@ -16,6 +16,7 @@ module.exports = {
         accent: 'var(--accent)',
         accentDarker: 'var(--accent-darker)',
         muted: 'var(--muted)',
+        logo: 'var(--logo)',
       },
       screens: {
         '4xl': '2560px',
