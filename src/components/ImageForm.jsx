@@ -73,7 +73,7 @@ function ImageForm() {
         url={fileUrl}
       />
       <form
-        className='relative grid grid-cols-3 items-center justify-end gap-3 w-full'
+        className='relative flex flex-col items-center justify-end gap-3 w-full'
         onSubmit={handleSubmit}
       >
         {fileUrl && (
@@ -100,21 +100,23 @@ function ImageForm() {
           onChange={handleChange}
           className='hidden'
         />
-        <input
-          type='text'
-          name='fileName'
-          onClick={handleClick}
-          placeholder='Choose an image file'
-          readOnly
-          className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 w-full col-span-2 cursor-pointer'
-        />
-        <Button
-          isLoading={isSubmitting}
-          label='Upload Image'
-          disabled={error || !file}
-          width={44}
-          className='col-start-3'
-        />
+        <div className='flex flex-col sm:grid sm:grid-cols-3 gap-3'>
+          <input
+            type='text'
+            name='fileName'
+            onClick={handleClick}
+            placeholder='Select Image'
+            readOnly
+            className='bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 sm:w-full sm:max-w-full col-span-2 cursor-pointer max-w-44'
+          />
+          <Button
+            isLoading={isSubmitting}
+            label='Upload Image'
+            disabled={error || !file}
+            width={44}
+            className='col-start-3'
+          />
+        </div>
         {error && <p className='text-red-400'>{error}</p>}
       </form>
     </div>
