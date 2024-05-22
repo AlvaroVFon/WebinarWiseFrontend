@@ -32,7 +32,7 @@ async function CursosPage({ params }) {
     )
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-10 pb-10'>
-      <div className=''>
+      <div className='p-2'>
         <div className='flex flex-col items-start mb-3'>
           <h1 className='text-4xl font-bold my-10'>{course.name}</h1>
           <div className='flex justify-between w-full'>

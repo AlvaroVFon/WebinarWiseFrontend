@@ -1,6 +1,6 @@
 function Comment({ username, userRole, commentDate, comment }) {
   return (
-    <div className='lg:w-[920px] 4xl:w-[1020px] min-h-[100px] p-5 bg-bgSecondary rounded-lg'>
+    <div className='w-[300px] sm:w-[500px] md:w-[700px] lg:w-[920px] 4xl:w-[1020px] min-h-[100px] p-5 bg-bgSecondary rounded-lg'>
       <div className='flex justify-between'>
         {username && userRole && (
           <h3 className='font-semibold'>
