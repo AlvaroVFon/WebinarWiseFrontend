@@ -12,9 +12,12 @@ import CoursesIcon from './icons/CoursesIcon'
 import LogoutIcon from './icons/LogoutIcon'
 import LoginIcon from './icons/LoginIcon'
 import NotificationIcon from './icons/NotificationIcon'
+import NotificationsPopup from './NotificationsPopup'
+import notifications from '@/lib/utils/notifications'
 function HeaderNav() {
   const { status, data: session } = useSession()
   const pathname = usePathname()
+  const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [theme, setTheme] = useState('dark')
   const handleThemeChange = () => {
     changeTheme()
@@ -64,8 +67,15 @@ function HeaderNav() {
           <Link
             href='/admin/profile/notifications'
             title='Notifications'
+            className='relative'
+            onMouseEnter={() => setShowNotificationPopup(true)}
           >
             <NotificationIcon />
+            <NotificationsPopup
+              showNotificationPopup={showNotificationPopup}
+              setShowNotificationPopup={setShowNotificationPopup}
+              notifications={notifications}
+            />
           </Link>
           <button
             onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}

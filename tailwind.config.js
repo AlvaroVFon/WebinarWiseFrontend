@@ -19,6 +19,7 @@ module.exports = {
         logo: 'var(--logo)',
       },
       screens: {
+        xs: '450px',
         '4xl': '2560px',
       },
     },

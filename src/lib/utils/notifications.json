@@ -1,0 +1,27 @@
+[
+  {
+    "title": "React Native",
+    "description": "New way to build mobile apps using only JavaScript",
+    "author": "Facebook"
+  },
+  {
+    "title": " Jest",
+    "description": " Delightful JavaScript Testing",
+    "author": "Kent C"
+  },
+  {
+    "title": "Sequelize",
+    "description": " Multi SQL dialect ORM for Node.js",
+    "author": " Sequelize"
+  },
+  {
+    "title": "Express",
+    "description": " Fast, unopinionated, minimalist web framework for Node.js",
+    "author": "Express"
+  },
+  {
+    "title": "Node.js",
+    "description": " Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+    "author": "Node.js"
+  }
+]
