@@ -12,7 +12,7 @@ function NotificationsPopup({
           onMouseLeave={() => setShowNotificationPopup(false)}
         >
           {notifications.length === 0 ? (
-            <p>No Notifications avaiable</p>
+            <p>You don't have any notifications yet. Stay tuned for updates!</p>
           ) : (
             notifications.map((notification) => (
               <Notification
