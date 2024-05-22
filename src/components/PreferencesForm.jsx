@@ -7,7 +7,6 @@ function PreferencesForm({ categories }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    console.log(formData)
   }
   const handleChange = (e) => {
     e.preventDefault()
