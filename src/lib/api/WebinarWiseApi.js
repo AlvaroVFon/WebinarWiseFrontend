@@ -102,6 +102,7 @@ class WebinarWiseApi {
           return res.data
         }
       })
+      .catch((error) => error.response)
 
     return response
   }

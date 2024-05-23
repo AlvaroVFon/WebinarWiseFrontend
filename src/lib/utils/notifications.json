@@ -2,26 +2,31 @@
   {
     "title": "React Native",
     "description": "New way to build mobile apps using only JavaScript",
-    "author": "Facebook"
+    "author": "Facebook",
+    "courseId": 44
   },
   {
     "title": " Jest",
     "description": " Delightful JavaScript Testing",
-    "author": "Kent C"
+    "author": "Kent C",
+    "courseId": 45
   },
   {
     "title": "Sequelize",
     "description": " Multi SQL dialect ORM for Node.js",
-    "author": " Sequelize"
+    "author": " Sequelize",
+    "courseId": 46
   },
   {
     "title": "Express",
     "description": " Fast, unopinionated, minimalist web framework for Node.js",
-    "author": "Express"
+    "author": "Express",
+    "courseId": 47
   },
   {
     "title": "Node.js",
     "description": " Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
-    "author": "Node.js"
+    "author": "Node.js",
+    "courseId": 48
   }
 ]

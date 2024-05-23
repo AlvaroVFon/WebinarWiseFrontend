@@ -63,7 +63,7 @@ async function CursosPage({ params }) {
       {user === undefined
         ? null
         : isPurchached && <AddComment course={course} />}
-      {comments.length > 0 &&
+      {comments?.length > 0 &&
         comments?.map((comment) => (
           <Comment
             key={comment.id}
@@ -73,7 +73,7 @@ async function CursosPage({ params }) {
             commentDate={comment.creation_date.split('T')[0]}
           />
         ))}
-      {comments.length === 0 && (
+      {comments?.length === 0 && (
         <Comment
           comment='No comments yet. Purchase the course to leave your comment'
           username=''
