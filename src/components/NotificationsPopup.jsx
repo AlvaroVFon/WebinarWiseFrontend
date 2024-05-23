@@ -8,15 +8,15 @@ function NotificationsPopup({
     <>
       {showNotificationPopup && (
         <div
-          className='absolute top-6 -right-20 sm:right-0  flex flex-col p-3 rounded-lg bg-bgTertiary'
+          className='absolute top-0 -right-20 sm:right-0  flex flex-col p-3 rounded-lg bg-bgTertiary'
           onMouseLeave={() => setShowNotificationPopup(false)}
         >
           {notifications.length === 0 ? (
-            <p>
+            <p className='min-w-72'>
               You don&apos;t have any notifications yet. Stay tuned for updates!
             </p>
           ) : (
-            notifications.map((notification) => (
+            notifications?.map((notification) => (
               <Notification
                 key={notification.id}
                 notification={notification}

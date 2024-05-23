@@ -11,7 +11,7 @@ function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
       {showMenu && !disableMenu && (
         <nav
           onMouseLeave={() => setShowMenu(false)}
-          className='flex flex-col gap-3 text-right absolute w-44 top-8 -right-2 bg-bgTertiary p-3 rounded-lg'
+          className='flex flex-col gap-3 text-right absolute w-44 top-0 -right-2 bg-bgTertiary p-3 rounded-lg'
         >
           {HeaderProfileMenuLinks.map((link) => {
             return (
