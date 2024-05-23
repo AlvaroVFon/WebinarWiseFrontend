@@ -8,7 +8,7 @@ function NotificationsPopup({
     <>
       {showNotificationPopup && (
         <div
-          className='absolute top-6 -right-20 sm:right-0  flex flex-col p-3 rounded-lg bg-bgTertiary'
+          className='absolute top-6 -right-20 sm:right-0  flex flex-col p-3 rounded-lg bg-bgTertiary overflow-y-scroll max-h-72 scrollbar'
           onMouseLeave={() => setShowNotificationPopup(false)}
         >
           {notifications.length === 0 ? (

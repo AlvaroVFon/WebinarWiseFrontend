@@ -11,7 +11,7 @@ async function ProfileLayout({ children }) {
       <Header />
       <main className='relative grid grid-cols-12'>
         <SideNav user={session?.user} />
-        <div className='col-start-3 col-span-9'>{children}</div>
+        <div className='col-start-4 col-span-full'>{children}</div>
       </main>
     </div>
   )

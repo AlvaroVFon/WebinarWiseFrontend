@@ -25,4 +25,10 @@
     --muted: #6c757d;
     --logo: #202020;
   }
+
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg-primary);
+    scroll-snap-type: y mandatory;
+  }
 }
