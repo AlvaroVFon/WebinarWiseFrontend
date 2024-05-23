@@ -7,7 +7,7 @@ function Notification({ notification }) {
   return (
     <Link
       href={`/home/courses/${notification.courseId}`}
-      className='grid grid-cols-6 items-center w-72 xl:w-[400px] gap-5 border-y border-muted p-2 hover:bg-bgCuaternary relative'
+      className='grid grid-cols-6 items-center w-72 xl:w-[350px] gap-5 border-y border-muted p-2 hover:bg-bgCuaternary relative duration-300 shadow-sm'
       onMouseEnter={() => setUnread(false)}
     >
       {unread && (
