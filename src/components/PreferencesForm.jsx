@@ -13,39 +13,37 @@ function PreferencesForm({ categories }) {
     setFormData([...formData, e.target.value])
   }
   return (
-    <>
-      <h1 className='col-span-full text-xl text-accent'>
-        Tell us your preferences...
-      </h1>
+    <div>
+      <h1 className='text-accentDarker p-2'>Notification preferences</h1>
       <form
-        className='col-span-full grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
+        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-2'
         onSubmit={handleSubmit}
       >
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <label
             htmlFor={category.name}
-            className='text-accent flex gap-3 p-3 border border-accent rounded m-2'
+            className='text-accent flex gap-3 p-2 border border-accent rounded'
             key={category.id}
           >
             <input
               type='checkbox'
               value={category.id}
               name={category.id}
-              className='w-5 '
+              className='w-5'
               onChange={handleChange}
             />
             #{category.name}
           </label>
         ))}
-        <div className='col-span-full flex justify-end p-2'>
+        <div className='col-span-full flex justify-end'>
           <Button
             label='Save'
-            className='w-32 h-10'
+            className='min-w-44'
             isLoading={isSubmitting}
           />
         </div>
       </form>
-    </>
+    </div>
   )
 }
 export default PreferencesForm

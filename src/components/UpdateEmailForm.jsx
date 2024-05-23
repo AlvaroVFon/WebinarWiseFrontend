@@ -20,9 +20,9 @@ function UpdateEmailForm() {
     setIsSubmitting(true)
   }
   return (
-    <div className=''>
+    <div>
       <form
-        className='flex flex-col md:grid md:grid-cols-3 gap-3'
+        className='flex flex-col 2xl:grid 2xl:grid-cols-3 gap-3'
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
@@ -38,12 +38,14 @@ function UpdateEmailForm() {
           })}
           className='col-span-2 bg-bgSecondary p-3 rounded-md hover:bg-bgTertiary animation duration-300 min-w-44'
         />
-        <Button
-          label='Update email'
-          isLoading={isSubmitting}
-          disabled={errors.email || error}
-          className={'min-w-44'}
-        />
+        <div className='flex justify-end'>
+          <Button
+            label='Update email'
+            isLoading={isSubmitting}
+            disabled={errors.email || error}
+            className={'min-w-44'}
+          />
+        </div>
 
         {errors.email && <p className='text-red-400'>{errors.email.message}</p>}
       </form>
