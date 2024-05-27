@@ -1,5 +1,5 @@
-import notifications from '@/lib/utils/notifications'
-import oldNotifications from '@/lib/utils/oldNotifications'
+import notifications from '@/mocks/notifications'
+import oldNotifications from '@/mocks/oldNotifications'
 import Notification from '@/components/Notification'
 import NotificationsGrid from '@/components/NotificationsGrid'
 async function NotificationsPage() {

@@ -13,7 +13,7 @@ import LogoutIcon from './icons/LogoutIcon'
 import LoginIcon from './icons/LoginIcon'
 import NotificationIcon from './icons/NotificationIcon'
 import NotificationsPopup from './NotificationsPopup'
-import notifications from '@/lib/utils/notifications'
+import notifications from '@/mocks/notifications.json'
 function HeaderNav() {
   const { status, data: session } = useSession()
   const pathname = usePathname()
