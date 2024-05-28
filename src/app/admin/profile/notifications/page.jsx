@@ -23,6 +23,7 @@ async function NotificationsPage() {
           <Notification
             notification={notification}
             key={index}
+            readed={notification.readed}
           />
         ))}
       </NotificationsGrid>
@@ -31,10 +32,11 @@ async function NotificationsPage() {
         title='Readed notifications'
         show={oldNotifications.length > 0}
       >
-        {notifications?.map((notification, index) => (
+        {oldNotifications?.map((notification, index) => (
           <Notification
             notification={notification}
             key={index}
+            readed={notification.readed}
           />
         ))}
       </NotificationsGrid>

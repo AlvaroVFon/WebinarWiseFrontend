@@ -20,6 +20,7 @@ function NotificationsPopup({
               <Notification
                 key={notification.id}
                 notification={notification}
+                readed={notification.readed}
               />
             ))
           )}
