@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 export const useNotifications = () => {
@@ -6,4 +5,6 @@ export const useNotifications = () => {
   const [readedNotifications, setReadedNotifications] = useState([])
 
   useEffect(() => {}, [])
+
+  return { notifications, readedNotifications }
 }

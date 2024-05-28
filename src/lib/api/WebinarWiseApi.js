@@ -202,6 +202,7 @@ class WebinarWiseApi {
       .catch((error) => error.response)
     return response
   }
+  async setNotificationsPreferences(token, preferences) {}
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api
