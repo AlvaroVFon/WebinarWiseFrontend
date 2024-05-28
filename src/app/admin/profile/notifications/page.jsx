@@ -1,12 +1,38 @@
-import PreferencesForm from '@/components/PreferencesForm'
-import GridWrapper from '@/components/GridWrapper'
-import api from '@/lib/api/WebinarWiseApi'
+import notifications from '@/mocks/notifications'
+import oldNotifications from '@/mocks/oldNotifications'
+import Notification from '@/components/Notification'
+import NotificationsGrid from '@/components/NotificationsGrid'
 async function NotificationsPage() {
-  const categories = await api.getCategories().then((res) => res.results)
+  // const readedNotifications = notifications.filter((notification) => notification.readed)
+  // const unreadedNotifications = notifications.filter((notification) => !notification.readed)
   return (
-    <GridWrapper>
-      <PreferencesForm categories={categories} />
-    </GridWrapper>
+    <div className='flex flex-col items-center gap-20 mt-6'>
+      {/* Unreaded notifications */}
+      <div className=''>
+        {notifications.length === 0 && (
+          <p className='text-xl text-center'>
+            You have not new notifications...
+          </p>
+        )}
+      </div>
+      <NotificationsGrid
+        title='New notifications'
+        show={notifications.length > 0}
+      >
+        {notifications?.map((notification) => (
+          <Notification notification={notification} />
+        ))}
+      </NotificationsGrid>
+      {/* readed notifications */}
+      <NotificationsGrid
+        title='Readed notifications'
+        show={oldNotifications.length > 0}
+      >
+        {notifications?.map((notification) => (
+          <Notification notification={notification} />
+        ))}
+      </NotificationsGrid>
+    </div>
   )
 }
 export default NotificationsPage

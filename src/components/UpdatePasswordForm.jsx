@@ -21,7 +21,7 @@ function UpdatePasswordForm() {
   return (
     <div className=''>
       <form
-        className='flex flex-col md:grid md:grid-cols-3 gap-3'
+        className='flex flex-col 2xl:grid 2xl:grid-cols-3 gap-3'
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className='col-span-2'>
@@ -75,13 +75,14 @@ function UpdatePasswordForm() {
             })}
           />
         </div>
-
-        <Button
-          isLoading={isSubmitting}
-          label='Change password'
-          className={'min-w-44'}
-          disabled={errors.currentPassword || errors.newPassword || error}
-        />
+        <div className='flex justify-end'>
+          <Button
+            isLoading={isSubmitting}
+            label='Change password'
+            className={'min-w-44'}
+            disabled={errors.currentPassword || errors.newPassword || error}
+          />
+        </div>
         {errors.newPassword && (
           <p className='text-red-400'>{errors.newPassword.message}</p>
         )}

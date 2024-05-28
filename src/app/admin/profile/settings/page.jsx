@@ -1,8 +1,10 @@
 import AccountForm from '@/components/AccountForm'
-function SettingsPage() {
+import api from '@/lib/api/WebinarWiseApi'
+async function SettingsPage() {
+  const categories = await api.getCategories().then((res) => res.results)
   return (
     <main className='mt-10 flex justify-center items-center'>
-      <AccountForm />
+      <AccountForm categories={categories} />
     </main>
   )
 }
