@@ -1,5 +1,4 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
 import SearchBar from './SearchBar'
 import HeaderNav from './HeaderNav'
@@ -13,12 +12,7 @@ function Header() {
 
   return (
     <header className='sticky top-0 z-10 flex p-3 items-center border-b border-muted justify-center md:justify-between w-full bg-bgSecondary '>
-      <Link
-        href='/home/courses?page=1'
-        className='hidden md:block'
-      >
-        <Logo />
-      </Link>
+      <Logo />
 
       {pathname === '/home/courses' && category === '' && (
         <Suspense>

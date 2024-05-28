@@ -70,7 +70,7 @@ function LoginForm({ formType }) {
         redirectUrl='/login'
       />
       <form
-        className='flex flex-col gap-3 border-t md:border-l md:border-t-0 p-10'
+        className='flex flex-col gap-3 md:border-l md:border-t-0 p-10'
         onSubmit={
           formType === 'login'
             ? handleSubmit(onLoginSubmit)

@@ -23,7 +23,7 @@ function SearchBar() {
       placeholder='Search...'
       name='search'
       onChange={onQueryChange}
-      className=' hidden sm:flex max-w-3xl rounded-lg p-2 placeholder:p-2 bg-bgPrimary border border-muted text-accent placeholder-muted hover:border-accent hover:bg-bgTertiary focus:bg-bgTertiary w-full duration-300'
+      className=' hidden sm:flex max-w-lg rounded-lg p-2 placeholder:p-2 bg-bgPrimary border border-muted text-accent placeholder-muted hover:border-accent hover:bg-bgTertiary focus:bg-bgTertiary w-full duration-300'
     />
   )
 }
