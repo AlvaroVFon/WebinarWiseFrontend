@@ -8,7 +8,7 @@ function Notification({ notification }) {
     <Link
       href={`/home/courses/${notification.courseId}`}
       className='grid grid-cols-6 items-center w-72 xl:w-[350px] gap-5 border-y border-muted p-2 hover:bg-bgCuaternary relative duration-300 shadow-sm'
-      onMouseEnter={() => setUnread(false)}
+      onClick={() => setUnread(false)}
     >
       {unread && (
         <div className='col-span-1 h-2 w-2 bg-red-800 rounded-full absolute top-2 right-1'></div>
