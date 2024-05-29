@@ -25,7 +25,9 @@ function Notification({ notification, readed }) {
       </div>
       <div className='col-span-4'>
         <div className='flex justify-between items-center'>
-          <h1 className='text-accent text-sm max-w-24'>{notification.title}</h1>
+          <h1 className='text-accent text-sm max-w-24 text-left'>
+            {notification.title}
+          </h1>
           <p className='text-xs text-muted'>
             {notification.created_at
               .split('T')[0]
@@ -34,7 +36,7 @@ function Notification({ notification, readed }) {
               .join('-')}
           </p>
         </div>
-        <p className='text-xs font-thin text-primary'>
+        <p className='text-xs font-thin text-primary text-left'>
           {notification.description}
         </p>
       </div>

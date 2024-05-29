@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
-export const useNotifications = () => {
+export const useNotifications = (accessToken) => {
   const [notifications, setNotifications] = useState([])
-  const [readedNotifications, setReadedNotifications] = useState([])
-  const [preferences, setPreferences] = useState([])
-  useEffect(() => {}, [])
-
-  return { notifications, readedNotifications }
+  const getNotifications = async () => {
+    try {
+      const response = await api.getNotifications(accessToken)
+      const data = response.data.notifications
+      setNotifications(data)
+    } catch (error) {
+      error.response
+    }
+  }
+  useEffect(() => {
+    getNotifications()
+  }, [accessToken])
+  return { notifications }
 }

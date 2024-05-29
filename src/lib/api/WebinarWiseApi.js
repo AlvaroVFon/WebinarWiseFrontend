@@ -203,7 +203,7 @@ class WebinarWiseApi {
     return response
   }
   async setNotificationsPreferences(token, preferences) {
-    const body = { status: [preferences] }
+    const body = { status: preferences }
     const response = await this.axiosInstance
       .post('/auth/subscriptions', body, {
         headers: {
