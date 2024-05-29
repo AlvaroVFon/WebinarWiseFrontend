@@ -234,6 +234,16 @@ class WebinarWiseApi {
       .catch((error) => error.response)
     return response
   }
+  async setNotificationAsReaded(token, notificationId) {
+    const response = this.axiosInstance
+      .put(`/notifications/${notificationId}`, null, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => error.response)
+    return response
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api

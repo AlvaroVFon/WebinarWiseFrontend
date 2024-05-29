@@ -1,7 +1,5 @@
 import AccountForm from '@/components/AccountForm'
 import api from '@/lib/api/WebinarWiseApi'
-import { getServerSession } from 'next-auth'
-import NextAuthOptions from '@/app/api/auth/[...nextauth]/NextAuthOptions'
 async function SettingsPage() {
   const categories = await api.getCategories().then((res) => res?.results)
 

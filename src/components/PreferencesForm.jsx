@@ -56,7 +56,7 @@ function PreferencesForm({ categories }) {
         ))}
         <div className='col-span-full flex justify-end'>
           <Button
-            label='Save'
+            label='Subscribe'
             className='min-w-44'
             isLoading={isSubmitting}
           />
