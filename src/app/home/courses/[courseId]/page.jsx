@@ -14,10 +14,10 @@ async function CursosPage({ params }) {
   const category = await api.getCategoryByCourseId(courseId)
   const comments = await api
     .getCommentsByCourseId(courseId)
-    .then((res) => res.comments)
+    .then((res) => res?.comments)
   const isPurchached = session
     ? await api.getLibrary(user.accessToken).then((res) => {
-        const response = res.data.library.find(
+        const response = res?.data?.library?.find(
           (item) => item.id === Number(courseId)
         )
         return response === undefined ? false : true
@@ -26,7 +26,7 @@ async function CursosPage({ params }) {
   const likedCoursesIds = await api
     .getCourses(session?.user?.accessToken)
     .then((res) =>
-      res.results
+      res?.results
         ?.filter((course) => course.user_liked)
         ?.map((course) => course.id)
     )
@@ -37,7 +37,7 @@ async function CursosPage({ params }) {
           <h1 className='text-4xl font-bold my-10'>{course.name}</h1>
           <div className='flex justify-between w-full'>
             <p className='border p-1 rounded text-accent border-muted'>
-              #{category.name}
+              #{category?.name}
             </p>
             <div className=''>
               <CourseCardButtons

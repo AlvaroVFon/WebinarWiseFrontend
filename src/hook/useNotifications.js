@@ -7,6 +7,7 @@ export const useNotifications = (accessToken) => {
       const response = await api.getNotifications(accessToken)
       const data = response.data.notifications
       setNotifications(data)
+      console.log(data)
     } catch (error) {
       error.response
     }

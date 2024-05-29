@@ -211,7 +211,6 @@ class WebinarWiseApi {
         },
       })
       .catch((error) => error.response)
-    console.log(response)
     return response
   }
   async getNotificationsPreferences(token) {
@@ -222,6 +221,7 @@ class WebinarWiseApi {
         },
       })
       .catch((error) => error.response)
+    console.log(response)
     return response
   }
   async getNotifications(token) {

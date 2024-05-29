@@ -13,12 +13,10 @@ import LogoutIcon from './icons/LogoutIcon'
 import LoginIcon from './icons/LoginIcon'
 import NotificationIcon from './icons/NotificationIcon'
 import NotificationsPopup from './NotificationsPopup'
-import oldNotifications from '@/mocks/oldNotifications.json'
 import { useNotifications } from '@/hook/useNotifications'
 function HeaderNav() {
   const { status, data: session } = useSession()
   const { notifications } = useNotifications(session?.user?.accessToken)
-  console.log(notifications)
   const pathname = usePathname()
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [theme, setTheme] = useState('dark')
@@ -77,7 +75,7 @@ function HeaderNav() {
             <NotificationsPopup
               showNotificationPopup={showNotificationPopup}
               setShowNotificationPopup={setShowNotificationPopup}
-              notifications={oldNotifications}
+              notifications={notifications}
             />
           </button>
           <button
