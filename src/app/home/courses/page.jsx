@@ -25,7 +25,7 @@ async function CursosPage({ searchParams }) {
     )
   return (
     <>
-      {courses.results.length === 0 && (
+      {courses.results?.length === 0 && (
         <div className='flex flex-col gap-6 justify-center items-center h-96'>
           <NoResultIcon size={100} />
           <p className='text-3xl text-accent'>No results found</p>

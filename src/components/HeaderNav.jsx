@@ -64,19 +64,19 @@ function HeaderNav() {
         </Link>
       ) : (
         <>
-          <Link
-            href='/admin/profile/notifications'
+          <button
             title='Notifications'
             className='relative'
-            onMouseEnter={() => setShowNotificationPopup(true)}
+            onClick={() => setShowNotificationPopup(true)}
           >
+            <div className='rounded-full w-2 h-2 bg-red-800 absolute -top-1'></div>
             <NotificationIcon />
             <NotificationsPopup
               showNotificationPopup={showNotificationPopup}
               setShowNotificationPopup={setShowNotificationPopup}
               notifications={notifications}
             />
-          </Link>
+          </button>
           <button
             onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
             className='p-3 cursor-pointer'

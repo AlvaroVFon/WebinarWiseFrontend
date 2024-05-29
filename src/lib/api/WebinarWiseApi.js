@@ -202,7 +202,38 @@ class WebinarWiseApi {
       .catch((error) => error.response)
     return response
   }
-  async setNotificationsPreferences(token, preferences) {}
+  async setNotificationsPreferences(token, preferences) {
+    const body = { status: [preferences] }
+    const response = await this.axiosInstance
+      .post('/auth/subscriptions', body, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => error.response)
+    console.log(response)
+    return response
+  }
+  async getNotificationsPreferences(token) {
+    const response = await this.axiosInstance
+      .get('/auth/subscriptions', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => error.response)
+    return response
+  }
+  async getNotifications(token) {
+    const response = this.axiosInstance
+      .get('/notifications', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .catch((error) => error.response)
+    return response
+  }
 }
 const api = new WebinarWiseApi('https://webinarwise-api.onrender.com/api/')
 export default api
