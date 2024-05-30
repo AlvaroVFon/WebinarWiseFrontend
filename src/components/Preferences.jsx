@@ -2,15 +2,26 @@ import { useSession } from 'next-auth/react'
 import { useSubscriptions } from '@/hook/useSubscriptions'
 import { useState } from 'react'
 import Button from './Button'
+import api from '@/lib/api/WebinarWiseApi'
 function Preferences() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState([])
   const session = useSession()
   const { subscriptions: preferences } = useSubscriptions(
     session?.data?.user?.accessToken
   )
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     setIsSubmitting(true)
+    api.setNotificationsPreferences(session.data?.user?.accessToken, formData)
+  }
+  const handleChange = (e) => {
+    setFormData([
+      ...formData,
+      {
+        category: e.target.value,
+        subscribed: false,
+      },
+    ])
   }
   return (
     <>
@@ -31,6 +42,7 @@ function Preferences() {
                   value={preference.id}
                   name={preference.id}
                   className='w-5'
+                  onChange={handleChange}
                 />
                 {preference.name}
               </label>
