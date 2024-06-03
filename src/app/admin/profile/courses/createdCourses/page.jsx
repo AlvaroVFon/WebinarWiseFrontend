@@ -10,7 +10,7 @@ async function CreatedCoursesPage() {
   const courses = await api
     .getAllCourses()
     .then((res) =>
-      res.results.filter((course) => course.teacher.id === session?.user?.id)
+      res?.results?.filter((course) => course.teacher.id === session?.user?.id)
     )
   return (
     <GridWrapper>

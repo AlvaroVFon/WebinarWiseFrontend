@@ -8,7 +8,7 @@ function NotificationsPopup({
     <>
       {showNotificationPopup && (
         <div
-          className='absolute top-0 -right-20 sm:right-0  flex flex-col p-3 rounded-lg bg-bgTertiary overflow-y-scroll max-h-96 scrollbar'
+          className='absolute top-0 -right-20 sm:right-0  flex flex-col p-3 rounded-lg bg-bgTertiary overflow-y-scroll max-h-60 scrollbar'
           onMouseLeave={() => setShowNotificationPopup(false)}
         >
           {notifications.length === 0 ? (
@@ -16,12 +16,14 @@ function NotificationsPopup({
               You don&apos;t have any notifications yet. Stay tuned for updates!
             </p>
           ) : (
-            notifications?.map((notification) => (
-              <Notification
-                key={notification.id}
-                notification={notification}
-                readed={notification.readed}
-              />
+            notifications?.map((notification, index) => (
+              <>
+                <Notification
+                  key={index}
+                  notification={notification}
+                  readed={notification.readed}
+                />
+              </>
             ))
           )}
         </div>
