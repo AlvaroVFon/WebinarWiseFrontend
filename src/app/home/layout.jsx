@@ -14,7 +14,7 @@ async function HomeLayout({ children }) {
         <Suspense>
           <Breadcrumb
             categories={categories}
-            courses={courses.results}
+            courses={courses?.results}
           />
         </Suspense>
         {children}

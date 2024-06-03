@@ -1,10 +1,34 @@
 import { useState, useEffect } from 'react'
-
-export const useNotifications = () => {
+import api from '@/lib/api/WebinarWiseApi'
+import { set } from 'react-hook-form'
+export const useNotifications = (accessToken) => {
   const [notifications, setNotifications] = useState([])
   const [readedNotifications, setReadedNotifications] = useState([])
+  const [unreadedNotifications, setUnreadedNotifications] = useState([])
+  const getNotifications = async () => {
+    try {
+      const response = await api.getNotifications(accessToken)
+      const data = response.data.notifications
+      setNotifications(data)
+    } catch (error) {
+      error.response
+    }
+  }
+  useEffect(() => {
+    if (accessToken === undefined) return
+    getNotifications()
+  }, [accessToken])
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    if (accessToken === undefined) return
+    const readed = notifications.filter((notification) => notification.readed)
+    setReadedNotifications(readed)
 
-  return { notifications, readedNotifications }
+    const unreaded = notifications.filter(
+      (notification) => !notification.readed
+    )
+    setUnreadedNotifications(unreaded)
+  }, [notifications, accessToken])
+
+  return { notifications, readedNotifications, unreadedNotifications }
 }

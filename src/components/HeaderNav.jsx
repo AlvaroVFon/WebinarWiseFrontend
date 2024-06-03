@@ -13,9 +13,10 @@ import LogoutIcon from './icons/LogoutIcon'
 import LoginIcon from './icons/LoginIcon'
 import NotificationIcon from './icons/NotificationIcon'
 import NotificationsPopup from './NotificationsPopup'
-import notifications from '@/mocks/notifications.json'
+import { useNotifications } from '@/hook/useNotifications'
 function HeaderNav() {
   const { status, data: session } = useSession()
+  const { unreadedNotifications } = useNotifications(session?.user?.accessToken)
   const pathname = usePathname()
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [theme, setTheme] = useState('dark')
@@ -64,19 +65,21 @@ function HeaderNav() {
         </Link>
       ) : (
         <>
-          <Link
-            href='/admin/profile/notifications'
+          <button
             title='Notifications'
             className='relative'
-            onMouseEnter={() => setShowNotificationPopup(true)}
+            onClick={() => setShowNotificationPopup(true)}
           >
+            {unreadedNotifications?.length > 0 && (
+              <div className='rounded-full w-2 h-2 bg-red-800 absolute -top-1'></div>
+            )}
             <NotificationIcon />
             <NotificationsPopup
               showNotificationPopup={showNotificationPopup}
               setShowNotificationPopup={setShowNotificationPopup}
-              notifications={notifications}
+              notifications={unreadedNotifications}
             />
-          </Link>
+          </button>
           <button
             onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
             className='p-3 cursor-pointer'
