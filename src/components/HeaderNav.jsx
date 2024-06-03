@@ -16,9 +16,7 @@ import NotificationsPopup from './NotificationsPopup'
 import { useNotifications } from '@/hook/useNotifications'
 function HeaderNav() {
   const { status, data: session } = useSession()
-  const { notifications, readedNotifications } = useNotifications(
-    session?.user?.accessToken
-  )
+  const { unreadedNotifications } = useNotifications(session?.user?.accessToken)
   const pathname = usePathname()
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [theme, setTheme] = useState('dark')
@@ -72,14 +70,14 @@ function HeaderNav() {
             className='relative'
             onClick={() => setShowNotificationPopup(true)}
           >
-            {readedNotifications?.length > 0 && (
+            {unreadedNotifications?.length > 0 && (
               <div className='rounded-full w-2 h-2 bg-red-800 absolute -top-1'></div>
             )}
             <NotificationIcon />
             <NotificationsPopup
               showNotificationPopup={showNotificationPopup}
               setShowNotificationPopup={setShowNotificationPopup}
-              notifications={notifications}
+              notifications={unreadedNotifications}
             />
           </button>
           <button

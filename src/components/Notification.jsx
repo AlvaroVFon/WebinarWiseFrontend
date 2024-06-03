@@ -2,13 +2,10 @@
 import { useRef } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
-import { usePathname } from 'next/navigation'
-function Notification({ notification, readed }) {
-  console.log(notification)
-
+function Notification({ notification }) {
   const session = useSession()
   const notificationId = useRef()
-  // FIXME : Fix the handleSubmit function
+
   const handleSubmit = (e) => {
     e.preventDefault()
     api
@@ -37,7 +34,7 @@ function Notification({ notification, readed }) {
         type='submit'
         onClick={handleSubmit}
       >
-        {!readed && (
+        {!notification.readed && (
           <div className='col-span-1 h-2 w-2 bg-red-800 rounded-full absolute top-2 right-1'></div>
         )}
         <div className='grid grid-cols-6 gap-3 place-items-center'>
@@ -53,7 +50,7 @@ function Notification({ notification, readed }) {
             <p className='text-xs text-muted'>
               {notification.date.split('T')[0].split('-').reverse().join('-')}
             </p>
-            <p className='text-xs font-thin text-accent border p-1 rounded border-muted'>
+            <p className='text-xs text-center font-thin text-accent border p-1 rounded border-muted'>
               #{notification.data.category.name}
             </p>
           </div>

@@ -241,7 +241,6 @@ class WebinarWiseApi {
         },
       })
       .catch((error) => error.response)
-    console.log(response)
     return response
   }
 }
