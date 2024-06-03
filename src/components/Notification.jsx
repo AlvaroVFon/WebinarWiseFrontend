@@ -42,7 +42,7 @@ function Notification({ notification }) {
             New Course
             <span className='font-bold'>
               {' '}
-              "{notification.data.course.name}"
+              &quot;{notification.data.course.name}&quot;
             </span>
             Avaiable
           </h1>
