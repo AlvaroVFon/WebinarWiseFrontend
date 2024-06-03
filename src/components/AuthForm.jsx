@@ -50,7 +50,6 @@ function LoginForm({ formType }) {
         if (res) {
           setShowAlert(true)
           setTimeout(() => {
-            setIsSuccess(false)
             router.push('/login')
           }, 3000)
         }

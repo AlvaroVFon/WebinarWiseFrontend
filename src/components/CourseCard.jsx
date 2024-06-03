@@ -14,13 +14,16 @@ function CourseCard({ course, isPurchased, isLiked }) {
       >
         <CourseCardHeader course={course} />
         <div className='flex flex-col items-end gap-4'>
-          <Link
-            href={`/home/courses?perPage=10&page=1&category=${course.category.id}`}
-            onClick={(e) => e.stopPropagation()}
-            className='border border-muted text-accentDarker p-1 rounded-md hover:bg-bgTertiary hover:text-accent cursor-pointer duration-300'
-          >
-            #{course.category?.name}
-          </Link>
+          <div className='flex items-center justify-between w-full'>
+            <p className='text-muted'>{course.price}€</p>
+            <Link
+              href={`/home/courses?perPage=10&page=1&category=${course.category.id}`}
+              onClick={(e) => e.stopPropagation()}
+              className='border border-muted text-accentDarker p-1 rounded-md hover:bg-bgTertiary hover:text-accent cursor-pointer duration-300'
+            >
+              #{course.category?.name}
+            </Link>
+          </div>
           <Image
             src='https://placehold.jp/3d4070/ffffff/300x160.png'
             alt='Curso de React'

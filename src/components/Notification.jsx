@@ -44,7 +44,7 @@ function Notification({ notification }) {
               {' '}
               &quot;{notification.data.course.name}&quot;
             </span>
-            Avaiable
+            Available
           </h1>
           <div className='col-span-2 flex flex-col'>
             <p className='text-xs text-muted'>

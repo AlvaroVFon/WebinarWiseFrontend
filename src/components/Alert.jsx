@@ -13,6 +13,7 @@ function Alert({
     setShowAlert(false)
     if (redirectUrl !== 'reload') {
       router.push(redirectUrl)
+      return
     }
     window.location.reload()
   }
