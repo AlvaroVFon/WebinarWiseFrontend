@@ -16,6 +16,7 @@ export const useNotifications = (accessToken) => {
     if (accessToken === undefined) return
     getNotifications()
   }, [accessToken])
+
   useEffect(() => {
     if (accessToken === undefined) return
     const readed = notifications.filter((notification) => notification.readed)

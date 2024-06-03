@@ -1,31 +1,41 @@
 'use client'
-import Link from 'next/link'
+import { useRef } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
+import { usePathname } from 'next/navigation'
 function Notification({ notification, readed }) {
-  const session = useSession()
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  console.log(notification)
 
-    const response = await api.setNotificationAsReaded(
-      session.data.token,
-      notification.id
-    )
-    if (response.status === 200) {
-      console.log('Notification readed')
-    } else {
-      console.log('Error reading notification')
-    }
-    console.log(response)
+  const session = useSession()
+  const notificationId = useRef()
+  // FIXME : Fix the handleSubmit function
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    api
+      .setNotificationAsReaded(
+        session?.data?.user?.accessToken,
+        notificationId.current.value
+      )
+      .then(
+        (window.location.href = ` /home/courses/${notification.data.course.id}`)
+      )
   }
   return (
     <form
-      onSubmit={handleSubmit}
       className=' w-72 xl:w-[350px] gap-5 border-y border-muted p-2 hover:bg-bgCuaternary relative duration-300 shadow-sm'
+      onSubmit={handleSubmit}
     >
-      <Link
+      <input
+        type='text'
+        hidden
+        ref={notificationId}
+        value={notification.id}
+        readOnly
+      />
+      <a
         href={`/home/courses/${notification?.data?.course?.id}`}
-        defaultValue={false}
+        type='submit'
+        onClick={handleSubmit}
       >
         {!readed && (
           <div className='col-span-1 h-2 w-2 bg-red-800 rounded-full absolute top-2 right-1'></div>
@@ -48,7 +58,7 @@ function Notification({ notification, readed }) {
             </p>
           </div>
         </div>
-      </Link>
+      </a>
     </form>
   )
 }

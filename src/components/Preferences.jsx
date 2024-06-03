@@ -22,40 +22,43 @@ function Preferences() {
         subscribed: false,
       },
     ])
+
   }
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-2'
-      >
-        <h2 className='col-span-full text-accentDarker'>Preferences</h2>
-        {preferences &&
-          preferences?.map((preference) => (
-            <div key={preference.id}>
-              <label
-                htmlFor={preference.id}
-                className='text-accent flex gap-3 p-2 border border-accent rounded'
-              >
-                <input
-                  type='checkbox'
-                  value={preference.id}
-                  name={preference.id}
-                  className='w-5'
-                  onChange={handleChange}
-                />
-                {preference.name}
-              </label>
-            </div>
-          ))}
-        <div className='col-span-full flex justify-end'>
-          <Button
-            label='Unsubscribe'
-            className='min-w-44'
-            isLoading={isSubmitting}
-          />
-        </div>
-      </form>
+      {preferences.length > 0 && (
+        <form
+          onSubmit={handleSubmit}
+          className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-2'
+        >
+          <h2 className='col-span-full text-accentDarker'>Preferences</h2>
+          {preferences &&
+            preferences?.map((preference) => (
+              <div key={preference.id}>
+                <label
+                  htmlFor={preference.id}
+                  className='text-accent flex gap-3 p-2 border border-accent rounded'
+                >
+                  <input
+                    type='checkbox'
+                    value={preference.id}
+                    name={preference.id}
+                    className='w-5'
+                    onChange={handleChange}
+                  />
+                  {preference.name}
+                </label>
+              </div>
+            ))}
+          <div className='col-span-full flex justify-end'>
+            <Button
+              label='Unsubscribe'
+              className='min-w-44'
+              isLoading={isSubmitting}
+            />
+          </div>
+        </form>
+      )}
     </>
   )
 }

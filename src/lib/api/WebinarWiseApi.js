@@ -234,7 +234,7 @@ class WebinarWiseApi {
     return response
   }
   async setNotificationAsReaded(token, notificationId) {
-    const response = this.axiosInstance
+    const response = await this.axiosInstance
       .post(`/notifications/${notificationId}`, null, {
         headers: {
           Authorization: `${token}`,

@@ -1,14 +1,12 @@
 'use client'
+import readedNotifications from '@/mocks/readedNotifications'
 import Notification from '@/components/Notification'
 import NotificationsGrid from '@/components/NotificationsGrid'
 import { useNotifications } from '@/hook/useNotifications'
 import { useSession } from 'next-auth/react'
 function NotificationsPage() {
   const session = useSession()
-
-  const { notifications, readedNotifications } = useNotifications(
-    session?.data?.user?.accessToken
-  )
+  const { notifications } = useNotifications(session?.data?.user?.accessToken)
 
   return (
     <div className='flex flex-col items-center gap-20 mt-6'>

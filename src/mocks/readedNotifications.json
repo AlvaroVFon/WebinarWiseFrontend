@@ -1,0 +1,162 @@
+[
+  {
+    "id": 10,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 30, "name": "Curso Devops para prueba" },
+      "category": { "id": 21, "name": "DevOps" }
+    },
+    "readed": true,
+    "date": "2024-06-03T06:06:18.894Z"
+  },
+  {
+    "id": 11,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 31, "name": "Curso Python para prueba" },
+      "category": { "id": 22, "name": "Python" }
+    },
+    "readed": true,
+    "date": "2024-06-04T06:06:18.894Z"
+  },
+  {
+    "id": 12,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 32, "name": "Curso JavaScript para prueba" },
+      "category": { "id": 23, "name": "JavaScript" }
+    },
+    "readed": true,
+    "date": "2024-06-05T06:06:18.894Z"
+  },
+  {
+    "id": 13,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 33, "name": "Curso HTML para prueba" },
+      "category": { "id": 24, "name": "HTML" }
+    },
+    "readed": true,
+    "date": "2024-06-06T06:06:18.894Z"
+  },
+  {
+    "id": 14,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 34, "name": "Curso CSS para prueba" },
+      "category": { "id": 25, "name": "CSS" }
+    },
+    "readed": true,
+    "date": "2024-06-07T06:06:18.894Z"
+  },
+  {
+    "id": 15,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 35, "name": "Curso React para prueba" },
+      "category": { "id": 26, "name": "React" }
+    },
+    "readed": true,
+    "date": "2024-06-08T06:06:18.894Z"
+  },
+  {
+    "id": 16,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 36, "name": "Curso Angular para prueba" },
+      "category": { "id": 27, "name": "Angular" }
+    },
+    "readed": true,
+    "date": "2024-06-09T06:06:18.894Z"
+  },
+  {
+    "id": 17,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 37, "name": "Curso Vue.js para prueba" },
+      "category": { "id": 28, "name": "Vue.js" }
+    },
+    "readed": true,
+    "date": "2024-06-10T06:06:18.894Z"
+  },
+  {
+    "id": 10,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 30, "name": "Curso Devops para prueba" },
+      "category": { "id": 21, "name": "DevOps" }
+    },
+    "readed": true,
+    "date": "2024-06-03T06:06:18.894Z"
+  },
+  {
+    "id": 11,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 31, "name": "Curso Python para prueba" },
+      "category": { "id": 22, "name": "Python" }
+    },
+    "readed": true,
+    "date": "2024-06-04T06:06:18.894Z"
+  },
+  {
+    "id": 12,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 32, "name": "Curso JavaScript para prueba" },
+      "category": { "id": 23, "name": "JavaScript" }
+    },
+    "readed": true,
+    "date": "2024-06-05T06:06:18.894Z"
+  },
+  {
+    "id": 13,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 33, "name": "Curso HTML para prueba" },
+      "category": { "id": 24, "name": "HTML" }
+    },
+    "readed": true,
+    "date": "2024-06-06T06:06:18.894Z"
+  },
+  {
+    "id": 14,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 34, "name": "Curso CSS para prueba" },
+      "category": { "id": 25, "name": "CSS" }
+    },
+    "readed": true,
+    "date": "2024-06-07T06:06:18.894Z"
+  },
+  {
+    "id": 15,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 35, "name": "Curso React para prueba" },
+      "category": { "id": 26, "name": "React" }
+    },
+    "readed": true,
+    "date": "2024-06-08T06:06:18.894Z"
+  },
+  {
+    "id": 16,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 36, "name": "Curso Angular para prueba" },
+      "category": { "id": 27, "name": "Angular" }
+    },
+    "readed": true,
+    "date": "2024-06-09T06:06:18.894Z"
+  },
+  {
+    "id": 17,
+    "type": "notification_newAtSubscribedCategory",
+    "data": {
+      "course": { "id": 37, "name": "Curso Vue.js para prueba" },
+      "category": { "id": 28, "name": "Vue.js" }
+    },
+    "readed": true,
+    "date": "2024-06-10T06:06:18.894Z"
+  }
+]
