@@ -4,8 +4,9 @@ const routes = {
   categories: '/home/categories/',
   login: '/login',
   singup: '/singup',
-  addCourse: '/admin/profile/courses/addCourse',
-  createdCourses: '/admin/profile/courses/createdCourses',
+  mycourses: '/admin/profile/mycourses',
+  addCourse: '/admin/profile/mycourses/addCourse',
+  createdCourses: '/admin/profile/mycourses/createdCourses',
 }
 
 export { routes }

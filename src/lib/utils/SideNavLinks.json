@@ -1,6 +1,6 @@
 [
   {
-    "path": "/admin/profile/courses",
+    "path": "/admin/profile/mycourses",
     "label": "My courses"
   },
   {

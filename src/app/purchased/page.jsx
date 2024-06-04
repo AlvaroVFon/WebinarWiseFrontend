@@ -2,12 +2,13 @@
 
 import Spinner from '@/components/icons/Spinner'
 import { useRouter } from 'next/navigation'
+import { routes } from '@/routes/routes'
 
 function PurchasedPage() {
   const router = useRouter()
   setTimeout(() => {
     //FIXME
-    router.push('/admin/profile/courses')
+    router.push(routes.mycourses)
   }, 3000)
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-6'>

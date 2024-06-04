@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import Button from '@/components/Button'
 import Alert from './Alert'
 import api from '@/lib/api/WebinarWiseApi'
+import { routes } from '@/routes/routes'
 function AddCourseForm({ categories }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState(null)
@@ -49,7 +50,7 @@ function AddCourseForm({ categories }) {
           message={'Course created successfully'}
           setShowAlert={setSuccess}
           buttonLabel='Continue'
-          redirectUrl='/admin/profile/courses/createdCourses'
+          redirectUrl={routes.createdCourses}
         />
       )}
       <form

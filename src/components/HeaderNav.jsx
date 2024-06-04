@@ -34,7 +34,7 @@ function HeaderNav() {
         {theme === 'dark' ? <LightThemeIcon /> : <DarkThemeIcon />}
       </button>
       <Link
-        href={`${coursesRoute}?page=1`}
+        href={`${routes.courses}?page=1`}
         title='Courses'
         className={
           pathname === routes.courses ? 'p-3 bg-accentDarker rounded-md' : 'p-3'
