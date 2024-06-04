@@ -1,5 +1,6 @@
 'use client'
 import { usePathname, useSearchParams, useParams } from 'next/navigation'
+import { routes } from '@/routes/routes'
 function Breadcrumb({ categories, courses }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -14,11 +15,23 @@ function Breadcrumb({ categories, courses }) {
   )?.name
 
   const crumbs = pathname.split('/').filter(Boolean)
-
   return (
     <p className='text-accent text-xl ml-14 mt-10'>
       {crumbs.map((crumb, index) => {
-        if (crumb !== courseId) return <span key={index}> &#62; {crumb} </span>
+        if (crumb !== courseId)
+          return (
+            <a
+              key={index}
+              href={
+                crumb === 'home'
+                  ? routes.courses
+                  : pathname.split(crumb)[0] + crumb
+              }
+            >
+              {' '}
+              &#62; {crumb}{' '}
+            </a>
+          )
       })}
       {categoryId && <span>&#62; {category?.name}</span>}
       {courseName && <span>&#62; {courseName}</span>}
