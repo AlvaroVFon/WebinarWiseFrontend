@@ -80,7 +80,7 @@ function HeaderNav() {
             />
           </button>
           <button
-            onClick={() => signOut({ callbackUrl: '/home/courses?page=1' })}
+            onClick={() => signOut({ callbackUrl: `${routes.courses}?page=1` })}
             className='p-3 cursor-pointer'
             title='Logout'
           >

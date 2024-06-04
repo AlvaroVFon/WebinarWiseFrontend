@@ -6,10 +6,13 @@ import Button from './Button'
 import Alert from './Alert'
 import CloseIcon from './icons/CloseIcon'
 import api from '@/lib/api/WebinarWiseApi'
+import { routes } from '@/routes/routes'
 function ImageForm() {
   const session = useSession()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [fileUrl, setFileUrl] = useState(null)
+  const [fileUrl, setFileUrl] = useState(
+    `${routes.thumbnail}${session?.data?.user?.id}.png`
+  )
   const [alertMessage, setAlertMessage] = useState(null)
   const [showAlert, setShowAlert] = useState(false)
   const [file, setFile] = useState(null)
