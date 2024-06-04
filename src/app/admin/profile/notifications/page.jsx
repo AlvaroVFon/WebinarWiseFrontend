@@ -1,5 +1,4 @@
 'use client'
-import Notification from '@/components/Notification'
 import NotificationsGrid from '@/components/NotificationsGrid'
 import { useNotifications } from '@/hook/useNotifications'
 import { useSession } from 'next-auth/react'
@@ -10,7 +9,6 @@ function NotificationsPage() {
   )
   return (
     <div className='flex flex-col items-center gap-20 mt-6'>
-      {/* Unreaded notifications */}
       <div className=''>
         {unreadedNotifications?.length === 0 && (
           <p className='text-xl text-center'>

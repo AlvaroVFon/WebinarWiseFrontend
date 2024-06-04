@@ -16,6 +16,7 @@ function Notification({ notification }) {
       )
       .then(
         (window.location.href = `/home/courses/${notification.data.course.id}`)
+        // FIXME
       )
   }
   return (
@@ -40,6 +41,7 @@ function Notification({ notification }) {
         )}
         <div className='grid grid-cols-6 gap-3 place-items-center'>
           <h1 className='text-accent text-sm col-span-4'>
+            {' '}
             New Course
             <span className='font-bold'>
               &quot;{notification.data.course.name}&quot;

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
-import { set } from 'react-hook-form'
 export const useNotifications = (accessToken) => {
   const [notifications, setNotifications] = useState([])
   const [readedNotifications, setReadedNotifications] = useState([])
