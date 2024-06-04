@@ -29,7 +29,8 @@ function Breadcrumb({ categories, courses }) {
               }
             >
               {' '}
-              &#62; {crumb}{' '}
+              &#62;{' '}
+              <span className='hover:underline duration-300'>{crumb}</span>{' '}
             </a>
           )
       })}

@@ -3,10 +3,11 @@ import Logo from '@/components/Logo'
 import { getServerSession } from 'next-auth'
 import NextAuthOptions from '../api/auth/[...nextauth]/NextAuthOptions'
 import { redirect } from 'next/navigation'
+import { routes } from '@/routes/routes'
 async function LoginPage() {
   const session = await getServerSession(NextAuthOptions)
   if (session) {
-    redirect('/home/courses?page=1')
+    redirect(`${routes.courses}?page=1`)
   }
 
   return (

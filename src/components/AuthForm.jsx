@@ -52,7 +52,7 @@ function LoginForm({ formType }) {
           setShowAlert(true)
           setTimeout(() => {
             //FIXME
-            router.push('/login')
+            router.push(routes.login)
           }, 3000)
         }
       })
