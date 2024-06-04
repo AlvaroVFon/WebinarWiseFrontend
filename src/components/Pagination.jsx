@@ -31,10 +31,13 @@ function Pagination({ currentPage = 1, totalPages = 12, className }) {
             'page',
             totalPages - (totalPages - 1)
           )}`}
-          className='hover:scale-110 duration-100'
+          className={
+            currentPage === '1' ? 'opacity-0' : 'hover:scale-110 duration-100'
+          }
         >
           <FirstPageIcon />
         </Link>
+
         <button
           onClick={() =>
             router.push(
@@ -53,13 +56,16 @@ function Pagination({ currentPage = 1, totalPages = 12, className }) {
             )
           }}
           className='p-2 border border-accentDarker rounded-lg text-sm text-accentDarker hover:text-accent hover:border-accent duration-300'
-          disabled={page >= totalPages}
         >
           Siguiente
         </button>
         <Link
           href={`${pathname}?${createQueryString('page', totalPages)}`}
-          className='hover:scale-110 duration-100'
+          className={
+            currentPage === totalPages
+              ? 'opacity-0'
+              : 'hover:scale-110 duration-100'
+          }
         >
           <LastPageIcon />
         </Link>
