@@ -22,7 +22,6 @@ function Preferences() {
         subscribed: false,
       },
     ])
-
   }
   return (
     <>
@@ -31,7 +30,9 @@ function Preferences() {
           onSubmit={handleSubmit}
           className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-2'
         >
-          <h2 className='col-span-full text-accentDarker'>Preferences</h2>
+          <h2 className='col-span-full text-accentDarker'>
+            Your subscriptions
+          </h2>
           {preferences &&
             preferences?.map((preference) => (
               <div key={preference.id}>

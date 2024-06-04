@@ -33,7 +33,7 @@ function PreferencesForm({ categories }) {
         showAlert={showAlert}
         setShowAlert={setShowAlert}
       />
-      <h1 className='text-accentDarker p-2'>Notification preferences</h1>
+      <h1 className='text-accentDarker p-2'>Tell us your preferences</h1>
       <form
         className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-2'
         onSubmit={handleSubmit}

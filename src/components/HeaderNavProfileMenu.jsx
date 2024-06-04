@@ -24,25 +24,22 @@ function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
               </Link>
             )
           })}
-          {
-            // If the user is not logged in, show the login link
-            session?.data?.user?.roleName !== 'role_user' && (
-              <>
-                <Link
-                  href='/admin/profile/courses/addCourse'
-                  className={linkStyle}
-                >
-                  Add Course
-                </Link>
-                <Link
-                  href='/admin/profile/courses/createdCourses'
-                  className={linkStyle}
-                >
-                  Created courses
-                </Link>
-              </>
-            )
-          }
+          {session?.data?.user?.roleName !== 'role_user' && (
+            <>
+              <Link
+                href='/admin/profile/courses/addCourse'
+                className={linkStyle}
+              >
+                Add Course
+              </Link>
+              <Link
+                href='/admin/profile/courses/createdCourses'
+                className={linkStyle}
+              >
+                Created courses
+              </Link>
+            </>
+          )}
           <a
             onClick={() => signOut({ callbackUrl: '/login' })}
             className={`${linkStyle} cursor-pointer`}

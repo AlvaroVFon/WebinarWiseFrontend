@@ -21,28 +21,14 @@ function NotificationsPage() {
       <NotificationsGrid
         title='New notifications'
         show={unreadedNotifications?.length > 0}
-      >
-        {unreadedNotifications?.map((notification, index) => (
-          <Notification
-            notification={notification}
-            key={index}
-            readed={unreadedNotifications.readed}
-          />
-        ))}
-      </NotificationsGrid>
+        notifications={unreadedNotifications}
+      />
 
       <NotificationsGrid
         title='Readed notifications'
         show={readedNotifications.length > 0}
-      >
-        {readedNotifications?.map((notification, index) => (
-          <Notification
-            notification={notification}
-            key={index}
-            readed={readedNotifications.readed}
-          />
-        ))}
-      </NotificationsGrid>
+        notifications={readedNotifications}
+      />
     </div>
   )
 }

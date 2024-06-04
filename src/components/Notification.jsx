@@ -2,6 +2,7 @@
 import { useRef } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
+import { dateFormat } from '@/lib/utils/dateFormat'
 function Notification({ notification }) {
   const session = useSession()
   const notificationId = useRef()
@@ -14,7 +15,7 @@ function Notification({ notification }) {
         notificationId.current.value
       )
       .then(
-        (window.location.href = ` /home/courses/${notification.data.course.id}`)
+        (window.location.href = `/home/courses/${notification.data.course.id}`)
       )
   }
   return (
@@ -41,14 +42,13 @@ function Notification({ notification }) {
           <h1 className='text-accent text-sm col-span-4'>
             New Course
             <span className='font-bold'>
-              {' '}
               &quot;{notification.data.course.name}&quot;
             </span>
             Available
           </h1>
           <div className='col-span-2 flex flex-col'>
             <p className='text-xs text-muted'>
-              {notification.date.split('T')[0].split('-').reverse().join('-')}
+              {dateFormat(notification.date)}
             </p>
             <p className='text-xs text-center font-thin text-accent border p-1 rounded border-muted'>
               #{notification.data.category.name}

@@ -21,15 +21,10 @@ function CourseCardButtons({ course, isPurchased, isLiked }) {
   const [showIsLiked, setShowIsLiked] = useState(isLiked)
   const [error, setError] = useState('')
   const handleCopyLink = () => {
-    if (process.env.NODE_ENV === 'production') {
-      navigator.clipboard.writeText(
-        `https://webinar-wise-frontend.vercel.app${pathname}/${courseId}`
-      )
-    } else {
-      navigator.clipboard.writeText(
-        `http://localhost:3000${pathname}/${courseId}`
-      )
-    }
+    navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}/${courseId}`
+    )
+
     setShowPopup(true)
     setTimeout(() => {
       setShowPopup(false)
