@@ -3,6 +3,7 @@ import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import HeaderProfileMenuLinks from '@/lib/utils/HeaderProfileMenuLinks'
+import { routes } from '@/routes/routes'
 function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
   const session = useSession()
   const linkStyle = 'hover:bg-bgCuaternary w-full p-2 rounded'
@@ -27,13 +28,13 @@ function HeaderNavProfileMenu({ showMenu, setShowMenu, disableMenu }) {
           {session?.data?.user?.roleName !== 'role_user' && (
             <>
               <Link
-                href='/admin/profile/courses/addCourse'
+                href={routes.addCourse}
                 className={linkStyle}
               >
                 Add Course
               </Link>
               <Link
-                href='/admin/profile/courses/createdCourses'
+                href={routes.createdCourses}
                 className={linkStyle}
               >
                 Created courses

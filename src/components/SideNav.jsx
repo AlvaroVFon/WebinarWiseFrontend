@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react'
 import UserAvatar from './UserAvatar'
 import Link from 'next/link'
 import SideNavLinks from '@/lib/utils/SideNavLinks'
+import { routes } from '@/routes/routes'
 function SideNav({ user }) {
   const { data: session } = useSession()
   const pathname = usePathname()
@@ -34,9 +35,9 @@ function SideNav({ user }) {
       {session?.user?.roleName !== 'role_user' && (
         <>
           <Link
-            href='/admin/profile/courses/addCourse'
+            href={routes.addCourse}
             className={
-              pathname === '/admin/profile/courses/addCourse'
+              pathname === routes.addCourse
                 ? 'text-accent duration-300 p-3 rounded-xl bg-bgCuaternary '
                 : 'hover:text-accent duration-300 p-3 rounded-xl hover:bg-bgCuaternary text-accentDarker'
             }
@@ -44,9 +45,9 @@ function SideNav({ user }) {
             Add Course
           </Link>
           <Link
-            href='/admin/profile/courses/createdCourses'
+            href={routes.createdCourses}
             className={
-              pathname === '/admin/profile/courses/createdCourses'
+              pathname === routes.createdCourses
                 ? 'text-accent duration-300 p-3 rounded-xl bg-bgCuaternary '
                 : 'hover:text-accent duration-300 p-3 rounded-xl hover:bg-bgCuaternary text-accentDarker'
             }
@@ -57,7 +58,7 @@ function SideNav({ user }) {
       )}
       <nav className='flex flex-col gap-8 text-accentDarker'>
         <button
-          onClick={() => signOut({ callbackUrl: '/login' })}
+          onClick={() => signOut({ callbackUrl: routes.login })}
           className='hover:text-accent duration-300 p-3 rounded-xl hover:bg-bgCuaternary text-left'
         >
           Log out

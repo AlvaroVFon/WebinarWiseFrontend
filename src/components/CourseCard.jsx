@@ -3,18 +3,19 @@ import Image from 'next/image'
 import CourseCardButtons from './CourseCardButtons'
 import CourseCardHeader from './CourseCardHeader'
 import { useRouter } from 'next/navigation'
+import { routes } from '@/routes/routes'
 import Link from 'next/link'
 function CourseCard({ course, isPurchased, isLiked }) {
   const router = useRouter()
   return (
     <article className='bg-bgSecondary rounded-xl w-[285px] h-[414px] p-4 border border-muted hover:border-accent flex flex-col justify-between hover:scale-105 duration-300'>
-      <Link href={`/home/courses/${course.id}`}>
+      <Link href={`${routes.courses}${course.id}`}>
         <CourseCardHeader course={course} />
         <div className='flex flex-col items-end gap-4'>
           <button
             onClick={(e) => {
               e.preventDefault()
-              router.push(`/home/courses?category=${course.category?.id}`)
+              router.push(`${routes.courses}?category=${course.category?.id}`)
             }}
             className='border border-muted text-accentDarker p-1 rounded-md hover:bg-bgTertiary hover:text-accent cursor-pointer duration-300'
           >

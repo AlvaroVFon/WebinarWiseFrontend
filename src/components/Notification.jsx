@@ -3,8 +3,11 @@ import { useRef } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
 import { dateFormat } from '@/lib/utils/dateFormat'
+import { useRouter } from 'next/navigation'
+import { coursesRoute } from '@/routes/routes'
 function Notification({ notification }) {
   const session = useSession()
+  const router = useRouter()
   const notificationId = useRef()
 
   const handleSubmit = (e) => {
@@ -14,10 +17,7 @@ function Notification({ notification }) {
         session?.data?.user?.accessToken,
         notificationId.current.value
       )
-      .then(
-        (window.location.href = `/home/courses/${notification.data.course.id}`)
-        // FIXME
-      )
+      .then(router.push(`${coursesRoute}${notification?.data?.course?.id}`))
   }
   return (
     <form
@@ -32,7 +32,7 @@ function Notification({ notification }) {
         readOnly
       />
       <a
-        href={`/home/courses/${notification?.data?.course?.id}`}
+        href={`${routes.courses}${notification?.data?.course?.id}`}
         type='submit'
         onClick={handleSubmit}
       >
@@ -41,9 +41,9 @@ function Notification({ notification }) {
         )}
         <div className='grid grid-cols-6 gap-3 place-items-center'>
           <h1 className='text-accent text-sm col-span-4'>
-            {' '}
             New Course
             <span className='font-bold'>
+              {' '}
               &quot;{notification.data.course.name}&quot;
             </span>
             Available

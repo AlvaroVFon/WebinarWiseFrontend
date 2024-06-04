@@ -14,6 +14,7 @@ import LoginIcon from './icons/LoginIcon'
 import NotificationIcon from './icons/NotificationIcon'
 import NotificationsPopup from './NotificationsPopup'
 import { useNotifications } from '@/hook/useNotifications'
+import { routes } from '@/routes/routes'
 function HeaderNav() {
   const { status, data: session } = useSession()
   const { unreadedNotifications } = useNotifications(session?.user?.accessToken)
@@ -33,21 +34,19 @@ function HeaderNav() {
         {theme === 'dark' ? <LightThemeIcon /> : <DarkThemeIcon />}
       </button>
       <Link
-        href='/home/courses?page=1'
+        href={`${coursesRoute}?page=1`}
         title='Courses'
         className={
-          pathname === '/home/courses'
-            ? 'p-3 bg-accentDarker rounded-md'
-            : 'p-3'
+          pathname === routes.courses ? 'p-3 bg-accentDarker rounded-md' : 'p-3'
         }
       >
         <CoursesIcon />
       </Link>
       <Link
-        href='/home/categories'
+        href={routes.categories}
         title='Categories'
         className={
-          pathname === '/home/categories'
+          pathname === routes.categories
             ? 'p-3 bg-accentDarker rounded-md'
             : 'p-3'
         }
@@ -57,7 +56,7 @@ function HeaderNav() {
 
       {status !== 'authenticated' ? (
         <Link
-          href='/login'
+          href={routes.login}
           className='p-3'
           title='Login'
         >

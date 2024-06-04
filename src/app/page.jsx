@@ -1,6 +1,7 @@
 'use client'
 import Typewriter from '@/components/Typewriter'
 import LandingNav from '@/components/LandingNav'
+import { routes } from '@/routes/routes'
 import Image from 'next/image'
 import Link from 'next/link'
 function Page() {
@@ -19,7 +20,7 @@ function Page() {
         />
         <Typewriter />
         <Link
-          href='/home/courses?page=1'
+          href={`${routes.courses}?page=1`}
           className='flex items-center gap-2 p-1 md:p-2 rounded-lg text-lg text-accentDarker hover:text-accent border border-accentDarker hover:border-accent text-center duration-300'
         >
           Explore our courses{' '}

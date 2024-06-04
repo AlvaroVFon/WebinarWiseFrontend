@@ -158,7 +158,7 @@ function LoginForm({ formType }) {
             <p className='mt-3'>
               Don&apos;t have an account?{' '}
               <Link
-                href='/signup'
+                href={routes.signup}
                 className='text-blue-500 hover:text-blue-700 duration-300'
               >
                 Sign up
