@@ -14,12 +14,12 @@ export const useNotifications = (accessToken) => {
     }
   }
   useEffect(() => {
-    if (accessToken === undefined) return
+    if (!accessToken) return
     getNotifications()
   }, [accessToken])
 
   useEffect(() => {
-    if (accessToken === undefined) return
+    if (!accessToken) return
     const readed = notifications.filter((notification) => notification.readed)
     setReadedNotifications(readed)
 

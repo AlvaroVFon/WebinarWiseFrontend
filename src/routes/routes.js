@@ -1,4 +1,5 @@
 const routes = {
+  home: '/',
   courses: '/home/courses/',
   categories: '/home/categories/',
   login: '/login',

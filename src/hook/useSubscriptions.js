@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import api from '@/lib/api/WebinarWiseApi'
-import { set } from 'react-hook-form'
 export const useSubscriptions = (accessToken) => {
   const [subscriptions, setSubscriptions] = useState([])
   const getSubscriptions = async () => {
@@ -14,7 +13,7 @@ export const useSubscriptions = (accessToken) => {
   }
 
   useEffect(() => {
-    if (accessToken === undefined) return
+    if (!accessToken) return
     getSubscriptions()
   }, [accessToken])
 

@@ -10,6 +10,7 @@ import ErrorPopup from './ErrorPopup'
 import InfoIcon from './icons/InfoIcon'
 import Button from './Button'
 import Alert from './Alert'
+import { routes } from '@/routes/routes'
 function LoginForm({ formType }) {
   const router = useRouter()
   const [error, setError] = useState(null)
@@ -39,7 +40,7 @@ function LoginForm({ formType }) {
     if (res.error) {
       setError(res.error)
     } else {
-      router.push('/home/courses?page=1')
+      router.push(`${routes.courses}?page=1`)
     }
   }
   const onSignupSubmit = async (data) => {
@@ -50,6 +51,7 @@ function LoginForm({ formType }) {
         if (res) {
           setShowAlert(true)
           setTimeout(() => {
+            //FIXME
             router.push('/login')
           }, 3000)
         }

@@ -1,9 +1,10 @@
 'use client'
 import { useRouter } from 'next/navigation'
+import { routes } from '@/routes/routes'
 function ErrorPage() {
   const router = useRouter()
   setTimeout(() => {
-    router.push('/home/courses')
+    router.push(routes.courses)
   }, 3000)
 
   return (

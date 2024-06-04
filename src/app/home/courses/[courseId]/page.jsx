@@ -60,9 +60,7 @@ async function CursosPage({ params }) {
           <p> Upvotes: {course.likes}</p>
         </div>
       </div>
-      {user === undefined
-        ? null
-        : isPurchached && <AddComment course={course} />}
+      {!user ? null : isPurchached && <AddComment course={course} />}
       {comments?.length > 0 &&
         comments?.map((comment) => (
           <Comment

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 function PurchasedPage() {
   const router = useRouter()
   setTimeout(() => {
+    //FIXME
     router.push('/admin/profile/courses')
   }, 3000)
   return (

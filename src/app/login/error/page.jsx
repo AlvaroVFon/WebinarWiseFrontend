@@ -1,11 +1,11 @@
 'use client'
 import Spinner from '@/components/icons/Spinner'
 import { useRouter } from 'next/navigation'
-
+import { routes } from '@/routes/routes'
 function LoginErrorPage() {
   const router = useRouter()
   setTimeout(() => {
-    router.push('/login')
+    router.push(routes.login)
   }, 2000)
 
   return (

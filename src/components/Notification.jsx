@@ -4,7 +4,7 @@ import api from '@/lib/api/WebinarWiseApi'
 import { useSession } from 'next-auth/react'
 import { dateFormat } from '@/lib/utils/dateFormat'
 import { useRouter } from 'next/navigation'
-import { coursesRoute } from '@/routes/routes'
+import { routes } from '@/routes/routes'
 function Notification({ notification }) {
   const session = useSession()
   const router = useRouter()
@@ -17,7 +17,7 @@ function Notification({ notification }) {
         session?.data?.user?.accessToken,
         notificationId.current.value
       )
-      .then(router.push(`${coursesRoute}${notification?.data?.course?.id}`))
+      .then(router.push(`${routes.courses}${notification?.data?.course?.id}`))
   }
   return (
     <form

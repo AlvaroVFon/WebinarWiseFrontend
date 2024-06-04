@@ -1,7 +1,7 @@
 # Cambios sugeridos 06/04
 
 - ✔️ Añadir espacio en componente Notification.
-- llevar todas las URL a un archivo a parte, facilita el mantenimiento.
+- ✔️ Llevar todas las URL a un archivo a parte, facilita el mantenimiento.
 - Utilizar router.refresh() para actualizar interfaz en icono HeaderNav --> necesita server action.
 - breadcrumb navegable
 - preview imágenes carga la última imágen subida.
