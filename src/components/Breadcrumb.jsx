@@ -23,8 +23,8 @@ function Breadcrumb({ categories, courses }) {
             <a
               key={index}
               href={
-                crumb === 'home'
-                  ? routes.courses
+                crumb === 'home' || crumb === 'courses'
+                  ? routes.courses + '?page=1'
                   : pathname.split(crumb)[0] + crumb
               }
             >
