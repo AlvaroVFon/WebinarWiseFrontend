@@ -1,11 +1,13 @@
+'use client'
 import Avatar from './icons/Avatar'
 import Image from 'next/image'
-function ImagePreview({ url = '', width, height }) {
+import { routes } from '@/routes/routes'
+function ImagePreview({ url = '', userId, width, height }) {
   return (
     <>
       {url ? (
         <Image
-          src={url}
+          src={url === '' ? `${routes.thumbnail}${userId}}` : url}
           alt='Image Preview'
           width={width}
           height={height}

@@ -7,7 +7,7 @@ const routes = {
   mycourses: '/admin/profile/mycourses',
   addCourse: '/admin/profile/mycourses/addCourse',
   createdCourses: '/admin/profile/mycourses/createdCourses',
-  thumbnail: 'https://webinarwise-api.onrender.com/assets/user/profile/',
+  thumbnail: 'https://webinarwise-api.onrender.com/api/files/user/profile/pic/',
 }
 
 export { routes }

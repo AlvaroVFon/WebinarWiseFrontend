@@ -6,13 +6,10 @@ import Button from './Button'
 import Alert from './Alert'
 import CloseIcon from './icons/CloseIcon'
 import api from '@/lib/api/WebinarWiseApi'
-import { routes } from '@/routes/routes'
-function ImageForm() {
+function ImageForm({ userId }) {
   const session = useSession()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [fileUrl, setFileUrl] = useState(
-    `${routes.thumbnail}${session?.data?.user?.id}.png`
-  )
+  const [fileUrl, setFileUrl] = useState('')
   const [alertMessage, setAlertMessage] = useState(null)
   const [showAlert, setShowAlert] = useState(false)
   const [file, setFile] = useState(null)
@@ -74,6 +71,7 @@ function ImageForm() {
         width={100}
         height={100}
         url={fileUrl}
+        userId={userId}
       />
       <form
         className='relative flex flex-col items-center justify-end gap-3 w-full'
