@@ -223,9 +223,9 @@ class WebinarWiseApi {
       .catch((error) => error.response)
     return response
   }
-  async getNotifications(token) {
+  async getNotifications(token, page = 1) {
     const response = this.axiosInstance
-      .get('/notifications', {
+      .get(`/notifications?perPage=5&page=${page}`, {
         headers: {
           Authorization: `${token}`,
         },

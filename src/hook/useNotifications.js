@@ -8,7 +8,7 @@ export const useNotifications = (accessToken) => {
     try {
       const response = await api.getNotifications(accessToken)
       const data = response.data.notifications
-      setNotifications(data)
+      setNotifications(data.sort((a, b) => b.date - a.date))
     } catch (error) {
       error.response
     }

@@ -9,7 +9,7 @@ function Notification({ notification }) {
   const session = useSession()
   const router = useRouter()
   const notificationId = useRef()
-
+  const { date, hour } = dateFormat(notification.date)
   const handleSubmit = (e) => {
     e.preventDefault()
     api
@@ -49,8 +49,9 @@ function Notification({ notification }) {
             Available
           </h1>
           <div className='col-span-2 flex flex-col'>
-            <p className='text-xs text-muted'>
-              {dateFormat(notification.date)}
+            <p className='text-xs text-muted flex flex-col items-end'>
+              <span>{hour}</span>
+              <span>{date}</span>
             </p>
             <p className='text-xs text-center font-thin text-accent border p-1 rounded border-muted'>
               #{notification.data.category.name}
