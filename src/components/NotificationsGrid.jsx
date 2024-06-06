@@ -1,5 +1,5 @@
 import Notification from './Notification'
-function NotificationsGrid({ title, show, notifications }) {
+function NotificationsGrid({ title, show, notifications, NextPage }) {
   return (
     <>
       {show && (
@@ -12,6 +12,12 @@ function NotificationsGrid({ title, show, notifications }) {
                 key={notification.id}
               />
             ))}
+            <button
+              onClick={NextPage}
+              className='col-span-full text-xs text-accentDarker p-3'
+            >
+              Show more...
+            </button>
           </div>
         </>
       )}

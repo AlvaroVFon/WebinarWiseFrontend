@@ -1,7 +1,6 @@
 'use client'
 import { routes } from '@/routes/routes'
 function ImagePreview({ url, userId, width, height }) {
-  console.log(`${routes.thumbnail}${userId}`)
   return (
     <>
       {url ? (

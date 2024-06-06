@@ -51,7 +51,6 @@ function LoginForm({ formType }) {
         if (res) {
           setShowAlert(true)
           setTimeout(() => {
-            //FIXME
             router.push(routes.login)
           }, 3000)
         }

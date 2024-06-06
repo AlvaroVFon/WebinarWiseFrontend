@@ -4,30 +4,43 @@ export const useNotifications = (accessToken) => {
   const [notifications, setNotifications] = useState([])
   const [readedNotifications, setReadedNotifications] = useState([])
   const [unreadedNotifications, setUnreadedNotifications] = useState([])
+  const [page, setPage] = useState(1)
   const getNotifications = async () => {
     try {
-      const response = await api.getNotifications(accessToken)
+      const response = await api.getNotifications(accessToken, page)
       const data = response.data.notifications
-      setNotifications(data.sort((a, b) => b.date - a.date))
+      setNotifications(notifications.concat(data))
     } catch (error) {
       error.response
     }
   }
+  const sortNotifications = (notifications) => {
+    return notifications.sort((a, b) => b.id - a.id)
+  }
   useEffect(() => {
     if (!accessToken) return
     getNotifications()
-  }, [accessToken])
+  }, [accessToken, page])
 
   useEffect(() => {
     if (!accessToken) return
-    const readed = notifications.filter((notification) => notification.readed)
-    setReadedNotifications(readed)
-
-    const unreaded = notifications.filter(
-      (notification) => !notification.readed
+    setReadedNotifications(
+      notifications.filter((notification) => notification.readed)
     )
-    setUnreadedNotifications(unreaded)
+    setUnreadedNotifications(
+      notifications.filter((notification) => !notification.readed)
+    )
   }, [notifications, accessToken])
 
-  return { notifications, readedNotifications, unreadedNotifications }
+  const NextPage = () => {
+    setPage(Number(page) + 1)
+  }
+
+  return {
+    notifications,
+    readedNotifications,
+    unreadedNotifications,
+    NextPage,
+    currentPage: page,
+  }
 }

@@ -7,7 +7,6 @@ import { routes } from '@/routes/routes'
 function PurchasedPage() {
   const router = useRouter()
   setTimeout(() => {
-    //FIXME
     router.push(routes.mycourses)
   }, 3000)
   return (
