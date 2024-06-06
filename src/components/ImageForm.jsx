@@ -74,13 +74,13 @@ function ImageForm({ userId }) {
         userId={userId}
       />
       <form
-        className='relative flex flex-col items-center justify-end gap-3 w-full'
+        className='relative flex flex-col items-center justify-end gap-3'
         onSubmit={handleSubmit}
       >
         {fileUrl && (
           <button
             type='reset'
-            className='absolute -left-10'
+            className='absolute -left-10 top-3'
             onClick={() => {
               setFileUrl(null)
               document.querySelector('input[type="file"]').value = ''
