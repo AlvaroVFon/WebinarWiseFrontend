@@ -5,11 +5,15 @@ export const useNotifications = (accessToken) => {
   const [readedNotifications, setReadedNotifications] = useState([])
   const [unreadedNotifications, setUnreadedNotifications] = useState([])
   const [page, setPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
   const getNotifications = async () => {
     try {
       const response = await api.getNotifications(accessToken, page)
       const data = response.data.notifications
       setNotifications(notifications.concat(data))
+      setCurrentPage(response.data.page)
+      setTotalPages(response.data.totalPages)
     } catch (error) {
       error.response
     }
@@ -41,6 +45,7 @@ export const useNotifications = (accessToken) => {
     readedNotifications,
     unreadedNotifications,
     NextPage,
-    currentPage: page,
+    currentPage,
+    totalPages,
   }
 }

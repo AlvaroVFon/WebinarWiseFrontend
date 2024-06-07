@@ -225,7 +225,7 @@ class WebinarWiseApi {
   }
   async getNotifications(token, page = 1) {
     const response = this.axiosInstance
-      .get(`/notifications?perPage=5&page=${page}`, {
+      .get(`/notifications?perPage=4&page=${page}`, {
         headers: {
           Authorization: `${token}`,
         },

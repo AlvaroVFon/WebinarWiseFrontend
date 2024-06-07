@@ -4,8 +4,13 @@ import { useNotifications } from '@/hook/useNotifications'
 import { useSession } from 'next-auth/react'
 function NotificationsPage() {
   const session = useSession()
-  const { unreadedNotifications, readedNotifications, NextPage, currentPage } =
-    useNotifications(session?.data?.user?.accessToken)
+  const {
+    unreadedNotifications,
+    readedNotifications,
+    NextPage,
+    currentPage,
+    totalPages,
+  } = useNotifications(session?.data?.user?.accessToken)
   return (
     <div className='flex flex-col items-center gap-20 mt-6'>
       <div className=''>
@@ -21,6 +26,7 @@ function NotificationsPage() {
         notifications={unreadedNotifications}
         NextPage={NextPage}
         currentPage={currentPage}
+        totalPages={totalPages}
       />
 
       <NotificationsGrid
@@ -29,6 +35,7 @@ function NotificationsPage() {
         notifications={readedNotifications}
         NextPage={NextPage}
         currentPage={currentPage}
+        totalPages={totalPages}
       />
     </div>
   )
