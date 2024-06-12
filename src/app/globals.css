@@ -15,13 +15,13 @@
     --logo: #f8f9fa;
   }
   .light {
-    --bg-primary: #ffffff; /* Blanco para el fondo principal */
-    --bg-secondary: #f5f5f5; /* Gris claro para el fondo secundario */
-    --bg-tertiary: #e0e0e0; /* Gris medio para el fondo terciario */
-    --bg-cuaternary: #cccccc; /* Gris medio para el fondo cuaternario */
-    --primary: #007bff; /* Azul brillante para el color primario */
-    --accent: #2a7fff; /* Azul más oscuro para resaltar */
-    --accent-darker: #0044cc; /* Azul oscuro para resaltar aún más */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e0e0e0;
+    --bg-cuaternary: #cccccc;
+    --primary: #007bff;
+    --accent: #2a7fff;
+    --accent-darker: #0044cc;
     --muted: #6c757d;
     --logo: #202020;
   }

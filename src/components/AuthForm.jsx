@@ -16,6 +16,7 @@ function LoginForm({ formType }) {
   const [error, setError] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
+
   setTimeout(() => {
     if (error) setError(null)
   }, 5000)
